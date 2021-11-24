@@ -1,0 +1,220 @@
+fileFormatVersion: 2
+guid: 58105e11abc40224e872ccafbf67889d
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: arms_orc_peon
+    100002: ball_l
+    100004: ball_r
+    100006: belly
+    100008: calf_l
+    100010: calf_r
+    100012: chest_orc_peon
+    100014: clavicle_l
+    100016: clavicle_r
+    100018: foot_l
+    100020: foot_r
+    100022: hand_l
+    100024: hand_r
+    100026: head
+    100028: head_orc_peon
+    100030: hips_orc_peon
+    100032: index_01_l
+    100034: index_01_r
+    100036: index_02_l
+    100038: index_02_r
+    100040: index_03_l
+    100042: index_03_r
+    100044: legs_orc_peon
+    100046: lowerarm_l
+    100048: lowerarm_r
+    100050: middle_01_l
+    100052: middle_01_r
+    100054: middle_02_l
+    100056: middle_02_r
+    100058: middle_03_l
+    100060: middle_03_r
+    100062: neck_01
+    100064: //RootNode
+    100066: pelvis
+    100068: pupil_left
+    100070: pupil_right
+    100072: ring_01_l
+    100074: ring_01_r
+    100076: ring_02_l
+    100078: ring_02_r
+    100080: ring_03_l
+    100082: ring_03_r
+    100084: root
+    100086: spine_01
+    100088: spine_02
+    100090: spine_03
+    100092: thigh_l
+    100094: thigh_r
+    100096: thumb_01_l
+    100098: thumb_01_r
+    100100: thumb_02_l
+    100102: thumb_02_r
+    100104: thumb_03_l
+    100106: thumb_03_r
+    100108: upperarm_l
+    100110: upperarm_r
+    400000: arms_orc_peon
+    400002: ball_l
+    400004: ball_r
+    400006: belly
+    400008: calf_l
+    400010: calf_r
+    400012: chest_orc_peon
+    400014: clavicle_l
+    400016: clavicle_r
+    400018: foot_l
+    400020: foot_r
+    400022: hand_l
+    400024: hand_r
+    400026: head
+    400028: head_orc_peon
+    400030: hips_orc_peon
+    400032: index_01_l
+    400034: index_01_r
+    400036: index_02_l
+    400038: index_02_r
+    400040: index_03_l
+    400042: index_03_r
+    400044: legs_orc_peon
+    400046: lowerarm_l
+    400048: lowerarm_r
+    400050: middle_01_l
+    400052: middle_01_r
+    400054: middle_02_l
+    400056: middle_02_r
+    400058: middle_03_l
+    400060: middle_03_r
+    400062: neck_01
+    400064: //RootNode
+    400066: pelvis
+    400068: pupil_left
+    400070: pupil_right
+    400072: ring_01_l
+    400074: ring_01_r
+    400076: ring_02_l
+    400078: ring_02_r
+    400080: ring_03_l
+    400082: ring_03_r
+    400084: root
+    400086: spine_01
+    400088: spine_02
+    400090: spine_03
+    400092: thigh_l
+    400094: thigh_r
+    400096: thumb_01_l
+    400098: thumb_01_r
+    400100: thumb_02_l
+    400102: thumb_02_r
+    400104: thumb_03_l
+    400106: thumb_03_r
+    400108: upperarm_l
+    400110: upperarm_r
+    2100000: orc_peon_mat
+    4300000: arms_orc_peon
+    4300002: chest_orc_peon
+    4300004: hips_orc_peon
+    4300006: legs_orc_peon
+    4300008: head_orc_peon
+    9500000: //RootNode
+    13700000: arms_orc_peon
+    13700002: chest_orc_peon
+    13700004: head_orc_peon
+    13700006: hips_orc_peon
+    13700008: legs_orc_peon
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: orc_peon_mat
+    second: {fileID: 2100000, guid: 9b5eb6e31a5b17745b109245a7e8966a, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
