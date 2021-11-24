@@ -1,0 +1,23 @@
+Demon Grunt Animation List
+(All loops begin/end with same pose, so removing the final frame from the loop will give smoother playback)
+
+frame:	0000~0079	spawn
+frame:	0134~0188	idle (loop)
+frame:	0275~0305	shuffle (loop)
+frame:	0368~0398	walk (loop)
+frame:	0461~0491	backpedal (loop)
+frame:	0554~0584	strafe left (loop)
+frame:	0647~0677	strafe right (loop)
+frame:	0733~0756	run (loop)
+frame:	0805-0828	punch run (loop)
+frame:	0853~0885	jump
+frame:	0885~0943	roar
+frame:	0943~1051	enraged
+frame:	1051~1090	head bash
+frame:	1090~1133	swipe attack
+frame:	1133~1166	backhanded smash
+frame:	1166~1202	get hit from behind
+frame:	1202~1238	get hit from left
+frame:	1238~1274	get hit from right
+frame:	1274~1310	get hit from front
+frame:	1310~1350	die
