@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Scripts/IMixFunc.cs.meta
-guid: 8e2ecf27ce2e9f548b25ed0e94d0188e
-=======
-guid: 43128cb137d99a447b35d877e003b595
->>>>>>> dev:Assets/Alchemy/Scripts/MouseLook.cs.meta
+guid: d81ee237ab85d0541ae94456aafb9832
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
