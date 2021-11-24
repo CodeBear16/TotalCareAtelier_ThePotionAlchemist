@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scripts/IAddFunc.cs.meta
+guid: 42af8292c0f74eb4e9b1662370447504
+=======
+guid: 617c6dc76a14f25489f58a4ec13579a5
+>>>>>>> dev:Assets/Alchemy/Scripts/ActionController.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
