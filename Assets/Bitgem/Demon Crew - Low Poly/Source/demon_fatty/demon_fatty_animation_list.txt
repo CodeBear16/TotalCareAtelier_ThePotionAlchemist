@@ -1,0 +1,34 @@
+4Demon Fatty Animation List
+(All loops begin/end with same pose, so removing the final frame from the loop will give smoother playback)
+
+frame:	0000~0066  	spawn
+frame:	0146~0226   	idle (loop)
+frame:	0334~0362     	shuffle (loop)
+frame:	0418~0446    	walk (loop)
+frame:	0502~0530    	backpedal (loop)
+frame:	0586~0614     	strafe left (loop)
+frame:	0670~0698    	strafe right (loop)
+frame:	0742~0758    	run (loop)
+frame:	0774~0804    	jump
+frame:	0804~0862 	roar
+frame:	0862~0907   	belly shove
+frame:	0907~0972   	poison breath
+frame:	0972~1007   	swipe attack
+frame:	1007~1045   	horn bash
+frame:	1045~1067   	get hit from behind
+frame:	1067~1089   	get hit from left 
+frame:	1089~1111   	get hit from right 
+frame:	1111~1133   	get hit from front
+frame:	1133~1168   	die
+
+
+
+
+
+
+
+
+
+
+
+
