@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IAddFunc
 {
-    public void Add();
+    public Ingredient Add();
 }
