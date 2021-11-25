@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DetoxPotion : Potion
+public class DeparalysePotion : Potion
 {
     public override void Effect()
     {

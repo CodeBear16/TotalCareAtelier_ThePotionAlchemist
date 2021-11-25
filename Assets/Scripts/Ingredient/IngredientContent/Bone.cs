@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bone : MonoBehaviour
+public class Bone : Ingredient
 {
-    // Start is called before the first frame update
-    void Start()
+    public override Ingredient Add()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        gameObject.SetActive(false);
+        return this;
     }
 }

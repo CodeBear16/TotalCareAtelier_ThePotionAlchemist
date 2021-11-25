@@ -2,11 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DetoxPotion : Potion
+public interface IEffectFunc
 {
-    public override void Effect()
-    {
-
-    }
-
+    public void Effect();
 }
