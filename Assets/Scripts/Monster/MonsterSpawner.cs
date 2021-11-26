@@ -5,29 +5,29 @@ using UnityEngine;
 public class MonsterSpawner : MonoBehaviour
 {
     // 복제할 몬스터들
-    GameObject[] monsters;
+    public GameObject[] monsters;
     // 몬스터 스포너
     public List<GameObject> monstersSpawner;
     // 나타날 몬스터의 최대수
-    const int spawnerMaxSize = 5;
-    int monsterSize = 12;
+    const int spawnerMaxSize = 2;
+    int monsterSize = 6;
     // 몬스터의 현재 수
-    public static int spawnerCount = 0;
-    // 몬스터 생성 위치
-    public static Transform spawnerPosition;
+    public int spawnerCount = 0;
+
     // 임시 객체
     GameObject tempObject;
 
     private void Start()
     {
-        spawnerPosition = gameObject.transform;
         monsters = Resources.LoadAll <GameObject> ("Monster/");
         monstersSpawner = new List<GameObject>();
 
-        // 스포너에 몬스터 12마리 넣어놓기
+        // 스포너에 몬스터 6마리 넣어놓기
         for (int i = 0; i < monsterSize; i++)
         {
-            tempObject = Instantiate(monsters[i], spawnerPosition.position, spawnerPosition.rotation);
+            tempObject = Instantiate(monsters[i], transform.position, transform.rotation);
+            tempObject.GetComponent<MonsterDisappear>().monsterSpawner = this;
+            tempObject.transform.parent = transform;
             tempObject.SetActive(false);
             monstersSpawner.Add(tempObject);
         }
@@ -46,8 +46,6 @@ public class MonsterSpawner : MonoBehaviour
 
     void Spawn()
     {
-        Debug.Log("스폰 됨");
-
         // 몬스터 랜덤 생성
         int selection = Random.Range(0, monsters.Length);
         GameObject monster = monstersSpawner[selection];
@@ -55,8 +53,7 @@ public class MonsterSpawner : MonoBehaviour
         // 이미 활성화된 몬스터
         if (monster.activeSelf == true) return;
 
-        monster.transform.position = spawnerPosition.position;
-        monster.transform.rotation = spawnerPosition.rotation;
+        monster.transform.position = transform.position;
 
         // 몬스터 활성화
         if (spawnerCount < spawnerMaxSize)
