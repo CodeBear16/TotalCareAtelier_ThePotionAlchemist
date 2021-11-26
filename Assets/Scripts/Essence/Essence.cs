@@ -13,7 +13,7 @@ public class Essence : MonoBehaviour, IMixFunc
     void Start()
     {
         ingredient = new Queue<Ingredient>();
-        Clear();
+        ClearEssence();
 
         combination = new Dictionary<Ingredient[], Potion>();
         SetCombination();
@@ -43,7 +43,7 @@ public class Essence : MonoBehaviour, IMixFunc
         }
     }
 
-    public void Mix()
+    public void MixEssence()
     {
         Debug.Log("섞음");
         Ingredient[] temp = new Ingredient[2];
@@ -52,10 +52,10 @@ public class Essence : MonoBehaviour, IMixFunc
         potion = combination[temp];
         Debug.Log("포션을 만듦");
 
-        Clear();
+        ClearEssence();
     }
 
-    public void Clear()
+    public void ClearEssence()
     {
         while (ingredient.Count != 0)
             ingredient.Dequeue();
@@ -75,7 +75,7 @@ public class Essence : MonoBehaviour, IMixFunc
                 if (ingredient.Count == maxAmount)
                 {
                     Debug.Log("큐에 넣음");
-                    Mix();
+                    MixEssence();
                 }
             }
             else
