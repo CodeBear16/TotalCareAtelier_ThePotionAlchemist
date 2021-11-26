@@ -19,4 +19,3 @@ Player - Other Settings - Rendering - Color Space: Linear
 
 
 ### Team Crew: 서윤주, 양종욱, 유시온
-1
