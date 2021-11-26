@@ -1089,6 +1089,8 @@ GameObject:
   - component: {fileID: 4558840752774958}
   - component: {fileID: 95346476175356632}
   - component: {fileID: 5263777404472852717}
+  - component: {fileID: -1408670557512927852}
+  - component: {fileID: 5678247871027779222}
   m_Layer: 0
   m_Name: demon_fatty 1
   m_TagString: Monster
@@ -1105,7 +1107,7 @@ Transform:
   m_GameObject: {fileID: 1474606524791208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4948153595693500}
   - {fileID: 4626209881022116}
@@ -1143,6 +1145,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d8f77b42b42a246b5d2c8283e6ce76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterSpawner: {fileID: 0}
+--- !u!114 &-1408670557512927852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474606524791208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd362a9c7e11ef245aaae7b9bad59f3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: []
+--- !u!195 &5678247871027779222
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474606524791208}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 1
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1493552657942368
 GameObject:
   m_ObjectHideFlags: 0
