@@ -1,146 +1,422 @@
 fileFormatVersion: 2
 guid: 175ba3335fb2c4c4ca1c4070d43cd9ef
 ModelImporter:
-  serializedVersion: 22
-  fileIDToRecycleName:
-    100000: ball_l
-    100002: ball_r
-    100004: calf_l
-    100006: calf_r
-    100008: clavicle_l
-    100010: clavicle_r
-    100012: demon_bomb
-    100014: //RootNode
-    100016: foot_l
-    100018: foot_r
-    100020: hair_left_01
-    100022: hair_left_02
-    100024: hair_left_03
-    100026: hair_right_01
-    100028: hair_right_02
-    100030: hair_right_03
-    100032: hand_l
-    100034: hand_r
-    100036: head
-    100038: hump
-    100040: index_01_l
-    100042: index_01_r
-    100044: index_02_l
-    100046: index_02_r
-    100048: index_03_l
-    100050: index_03_r
-    100052: jaw
-    100054: lowerarm_l
-    100056: lowerarm_r
-    100058: middle_01_l
-    100060: middle_01_r
-    100062: middle_02_l
-    100064: middle_02_r
-    100066: middle_03_l
-    100068: middle_03_r
-    100070: neck_01
-    100072: pelvis
-    100074: ring_01_l
-    100076: ring_01_r
-    100078: ring_02_l
-    100080: ring_02_r
-    100082: ring_03_l
-    100084: ring_03_r
-    100086: root
-    100088: spine_01
-    100090: spine_02
-    100092: spine_03
-    100094: tail
-    100096: thigh_l
-    100098: thigh_r
-    100100: thumb_01_l
-    100102: thumb_01_r
-    100104: thumb_02_l
-    100106: thumb_02_r
-    100108: thumb_03_l
-    100110: thumb_03_r
-    100112: upperarm_l
-    100114: upperarm_r
-    400000: ball_l
-    400002: ball_r
-    400004: calf_l
-    400006: calf_r
-    400008: clavicle_l
-    400010: clavicle_r
-    400012: //RootNode
-    400014: demon_bomb
-    400016: foot_l
-    400018: foot_r
-    400020: hair_left_01
-    400022: hair_left_02
-    400024: hair_left_03
-    400026: hair_right_01
-    400028: hair_right_02
-    400030: hair_right_03
-    400032: hand_l
-    400034: hand_r
-    400036: head
-    400038: hump
-    400040: index_01_l
-    400042: index_01_r
-    400044: index_02_l
-    400046: index_02_r
-    400048: index_03_l
-    400050: index_03_r
-    400052: jaw
-    400054: lowerarm_l
-    400056: lowerarm_r
-    400058: middle_01_l
-    400060: middle_01_r
-    400062: middle_02_l
-    400064: middle_02_r
-    400066: middle_03_l
-    400068: middle_03_r
-    400070: neck_01
-    400072: pelvis
-    400074: ring_01_l
-    400076: ring_01_r
-    400078: ring_02_l
-    400080: ring_02_r
-    400082: ring_03_l
-    400084: ring_03_r
-    400086: root
-    400088: spine_01
-    400090: spine_02
-    400092: spine_03
-    400094: tail
-    400096: thigh_l
-    400098: thigh_r
-    400100: thumb_01_l
-    400102: thumb_01_r
-    400104: thumb_02_l
-    400106: thumb_02_r
-    400108: thumb_03_l
-    400110: thumb_03_r
-    400112: upperarm_l
-    400114: upperarm_r
-    2100000: demon_bomb1
-    4300000: demon_bomb
-    7400000: idle
-    7400002: walk
-    7400004: spawn
-    7400006: blowup
-    7400008: get hit from right
-    7400010: get hit from left
-    7400012: get hit from front
-    7400014: attack1
-    7400016: attack2
-    7400018: attack3
-    7400020: jump
-    7400022: death
-    7400024: shuffle right
-    7400026: shuffle left
-    7400028: run
-    7400030: strafe left
-    7400032: strafe right
-    7400034: backpedal
-    9500000: //RootNode
-    13700000: demon_bomb
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: ball_l
+  - first:
+      1: 100002
+    second: ball_r
+  - first:
+      1: 100004
+    second: calf_l
+  - first:
+      1: 100006
+    second: calf_r
+  - first:
+      1: 100008
+    second: clavicle_l
+  - first:
+      1: 100010
+    second: clavicle_r
+  - first:
+      1: 100012
+    second: demon_bomb
+  - first:
+      1: 100014
+    second: //RootNode
+  - first:
+      1: 100016
+    second: foot_l
+  - first:
+      1: 100018
+    second: foot_r
+  - first:
+      1: 100020
+    second: hair_left_01
+  - first:
+      1: 100022
+    second: hair_left_02
+  - first:
+      1: 100024
+    second: hair_left_03
+  - first:
+      1: 100026
+    second: hair_right_01
+  - first:
+      1: 100028
+    second: hair_right_02
+  - first:
+      1: 100030
+    second: hair_right_03
+  - first:
+      1: 100032
+    second: hand_l
+  - first:
+      1: 100034
+    second: hand_r
+  - first:
+      1: 100036
+    second: head
+  - first:
+      1: 100038
+    second: hump
+  - first:
+      1: 100040
+    second: index_01_l
+  - first:
+      1: 100042
+    second: index_01_r
+  - first:
+      1: 100044
+    second: index_02_l
+  - first:
+      1: 100046
+    second: index_02_r
+  - first:
+      1: 100048
+    second: index_03_l
+  - first:
+      1: 100050
+    second: index_03_r
+  - first:
+      1: 100052
+    second: jaw
+  - first:
+      1: 100054
+    second: lowerarm_l
+  - first:
+      1: 100056
+    second: lowerarm_r
+  - first:
+      1: 100058
+    second: middle_01_l
+  - first:
+      1: 100060
+    second: middle_01_r
+  - first:
+      1: 100062
+    second: middle_02_l
+  - first:
+      1: 100064
+    second: middle_02_r
+  - first:
+      1: 100066
+    second: middle_03_l
+  - first:
+      1: 100068
+    second: middle_03_r
+  - first:
+      1: 100070
+    second: neck_01
+  - first:
+      1: 100072
+    second: pelvis
+  - first:
+      1: 100074
+    second: ring_01_l
+  - first:
+      1: 100076
+    second: ring_01_r
+  - first:
+      1: 100078
+    second: ring_02_l
+  - first:
+      1: 100080
+    second: ring_02_r
+  - first:
+      1: 100082
+    second: ring_03_l
+  - first:
+      1: 100084
+    second: ring_03_r
+  - first:
+      1: 100086
+    second: root
+  - first:
+      1: 100088
+    second: spine_01
+  - first:
+      1: 100090
+    second: spine_02
+  - first:
+      1: 100092
+    second: spine_03
+  - first:
+      1: 100094
+    second: tail
+  - first:
+      1: 100096
+    second: thigh_l
+  - first:
+      1: 100098
+    second: thigh_r
+  - first:
+      1: 100100
+    second: thumb_01_l
+  - first:
+      1: 100102
+    second: thumb_01_r
+  - first:
+      1: 100104
+    second: thumb_02_l
+  - first:
+      1: 100106
+    second: thumb_02_r
+  - first:
+      1: 100108
+    second: thumb_03_l
+  - first:
+      1: 100110
+    second: thumb_03_r
+  - first:
+      1: 100112
+    second: upperarm_l
+  - first:
+      1: 100114
+    second: upperarm_r
+  - first:
+      4: 400000
+    second: ball_l
+  - first:
+      4: 400002
+    second: ball_r
+  - first:
+      4: 400004
+    second: calf_l
+  - first:
+      4: 400006
+    second: calf_r
+  - first:
+      4: 400008
+    second: clavicle_l
+  - first:
+      4: 400010
+    second: clavicle_r
+  - first:
+      4: 400012
+    second: //RootNode
+  - first:
+      4: 400014
+    second: demon_bomb
+  - first:
+      4: 400016
+    second: foot_l
+  - first:
+      4: 400018
+    second: foot_r
+  - first:
+      4: 400020
+    second: hair_left_01
+  - first:
+      4: 400022
+    second: hair_left_02
+  - first:
+      4: 400024
+    second: hair_left_03
+  - first:
+      4: 400026
+    second: hair_right_01
+  - first:
+      4: 400028
+    second: hair_right_02
+  - first:
+      4: 400030
+    second: hair_right_03
+  - first:
+      4: 400032
+    second: hand_l
+  - first:
+      4: 400034
+    second: hand_r
+  - first:
+      4: 400036
+    second: head
+  - first:
+      4: 400038
+    second: hump
+  - first:
+      4: 400040
+    second: index_01_l
+  - first:
+      4: 400042
+    second: index_01_r
+  - first:
+      4: 400044
+    second: index_02_l
+  - first:
+      4: 400046
+    second: index_02_r
+  - first:
+      4: 400048
+    second: index_03_l
+  - first:
+      4: 400050
+    second: index_03_r
+  - first:
+      4: 400052
+    second: jaw
+  - first:
+      4: 400054
+    second: lowerarm_l
+  - first:
+      4: 400056
+    second: lowerarm_r
+  - first:
+      4: 400058
+    second: middle_01_l
+  - first:
+      4: 400060
+    second: middle_01_r
+  - first:
+      4: 400062
+    second: middle_02_l
+  - first:
+      4: 400064
+    second: middle_02_r
+  - first:
+      4: 400066
+    second: middle_03_l
+  - first:
+      4: 400068
+    second: middle_03_r
+  - first:
+      4: 400070
+    second: neck_01
+  - first:
+      4: 400072
+    second: pelvis
+  - first:
+      4: 400074
+    second: ring_01_l
+  - first:
+      4: 400076
+    second: ring_01_r
+  - first:
+      4: 400078
+    second: ring_02_l
+  - first:
+      4: 400080
+    second: ring_02_r
+  - first:
+      4: 400082
+    second: ring_03_l
+  - first:
+      4: 400084
+    second: ring_03_r
+  - first:
+      4: 400086
+    second: root
+  - first:
+      4: 400088
+    second: spine_01
+  - first:
+      4: 400090
+    second: spine_02
+  - first:
+      4: 400092
+    second: spine_03
+  - first:
+      4: 400094
+    second: tail
+  - first:
+      4: 400096
+    second: thigh_l
+  - first:
+      4: 400098
+    second: thigh_r
+  - first:
+      4: 400100
+    second: thumb_01_l
+  - first:
+      4: 400102
+    second: thumb_01_r
+  - first:
+      4: 400104
+    second: thumb_02_l
+  - first:
+      4: 400106
+    second: thumb_02_r
+  - first:
+      4: 400108
+    second: thumb_03_l
+  - first:
+      4: 400110
+    second: thumb_03_r
+  - first:
+      4: 400112
+    second: upperarm_l
+  - first:
+      4: 400114
+    second: upperarm_r
+  - first:
+      21: 2100000
+    second: demon_bomb1
+  - first:
+      43: 4300000
+    second: demon_bomb
+  - first:
+      74: 7400000
+    second: idle
+  - first:
+      74: 7400002
+    second: walk
+  - first:
+      74: 7400004
+    second: spawn
+  - first:
+      74: 7400006
+    second: blowup
+  - first:
+      74: 7400008
+    second: get hit from right
+  - first:
+      74: 7400010
+    second: get hit from left
+  - first:
+      74: 7400012
+    second: get hit from front
+  - first:
+      74: 7400014
+    second: attack1
+  - first:
+      74: 7400016
+    second: attack2
+  - first:
+      74: 7400018
+    second: attack3
+  - first:
+      74: 7400020
+    second: jump
+  - first:
+      74: 7400022
+    second: death
+  - first:
+      74: 7400024
+    second: shuffle right
+  - first:
+      74: 7400026
+    second: shuffle left
+  - first:
+      74: 7400028
+    second: run
+  - first:
+      74: 7400030
+    second: strafe left
+  - first:
+      74: 7400032
+    second: strafe right
+  - first:
+      74: 7400034
+    second: backpedal
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: demon_bomb
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -148,7 +424,7 @@ ModelImporter:
       name: demon_bomb1
     second: {fileID: 2100000, guid: f74c1fd852ea146c38e19ede530a65c4, type: 2}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -165,6 +441,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -176,6 +453,7 @@ ModelImporter:
     - serializedVersion: 16
       name: idle
       takeName: Take 001
+      internalID: 0
       firstFrame: 6
       lastFrame: 75
       wrapMode: 0
@@ -204,6 +482,7 @@ ModelImporter:
     - serializedVersion: 16
       name: walk
       takeName: Take 001
+      internalID: 0
       firstFrame: 78
       lastFrame: 115
       wrapMode: 0
@@ -232,6 +511,7 @@ ModelImporter:
     - serializedVersion: 16
       name: spawn
       takeName: Take 001
+      internalID: 0
       firstFrame: 119
       lastFrame: 156
       wrapMode: 0
@@ -260,6 +540,7 @@ ModelImporter:
     - serializedVersion: 16
       name: blowup
       takeName: Take 001
+      internalID: 0
       firstFrame: 160
       lastFrame: 171
       wrapMode: 0
@@ -288,6 +569,7 @@ ModelImporter:
     - serializedVersion: 16
       name: get hit from right
       takeName: Take 001
+      internalID: 0
       firstFrame: 175
       lastFrame: 200
       wrapMode: 0
@@ -316,6 +598,7 @@ ModelImporter:
     - serializedVersion: 16
       name: get hit from left
       takeName: Take 001
+      internalID: 0
       firstFrame: 204
       lastFrame: 229
       wrapMode: 0
@@ -344,6 +627,7 @@ ModelImporter:
     - serializedVersion: 16
       name: get hit from front
       takeName: Take 001
+      internalID: 0
       firstFrame: 233
       lastFrame: 270
       wrapMode: 0
@@ -372,6 +656,7 @@ ModelImporter:
     - serializedVersion: 16
       name: attack1
       takeName: Take 001
+      internalID: 0
       firstFrame: 274
       lastFrame: 299
       wrapMode: 0
@@ -400,6 +685,7 @@ ModelImporter:
     - serializedVersion: 16
       name: attack2
       takeName: Take 001
+      internalID: 0
       firstFrame: 303
       lastFrame: 344
       wrapMode: 0
@@ -428,6 +714,7 @@ ModelImporter:
     - serializedVersion: 16
       name: attack3
       takeName: Take 001
+      internalID: 0
       firstFrame: 348
       lastFrame: 384
       wrapMode: 0
@@ -456,6 +743,7 @@ ModelImporter:
     - serializedVersion: 16
       name: jump
       takeName: Take 001
+      internalID: 0
       firstFrame: 388
       lastFrame: 438
       wrapMode: 0
@@ -484,6 +772,7 @@ ModelImporter:
     - serializedVersion: 16
       name: death
       takeName: Take 001
+      internalID: 0
       firstFrame: 444
       lastFrame: 500
       wrapMode: 0
@@ -512,6 +801,7 @@ ModelImporter:
     - serializedVersion: 16
       name: shuffle right
       takeName: Take 001
+      internalID: 0
       firstFrame: 504
       lastFrame: 534
       wrapMode: 0
@@ -540,6 +830,7 @@ ModelImporter:
     - serializedVersion: 16
       name: shuffle left
       takeName: Take 001
+      internalID: 0
       firstFrame: 538
       lastFrame: 569
       wrapMode: 0
@@ -568,6 +859,7 @@ ModelImporter:
     - serializedVersion: 16
       name: run
       takeName: Take 001
+      internalID: 0
       firstFrame: 573
       lastFrame: 591
       wrapMode: 0
@@ -596,6 +888,7 @@ ModelImporter:
     - serializedVersion: 16
       name: strafe left
       takeName: Take 001
+      internalID: 0
       firstFrame: 595
       lastFrame: 606
       wrapMode: 0
@@ -624,6 +917,7 @@ ModelImporter:
     - serializedVersion: 16
       name: strafe right
       takeName: Take 001
+      internalID: 0
       firstFrame: 611
       lastFrame: 623
       wrapMode: 0
@@ -652,6 +946,7 @@ ModelImporter:
     - serializedVersion: 16
       name: backpedal
       takeName: Take 001
+      internalID: 0
       firstFrame: 625
       lastFrame: 646
       wrapMode: 0
@@ -683,21 +978,31 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
@@ -705,10 +1010,13 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -718,14 +1026,17 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
