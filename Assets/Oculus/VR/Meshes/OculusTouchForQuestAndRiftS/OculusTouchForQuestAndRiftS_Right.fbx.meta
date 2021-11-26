@@ -1,58 +1,158 @@
 fileFormatVersion: 2
 guid: 37ba10a26a648144fa2390c8adfb2c8a
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: //RootNode
-    100002: b_button_a
-    100004: b_button_b
-    100006: b_button_oculus
-    100008: b_thumbstick
-    100010: b_trigger_front
-    100012: b_trigger_grip
-    100014: prp00002questController_animrig:f_world
-    100016: prp00002questController_animrig:RIG_right_monterey_controller_world
-    100018: prp00002questController_animrig:right_monterey_controller_rig
-    100020: r_controller_ply
-    100022: right_monterey_controller_world
-    400000: //RootNode
-    400002: b_button_a
-    400004: b_button_b
-    400006: b_button_oculus
-    400008: b_thumbstick
-    400010: b_trigger_front
-    400012: b_trigger_grip
-    400014: prp00002questController_animrig:f_world
-    400016: prp00002questController_animrig:RIG_right_monterey_controller_world
-    400018: prp00002questController_animrig:right_monterey_controller_rig
-    400020: r_controller_ply
-    400022: right_monterey_controller_world
-    2100000: controllerMTL
-    2100002: controlerMAT
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: r_controller_ply
-    7400000: right_quest_controller_animation
-    7400002: right_quest_controller_button01
-    7400004: right_quest_controller_stickSE
-    7400006: right_quest_controller_trigger
-    7400008: right_quest_controller_button02
-    7400010: right_quest_controller_button03
-    7400012: right_quest_controller_stickSW
-    7400014: right_quest_controller_stickE
-    7400016: right_quest_controller_grip
-    7400018: right_quest_controller_stickNW
-    7400020: right_quest_controller_stickNE
-    7400022: right_quest_controller_stickW
-    7400024: right_quest_controller_stickS
-    7400026: right_quest_controller_stickN
-    7400028: right_quest_controller_button01_neutral
-    7400030: right_quest_controller_button02_neutral
-    7400032: right_quest_controller_button03_neutral
-    7400034: right_quest_controller_trigger_neutral
-    7400036: right_quest_controller_grip_neutral
-    9500000: //RootNode
-    13700000: r_controller_ply
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: b_button_a
+  - first:
+      1: 100004
+    second: b_button_b
+  - first:
+      1: 100006
+    second: b_button_oculus
+  - first:
+      1: 100008
+    second: b_thumbstick
+  - first:
+      1: 100010
+    second: b_trigger_front
+  - first:
+      1: 100012
+    second: b_trigger_grip
+  - first:
+      1: 100014
+    second: prp00002questController_animrig:f_world
+  - first:
+      1: 100016
+    second: prp00002questController_animrig:RIG_right_monterey_controller_world
+  - first:
+      1: 100018
+    second: prp00002questController_animrig:right_monterey_controller_rig
+  - first:
+      1: 100020
+    second: r_controller_ply
+  - first:
+      1: 100022
+    second: right_monterey_controller_world
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: b_button_a
+  - first:
+      4: 400004
+    second: b_button_b
+  - first:
+      4: 400006
+    second: b_button_oculus
+  - first:
+      4: 400008
+    second: b_thumbstick
+  - first:
+      4: 400010
+    second: b_trigger_front
+  - first:
+      4: 400012
+    second: b_trigger_grip
+  - first:
+      4: 400014
+    second: prp00002questController_animrig:f_world
+  - first:
+      4: 400016
+    second: prp00002questController_animrig:RIG_right_monterey_controller_world
+  - first:
+      4: 400018
+    second: prp00002questController_animrig:right_monterey_controller_rig
+  - first:
+      4: 400020
+    second: r_controller_ply
+  - first:
+      4: 400022
+    second: right_monterey_controller_world
+  - first:
+      21: 2100000
+    second: controllerMTL
+  - first:
+      21: 2100002
+    second: controlerMAT
+  - first:
+      23: 2300000
+    second: //RootNode
+  - first:
+      33: 3300000
+    second: //RootNode
+  - first:
+      43: 4300000
+    second: r_controller_ply
+  - first:
+      74: 7400000
+    second: right_quest_controller_animation
+  - first:
+      74: 7400002
+    second: right_quest_controller_button01
+  - first:
+      74: 7400004
+    second: right_quest_controller_stickSE
+  - first:
+      74: 7400006
+    second: right_quest_controller_trigger
+  - first:
+      74: 7400008
+    second: right_quest_controller_button02
+  - first:
+      74: 7400010
+    second: right_quest_controller_button03
+  - first:
+      74: 7400012
+    second: right_quest_controller_stickSW
+  - first:
+      74: 7400014
+    second: right_quest_controller_stickE
+  - first:
+      74: 7400016
+    second: right_quest_controller_grip
+  - first:
+      74: 7400018
+    second: right_quest_controller_stickNW
+  - first:
+      74: 7400020
+    second: right_quest_controller_stickNE
+  - first:
+      74: 7400022
+    second: right_quest_controller_stickW
+  - first:
+      74: 7400024
+    second: right_quest_controller_stickS
+  - first:
+      74: 7400026
+    second: right_quest_controller_stickN
+  - first:
+      74: 7400028
+    second: right_quest_controller_button01_neutral
+  - first:
+      74: 7400030
+    second: right_quest_controller_button02_neutral
+  - first:
+      74: 7400032
+    second: right_quest_controller_button03_neutral
+  - first:
+      74: 7400034
+    second: right_quest_controller_trigger_neutral
+  - first:
+      74: 7400036
+    second: right_quest_controller_grip_neutral
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: r_controller_ply
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -65,7 +165,7 @@ ModelImporter:
       name: controllerMTL
     second: {fileID: 2100000, guid: 01ac879f6ce09924e9c26663f798beaf, type: 2}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -94,6 +194,7 @@ ModelImporter:
     - serializedVersion: 16
       name: right_quest_controller_animation
       takeName: Take 001
+      internalID: 0
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -122,6 +223,7 @@ ModelImporter:
     - serializedVersion: 16
       name: right_quest_controller_button01
       takeName: Take 001
+      internalID: 0
       firstFrame: 6
       lastFrame: 7
       wrapMode: 0
@@ -174,6 +276,7 @@ ModelImporter:
     - serializedVersion: 16
       name: right_quest_controller_stickSE
       takeName: Take 001
+      internalID: 0
       firstFrame: 50
       lastFrame: 51
       wrapMode: 0
@@ -226,6 +329,7 @@ ModelImporter:
     - serializedVersion: 16
       name: right_quest_controller_trigger
       takeName: Take 001
+      internalID: 0
       firstFrame: 20
       lastFrame: 21
       wrapMode: 0
@@ -278,6 +382,7 @@ ModelImporter:
     - serializedVersion: 16
       name: right_quest_controller_button02
       takeName: Take 001
+      internalID: 0
       firstFrame: 10
       lastFrame: 11
       wrapMode: 0
@@ -330,6 +435,7 @@ ModelImporter:
     - serializedVersion: 16
       name: right_quest_controller_button03
       takeName: Take 001
+      internalID: 0
       firstFrame: 30
       lastFrame: 31
       wrapMode: 0
@@ -382,6 +488,7 @@ ModelImporter:
     - serializedVersion: 16
       name: right_quest_controller_stickSW
       takeName: Take 001
+      internalID: 0
       firstFrame: 44
       lastFrame: 45
       wrapMode: 0
@@ -434,6 +541,7 @@ ModelImporter:
     - serializedVersion: 16
       name: right_quest_controller_stickE
       takeName: Take 001
+      internalID: 0
       firstFrame: 42
       lastFrame: 43
       wrapMode: 0
@@ -486,6 +594,7 @@ ModelImporter:
     - serializedVersion: 16
       name: right_quest_controller_grip
       takeName: Take 001
+      internalID: 0
       firstFrame: 26
       lastFrame: 27
       wrapMode: 0
@@ -538,6 +647,7 @@ ModelImporter:
     - serializedVersion: 16
       name: right_quest_controller_stickNW
       takeName: Take 001
+      internalID: 0
       firstFrame: 46
       lastFrame: 47
       wrapMode: 0
@@ -590,6 +700,7 @@ ModelImporter:
     - serializedVersion: 16
       name: right_quest_controller_stickNE
       takeName: Take 001
+      internalID: 0
       firstFrame: 48
       lastFrame: 49
       wrapMode: 0
@@ -642,6 +753,7 @@ ModelImporter:
     - serializedVersion: 16
       name: right_quest_controller_stickW
       takeName: Take 001
+      internalID: 0
       firstFrame: 40
       lastFrame: 41
       wrapMode: 0
@@ -694,6 +806,7 @@ ModelImporter:
     - serializedVersion: 16
       name: right_quest_controller_stickS
       takeName: Take 001
+      internalID: 0
       firstFrame: 38
       lastFrame: 39
       wrapMode: 0
@@ -746,6 +859,7 @@ ModelImporter:
     - serializedVersion: 16
       name: right_quest_controller_stickN
       takeName: Take 001
+      internalID: 0
       firstFrame: 36
       lastFrame: 37
       wrapMode: 0
@@ -798,6 +912,7 @@ ModelImporter:
     - serializedVersion: 16
       name: right_quest_controller_button01_neutral
       takeName: Take 001
+      internalID: 0
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -850,6 +965,7 @@ ModelImporter:
     - serializedVersion: 16
       name: right_quest_controller_button02_neutral
       takeName: Take 001
+      internalID: 0
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -902,6 +1018,7 @@ ModelImporter:
     - serializedVersion: 16
       name: right_quest_controller_button03_neutral
       takeName: Take 001
+      internalID: 0
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -954,6 +1071,7 @@ ModelImporter:
     - serializedVersion: 16
       name: right_quest_controller_trigger_neutral
       takeName: Take 001
+      internalID: 0
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -1006,6 +1124,7 @@ ModelImporter:
     - serializedVersion: 16
       name: right_quest_controller_grip_neutral
       takeName: Take 001
+      internalID: 0
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -1062,25 +1181,32 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 1
@@ -1089,10 +1215,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -1102,13 +1228,17 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

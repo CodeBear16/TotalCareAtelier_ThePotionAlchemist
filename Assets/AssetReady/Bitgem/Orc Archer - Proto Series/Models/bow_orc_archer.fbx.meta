@@ -1,38 +1,98 @@
 fileFormatVersion: 2
 guid: d813e338d1a81df44ac142b636ef8e96
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: bow_arm_bottom_1
-    100002: bow_arm_bottom_2
-    100004: bow_arm_bottom_3
-    100006: bow_arm_bottom_4
-    100008: bow_arm_top_1
-    100010: bow_arm_top_2
-    100012: bow_arm_top_3
-    100014: bow_arm_top_4
-    100016: //RootNode
-    100018: bow_root
-    100020: bow_string
-    100022: orc_bow
-    400000: bow_arm_bottom_1
-    400002: bow_arm_bottom_2
-    400004: bow_arm_bottom_3
-    400006: bow_arm_bottom_4
-    400008: bow_arm_top_1
-    400010: bow_arm_top_2
-    400012: bow_arm_top_3
-    400014: bow_arm_top_4
-    400016: //RootNode
-    400018: bow_root
-    400020: bow_string
-    400022: orc_bow
-    2100000: orc_archer_mat
-    2300000: orc_bow
-    3300000: orc_bow
-    4300000: orc_bow
-    9500000: //RootNode
-    13700000: orc_bow
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: bow_arm_bottom_1
+  - first:
+      1: 100002
+    second: bow_arm_bottom_2
+  - first:
+      1: 100004
+    second: bow_arm_bottom_3
+  - first:
+      1: 100006
+    second: bow_arm_bottom_4
+  - first:
+      1: 100008
+    second: bow_arm_top_1
+  - first:
+      1: 100010
+    second: bow_arm_top_2
+  - first:
+      1: 100012
+    second: bow_arm_top_3
+  - first:
+      1: 100014
+    second: bow_arm_top_4
+  - first:
+      1: 100016
+    second: //RootNode
+  - first:
+      1: 100018
+    second: bow_root
+  - first:
+      1: 100020
+    second: bow_string
+  - first:
+      1: 100022
+    second: orc_bow
+  - first:
+      4: 400000
+    second: bow_arm_bottom_1
+  - first:
+      4: 400002
+    second: bow_arm_bottom_2
+  - first:
+      4: 400004
+    second: bow_arm_bottom_3
+  - first:
+      4: 400006
+    second: bow_arm_bottom_4
+  - first:
+      4: 400008
+    second: bow_arm_top_1
+  - first:
+      4: 400010
+    second: bow_arm_top_2
+  - first:
+      4: 400012
+    second: bow_arm_top_3
+  - first:
+      4: 400014
+    second: bow_arm_top_4
+  - first:
+      4: 400016
+    second: //RootNode
+  - first:
+      4: 400018
+    second: bow_root
+  - first:
+      4: 400020
+    second: bow_string
+  - first:
+      4: 400022
+    second: orc_bow
+  - first:
+      21: 2100000
+    second: orc_archer_mat
+  - first:
+      23: 2300000
+    second: orc_bow
+  - first:
+      33: 3300000
+    second: orc_bow
+  - first:
+      43: 4300000
+    second: orc_bow
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: orc_bow
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -40,7 +100,7 @@ ModelImporter:
       name: orc_archer_mat
     second: {fileID: 2100000, guid: e91f27846a604f549a7d03bea9867fa6, type: 2}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -73,25 +133,32 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -100,10 +167,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 0
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -113,13 +180,17 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 0
   humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
