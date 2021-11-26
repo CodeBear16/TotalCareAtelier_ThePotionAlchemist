@@ -282,7 +282,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ad918deda49492147965a8e1301a21cb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -437,6 +437,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bone
       objectReference: {fileID: 0}
+    - target: {fileID: 1827763375807856971, guid: a8134d90d1176a046b409c0171400469,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ad918deda49492147965a8e1301a21cb, type: 2}
     - target: {fileID: 1827763375807856973, guid: a8134d90d1176a046b409c0171400469,
         type: 3}
       propertyPath: m_RootOrder
@@ -506,6 +511,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower
       objectReference: {fileID: 0}
+    - target: {fileID: 4171639288214363546, guid: 93039729edd9dc248b13c80d2b0603ea,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ad918deda49492147965a8e1301a21cb, type: 2}
     - target: {fileID: 4171639288214363548, guid: 93039729edd9dc248b13c80d2b0603ea,
         type: 3}
       propertyPath: m_RootOrder
@@ -625,6 +635,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4989661557360368475, guid: 1524dde266f8cc24bb54121eac7bc6ba,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ad918deda49492147965a8e1301a21cb, type: 2}
     - target: {fileID: 5586345046052591999, guid: 1524dde266f8cc24bb54121eac7bc6ba,
         type: 3}
       propertyPath: m_Name
