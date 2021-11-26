@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Shootable
   - Monster
+  - Door
   layers:
   - Default
   - TransparentFX
