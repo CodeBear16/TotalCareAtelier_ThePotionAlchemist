@@ -10,9 +10,10 @@ public class MonsterSpawner : MonoBehaviour
     public List<GameObject> monstersSpawner;
     // 나타날 몬스터의 최대수
     const int spawnerMaxSize = 2;
-    int monsterSize = 6;
     // 몬스터의 현재 수
     public int spawnerCount = 0;
+    // 몬스터 종류의 수
+    int monsterSize = 6;
 
     // 임시 객체
     GameObject tempObject;
@@ -40,7 +41,8 @@ public class MonsterSpawner : MonoBehaviour
         {
             Debug.Log("스폰 시작");
             Spawn();
-            yield return new WaitForSeconds(Random.Range(1, 5));
+            // 20~40초에 한 번씩 몬스터 활성화
+            yield return new WaitForSeconds(Random.Range(20, 40));
         }
     }
 
@@ -60,6 +62,8 @@ public class MonsterSpawner : MonoBehaviour
         {
             Debug.Log("들어감");
             monster.SetActive(true);
+            GameObject.FindWithTag("Door").GetComponent<DoorOpen>().Open();
+            GetComponent<MonsterState>().WalkingToDestination();
             Debug.Log(monster.name + "생성되었습니다");
             spawnerCount++;
         }
