@@ -10,11 +10,14 @@ public class MonsterDisappear : MonoBehaviour
     {
         StartCoroutine(Disappear());
     }
+
     IEnumerator Disappear()
     {
-           while(true)
+        while(true)
          {
             yield return new WaitForSeconds(2);
+
+            // 몬스터와 spawner의 거리 차이가 0.05보다 작으면 몬스터 비활성화
             if (Vector3.Distance(monsterSpawner.transform.position, transform.position) < 0.05f)
             {
                 gameObject.SetActive(false);
@@ -22,6 +25,5 @@ public class MonsterDisappear : MonoBehaviour
                 monsterSpawner.spawnerCount--;
             }
         }
-
     }
 }
