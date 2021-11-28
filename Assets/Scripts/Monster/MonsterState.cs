@@ -5,20 +5,20 @@ using UnityEngine.AI;
 
 public class MonsterState : MonoBehaviour
 {
-    // 네비메쉬
     NavMeshAgent nav;
-    // 이동할 목적지
-    public List<Transform> destination;
+    public GameObject[] destination;
 
     private void Start()
     {
         nav = GetComponent<NavMeshAgent>();
-        destination = new List<Transform>();
+        // 목적지 갯수(플레이어 앞에 도달하는 장소)
+        destination = new GameObject[6];
+        destination = GameObject.FindGameObjectsWithTag("Destination");
     }
 
     public void WalkingToDestination()
     {
-        int selection = Random.Range(0, destination.Count);
-        nav.SetDestination(destination[selection].position);
+        //int selection = Random.Range(0, destination.Length);
+        //nav.SetDestination(destination[selection].transform.position);
     }
 }
