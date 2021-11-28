@@ -17,7 +17,7 @@ public class MonsterSpawner : MonoBehaviour
     // 임시 객체
     GameObject tempObject;
 
-    // 몬스터의 현재 상태
+    // 몬스터 이동
     MonsterState monsterState;
 
     private void Start()
@@ -30,7 +30,7 @@ public class MonsterSpawner : MonoBehaviour
         for (int i = 0; i < monsterSize; i++)
         {
             tempObject = Instantiate(monsters[i], transform.position, transform.rotation);
-            tempObject.GetComponent<MonsterDisappear>().monsterSpawner = this;
+            tempObject.GetComponent<MonsterState>().monsterSpawner = this;
             tempObject.transform.parent = transform;
             tempObject.SetActive(false);
             monstersSpawner.Add(tempObject);
