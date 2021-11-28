@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IMixFunc
 {
-    public void Mix();
+    public void MixEssence();
 }
