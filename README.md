@@ -1,4 +1,4 @@
-# TotalCareAtelier_ThePotionAlchemist
+# *Total Care Atelier: The Potion Alchemist*
 An Alchemist makes Potions for customers.
 
 - *VR Fantasy Potion-Making Tycoon*
@@ -21,5 +21,7 @@ Use Unity `2020.3.23f1 LTS`
 >*Game Development Team Project started on 24th November, 2021.*
 
 
-### Contributors
-[@peewoong](https://github.com/peewoong), [@jongha10](https://github.com/jongha10)
+## Contributors
+[@서윤주](https://github.com/peewoong)
+<br>[@양종욱](https://github.com/jongha10)
+<br>[@유시온](https://github.com/BigBear621)
