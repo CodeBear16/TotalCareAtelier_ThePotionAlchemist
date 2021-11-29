@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour
 {
+    public static List<GameObject> destinationsSpotList = new List<GameObject>();
     // 복제할 몬스터들
     public GameObject[] monsters;
     // 몬스터 스포너
@@ -17,14 +18,18 @@ public class MonsterSpawner : MonoBehaviour
     // 임시 객체
     GameObject tempObject;
 
-    // 몬스터 이동
-    MonsterState monsterState;
-
     private void Start()
     {
-        monsters = Resources.LoadAll <GameObject> ("Monster/");
+        //최초 한번 실행
+        if (destinationsSpotList.Count <= 0)
+        {
+            destinationsSpotList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Destination"));
+            for (int i = 0; i < destinationsSpotList.Count; i++)
+                destinationsSpotList[i].SetActive(false);
+        }
+
+        monsters = Resources.LoadAll<GameObject>("Monster/");
         monstersSpawner = new List<GameObject>();
-        monsterState = new MonsterState();
 
         // 스포너에 몬스터 6마리 넣어놓기
         for (int i = 0; i < monsterSize; i++)
@@ -35,6 +40,7 @@ public class MonsterSpawner : MonoBehaviour
             tempObject.SetActive(false);
             monstersSpawner.Add(tempObject);
         }
+
         StartCoroutine(SpawnMonster());
     }
 
@@ -42,7 +48,6 @@ public class MonsterSpawner : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("스폰 시작");
             Spawn();
             // 20~40초에 한 번씩 몬스터 활성화
             yield return new WaitForSeconds(Random.Range(1,5));
@@ -65,7 +70,8 @@ public class MonsterSpawner : MonoBehaviour
             monster.SetActive(true);
             Debug.Log(monster.name + "생성되었습니다");
             GameObject.FindWithTag("Door").GetComponent<DoorOpen>().Open();
-            monsterState.WalkingToDestination();
+            monster.GetComponent<MonsterState>().Setting();
+            monster.GetComponent<MonsterState>().WalkingToDestination();
             spawnerCount++;
         }
     }
