@@ -26,6 +26,7 @@ public class IngredientPool : Singleton<IngredientPool>
         AssignPoolPos();
         ProduceObject();
 
+        ActivateAll();
     }
 
     #region Setting Object Pool
@@ -124,4 +125,26 @@ public class IngredientPool : Singleton<IngredientPool>
         current.position = target.position;
         current.rotation = target.rotation;
     }
+
+    public void ActivateAll()
+    {
+        for (int i = 0; i < poolList.Count; i++)
+        {
+            GameObject temp = poolList[i].Dequeue();
+            temp.SetActive(true);
+            poolList[i].Enqueue(temp);
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.GetComponent<IAddFunc>() != null)
+        {
+            if (OVRInput.GetDown(OVRInput.Button.SecondaryHandTrigger))
+            {
+            }
+        }
+    }
+
+
 }

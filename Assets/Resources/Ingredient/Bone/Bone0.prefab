@@ -511,7 +511,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5326453841024340780}
   - component: {fileID: 4726742326952543720}
+  - component: {fileID: -3428568847234945392}
   - component: {fileID: 1964467015}
+  - component: {fileID: 3935094770971897487}
   m_Layer: 0
   m_Name: Bone0
   m_TagString: Untagged
@@ -578,6 +580,20 @@ LODGroup:
     renderers:
     - renderer: {fileID: 3739556248527087720}
   m_Enabled: 1
+--- !u!136 &-3428568847234945392
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9200858801254932799}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.05393263
+  m_Height: 0.4646824
+  m_Direction: 0
+  m_Center: {x: 0.014806896, y: 0.023022018, z: 0}
 --- !u!114 &1964467015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -590,3 +606,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ad168ab89e982499578662fa16ef80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3935094770971897487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9200858801254932799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_allowOffhandGrab: 1
+  m_snapPosition: 0
+  m_snapOrientation: 0
+  m_snapOffset: {fileID: 0}
+  m_grabPoints: []
