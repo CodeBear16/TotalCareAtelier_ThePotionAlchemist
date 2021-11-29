@@ -1386,9 +1386,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4936080076784958}
   - component: {fileID: 95276014631355430}
-  - component: {fileID: 1793274853005676737}
-  - component: {fileID: 7671983017758065152}
   - component: {fileID: 1151568202045370903}
+  - component: {fileID: -6292263142560688238}
   m_Layer: 0
   m_Name: demon_bomb
   m_TagString: Monster
@@ -1431,32 +1430,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1793274853005676737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1691502918888804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32d8f77b42b42a246b5d2c8283e6ce76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterSpawner: {fileID: 0}
---- !u!114 &7671983017758065152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1691502918888804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd362a9c7e11ef245aaae7b9bad59f3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destination: []
 --- !u!195 &1151568202045370903
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1479,6 +1452,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-6292263142560688238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691502918888804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd362a9c7e11ef245aaae7b9bad59f3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterSpawner: {fileID: 0}
+  destination: []
 --- !u!1 &1697300957351030
 GameObject:
   m_ObjectHideFlags: 0

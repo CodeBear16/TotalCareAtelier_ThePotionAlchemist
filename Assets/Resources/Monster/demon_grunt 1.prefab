@@ -1606,9 +1606,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4462399728680444}
   - component: {fileID: 95188257378482078}
-  - component: {fileID: 2182720865986559600}
-  - component: {fileID: 2440674978721971537}
   - component: {fileID: -6000323848204857350}
+  - component: {fileID: 4285868939290154332}
   m_Layer: 0
   m_Name: demon_grunt 1
   m_TagString: Monster
@@ -1652,32 +1651,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2182720865986559600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1805944652570914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32d8f77b42b42a246b5d2c8283e6ce76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterSpawner: {fileID: 0}
---- !u!114 &2440674978721971537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1805944652570914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd362a9c7e11ef245aaae7b9bad59f3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destination: []
 --- !u!195 &-6000323848204857350
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1700,6 +1673,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &4285868939290154332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805944652570914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd362a9c7e11ef245aaae7b9bad59f3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterSpawner: {fileID: 0}
+  destination: []
 --- !u!1 &1813282815630746
 GameObject:
   m_ObjectHideFlags: 0
