@@ -334,7 +334,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7967233870045949118}
   - component: {fileID: 7967233870065203230}
+  - component: {fileID: 138040965670860134}
   - component: {fileID: 1234781133}
+  - component: {fileID: 8893368153319827214}
   m_Layer: 0
   m_Name: Mushroom2
   m_TagString: Untagged
@@ -391,6 +393,20 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7967233870047850070}
   m_Enabled: 1
+--- !u!136 &138040965670860134
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7967233870045851806}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.021245044
+  m_Height: 0.12012526
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.041198757, z: 0}
 --- !u!114 &1234781133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,3 +419,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089dd3a046658f74aadf1de4c89ba086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8893368153319827214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7967233870045851806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_allowOffhandGrab: 1
+  m_snapPosition: 0
+  m_snapOrientation: 0
+  m_snapOffset: {fileID: 0}
+  m_grabPoints: []
