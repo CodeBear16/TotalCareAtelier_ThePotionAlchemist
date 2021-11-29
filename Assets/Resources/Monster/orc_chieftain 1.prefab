@@ -818,9 +818,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5008533062999881830}
   - component: {fileID: 5008533062992975808}
-  - component: {fileID: 4143639287799367439}
-  - component: {fileID: 2869320122565884301}
   - component: {fileID: 429000173874609833}
+  - component: {fileID: -6190934374276459403}
   m_Layer: 0
   m_Name: orc_chieftain 1
   m_TagString: Monster
@@ -868,32 +867,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4143639287799367439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5008533063000368198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32d8f77b42b42a246b5d2c8283e6ce76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterSpawner: {fileID: 0}
---- !u!114 &2869320122565884301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5008533063000368198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd362a9c7e11ef245aaae7b9bad59f3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destination: []
 --- !u!195 &429000173874609833
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -916,6 +889,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-6190934374276459403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5008533063000368198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd362a9c7e11ef245aaae7b9bad59f3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterSpawner: {fileID: 0}
+  destination: []
 --- !u!1 &5008533063000368200
 GameObject:
   m_ObjectHideFlags: 0
