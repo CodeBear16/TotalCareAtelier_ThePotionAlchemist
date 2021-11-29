@@ -11,6 +11,21 @@ public static class Combination
             value = new DetoxPotion();
             return value;
         }
+        else if (component0.GetComponent<Bone>() != null && component1.GetComponent<Egg>() != null)
+        {
+            value = new DeburnPotion();
+            return value;
+        }
+        else if (component0.GetComponent<Crystal>() != null && component1.GetComponent<Mushroom>() != null)
+        {
+            value = new DeparalysePotion();
+            return value;
+        }
+        else if (component0.GetComponent<Flower>() != null && component1.GetComponent<Seed>() != null)
+        {
+            value = new ExplodePotion();
+            return value;
+        }
         else
             return null;
     }
