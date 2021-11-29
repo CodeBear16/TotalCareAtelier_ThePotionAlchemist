@@ -4,92 +4,72 @@ using UnityEngine;
 
 public class Essence : MonoBehaviour, IMixFunc
 {
-    public static Queue<Ingredient> ingredient;
+    public static Queue<Ingredient> essence;
     const int maxAmount = 2;
-
-    public Dictionary<Ingredient[], Potion> combination;
-    public Potion potion;
+    bool creatable = false;
 
     void Start()
     {
-        ingredient = new Queue<Ingredient>();
-        ClearEssence();
-
-        combination = new Dictionary<Ingredient[], Potion>();
-        SetCombination();
-
-        potion = null;
+        essence = new Queue<Ingredient>();
     }
 
-    public void SetCombination()
+    void Update()
     {
-        Bone bone = new Bone();
-        Crystal crystal = new Crystal();
-        Flower flower = new Flower();
-        Mushroom mushroom = new Mushroom();
-        Seed seed = new Seed();
+        if (creatable)
+            if (Input.GetKeyDown(KeyCode.Space))
+                CreatePotion();
+        if (Input.GetKeyDown(KeyCode.Return))
+            ClearEssence();
+    }
 
-        DetoxPotion detoxPotion = new DetoxPotion();
-        DeburnPotion deburnPotion = new DeburnPotion();
-        DeparalysePotion deparalysePotion = new DeparalysePotion();
-        ExplodePotion explodePotion = new ExplodePotion();
+    public void AddToEssence(Ingredient component)
+    {
+        Debug.Log("재료를 추가한다.");
+        essence.Enqueue(component);
+        component.gameObject.SetActive(false);
+    }
 
-        Ingredient[] temp = new Ingredient[2];
-        for (int i = 0; i < 4; i++)
+    public void CreatePotion()
+    {
+        Debug.Log("제작을 시작한다.");
+        Potion potion = new Potion();
+        Ingredient component0 = essence.Dequeue();
+        Ingredient component1 = essence.Dequeue();
+        potion.CheckCombi(component0, component1);
+        if (potion == null)
         {
-            temp[0] = bone;
-            temp[1] = flower;
-            combination.Add(temp, detoxPotion);
+            Debug.Log("제조 실패!");
+            Destroy(potion);
         }
-    }
-
-    public void MixEssence()
-    {
-        Debug.Log("섞음");
-        Ingredient[] temp = new Ingredient[2];
-        temp[0] = ingredient.Dequeue();
-        temp[1] = ingredient.Dequeue();
-        potion = combination[temp];
-        Debug.Log("포션을 만듦");
-
-        ClearEssence();
+        else
+        {
+            Debug.Log(potion.name + " 제조 성공!");
+            Instantiate(potion);
+        }
+        creatable = false;
     }
 
     public void ClearEssence()
     {
-        while (ingredient.Count != 0)
-            ingredient.Dequeue();
+        while (essence.Count != 0)
+            essence.Dequeue();
     }
+
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("냄비에 닿음");
+        Debug.Log("냄비에 닿았다.");
         if (other.GetComponent<IAddFunc>() != null)
         {
-            Debug.Log("재료라고 인식");
-            if (ingredient.Count < maxAmount)
+            Debug.Log("재료를 인식했다.");
+            if (essence.Count < maxAmount)
             {
-                Debug.Log("큐에 넣을 준비");
-                ingredient.Enqueue(other.GetComponent<IAddFunc>().Add());
-                Debug.Log("큐에 넣음");
-                if (ingredient.Count == maxAmount)
-                {
-                    Debug.Log("큐에 넣음");
-                    MixEssence();
-                }
+                AddToEssence(other.GetComponent<IAddFunc>().Add());
+                if (essence.Count == maxAmount)
+                    creatable = true;
             }
             else
                 return;
         }
-    }
-
-    public void Success()
-    {
-
-    }
-
-    public void Fail()
-    {
-
     }
 }
