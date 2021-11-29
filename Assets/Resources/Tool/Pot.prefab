@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 3647362439846790442}
   - component: {fileID: 571831262582384415}
   - component: {fileID: 1561408841}
+  - component: {fileID: 558343856}
   m_Layer: 0
   m_Name: Pot
   m_TagString: Untagged
@@ -249,9 +250,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 8636631177570417749}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d01a4e2b33a527e47a499ca52b692034, type: 3}
+  m_Script: {fileID: 11500000, guid: c75c872a4fbe7ea4fa783c1679215892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &558343856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8636631177570417749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_allowOffhandGrab: 1
+  m_snapPosition: 0
+  m_snapOrientation: 0
+  m_snapOffset: {fileID: 0}
+  m_grabPoints: []
 --- !u!1 &8636639021330062741
 GameObject:
   m_ObjectHideFlags: 0

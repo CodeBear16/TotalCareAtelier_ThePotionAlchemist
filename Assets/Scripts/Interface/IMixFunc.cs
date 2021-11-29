@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IMixFunc
 {
-    public void MixEssence();
+    public void CreatePotion();
 }
