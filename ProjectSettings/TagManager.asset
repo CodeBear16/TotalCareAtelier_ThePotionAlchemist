@@ -8,6 +8,7 @@ TagManager:
   - Monster
   - Door
   - Destination
+  - Spawner
   layers:
   - Default
   - TransparentFX

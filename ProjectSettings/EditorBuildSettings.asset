@@ -9,5 +9,7 @@ EditorBuildSettings:
     path: Assets/AssetReady/Alchemy/Scenes/_Scene.unity
     guid: f21ab7d6b9948ef47ac2f21e05483d59
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 41a124a4815b60e49aaa14d3d31ddc43,
+      type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 1a1b6dae1f020ff42849610843daab08,
       type: 2}

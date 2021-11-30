@@ -6,44 +6,113 @@ using UnityEngine.AI;
 public class MonsterState : MonoBehaviour
 {
     public MonsterSpawner monsterSpawner;
-    NavMeshAgent nav;
-    // 목적지 배열(플레이어 앞에 도달하는 장소)
-    public GameObject[] destination;
+    
+    GameObject player;
+    Transform playerPosition;
+
+    // monster 이동
+    public NavMeshAgent nav;
+    public List<GameObject> destinations;
+    public Animator animator;
+
+    // switch 값
+    public string state;
+
+    public bool isHeal = false;
+
+    // isHeal property
+    public bool IsHeal
+    {
+        get
+        {
+            return isHeal;
+        }
+
+        set
+        {
+            isHeal = value;
+
+            if (isHeal == true)
+                GameManager.instance.score += 100;
+
+            else
+                GameManager.instance.score -= 100;
+        }
+    }
 
     private void OnEnable()
     {
-        StartCoroutine(Disappear());
+        nav = GetComponent<NavMeshAgent>();
+        player = GameObject.Find("Target");
     }
 
     private void Start()
     {
-        nav = GetComponent<NavMeshAgent>();
-        destination = new GameObject[6];
-        destination = Resources.LoadAll<GameObject>("MonsterDestination/");
+        animator = GetComponent<Animator>();
     }
 
-    // 플레이어 앞으로 이동
-    public void WalkingToDestination()
+    public void Setting()
     {
-        // null 오류 확인하기
-        //int selection = Random.Range(0, destination.Length);
-        //nav.SetDestination(destination[selection].transform.position);
+        destinations = MonsterSpawner.destinationsSpotList;
     }
 
-    // 몬스터가 spawner로 돌아왔을 때 비활성화
-    IEnumerator Disappear()
+    public void Walking()
     {
-        while (true)
+        switch (state)
         {
-            yield return new WaitForSeconds(2);
+            // spawner에서 destination으로 이동
+            case "SpawnerToDestination":
 
-            // 몬스터와 spawner의 거리 차이가 0.05보다 작으면 몬스터 비활성화
-            if (Vector3.Distance(monsterSpawner.transform.position, transform.position) < 0.05f)
-            {
-                gameObject.SetActive(false);
-                Debug.Log(gameObject.name + "이 비활성화 되었습니다");
-                monsterSpawner.spawnerCount--;
-            }
+                animator.SetBool("Walking", true);
+                playerPosition = player.transform;
+                int selectDestination = Random.Range(0, destinations.Count);
+                GameObject destination = destinations[selectDestination];
+
+                Debug.Log("이동 포인트  : " + destination.name + selectDestination);
+
+                if (destination.activeSelf == false)
+                {
+                    nav.SetDestination(destination.transform.position);
+                    destination.SetActive(true);
+                }
+
+                // destination이 활성화 상태일 때, 다시 비활성화 상태인 destination을 찾는 것
+                else
+                {
+                    // return Walking();
+                }
+
+                break;
+
+            // destination에서 spawner로 이동
+            case "DestinationToSpawner":
+
+                // if : drinking을 했을 때는 그냥 이동
+                // else : 화났을 때, sad wallking
+
+                break;
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // monster가 destination에 도착하면 멈춤
+        if (other.tag == "Destination")
+        {
+            animator.SetBool("Walking", false);
+            transform.LookAt(playerPosition.position);
+            nav.speed = 0;
+        }
+
+        // monster가 spawner에 도착하면 비활성화
+        //if (state == "DestinationToSpawner")
+        //{
+        //    if (other.tag == "Spawner")
+        //    {
+        //        gameObject.SetActive(false);
+        //        monsterSpawner.spawnerCount--;
+        //        Debug.Log(gameObject.name + "이 비활성화 되었습니다");
+        //    }
+        //}
     }
 }
