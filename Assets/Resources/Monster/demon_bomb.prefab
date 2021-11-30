@@ -1467,9 +1467,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterSpawner: {fileID: 0}
+  player: {fileID: 0}
   nav: {fileID: 1151568202045370903}
   destinations: []
   animator: {fileID: 95276014631355430}
+  state: 
 --- !u!54 &2637656417934021168
 Rigidbody:
   m_ObjectHideFlags: 0

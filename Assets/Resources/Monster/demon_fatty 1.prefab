@@ -1172,6 +1172,7 @@ MonoBehaviour:
   nav: {fileID: 1151568202045370903, guid: 80fdcdde588b84556bda3bedbcf8bfe6, type: 3}
   destinations: []
   animator: {fileID: 95346476175356632}
+  state: 
 --- !u!54 &1640361081226910216
 Rigidbody:
   m_ObjectHideFlags: 0
