@@ -1,21 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    public static GameManager instance;
-
     public int score;
-
-    private void Awake()
+    public int Score
     {
-        if (instance == null) instance = this;
-        else Destroy(gameObject);
+        get
+        {
+            return score;
+        }
+        set
+        {
+            score = value;
+            if (score >= winScore)
+                GoodEndEvent();
+        }
+    }
+    public const int winScore = 1000;
+
+    public int heroImminent;
+    public int HeroImminent
+    {
+        get
+        {
+            return heroImminent;
+        }
+        set
+        {
+            heroImminent = value;
+            if (heroImminent >= loseDistance)
+                BadEndEvent();
+        }
+    }
+    public const int loseDistance = 100;
+
+    void Start()
+    {
+        Score = 0;
+        HeroImminent = 0;
     }
 
-    private void Start()
+    #region Various Events
+    public void GoodEndEvent()
     {
-        score = 0;
+        Debug.Log("�¸�!");
+        SceneManager.LoadScene(2);
+        SoundController.instance.MusicState = 3;
     }
+
+    public void BadEndEvent()
+    {
+        Debug.Log("�й�...");
+        SceneManager.LoadScene(3);
+        SoundController.instance.MusicState = 4;
+    }
+    #endregion
 }

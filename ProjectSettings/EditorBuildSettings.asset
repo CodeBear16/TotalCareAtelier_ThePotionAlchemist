@@ -6,8 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/AssetReady/Alchemy/Scenes/_Scene.unity
-    guid: f21ab7d6b9948ef47ac2f21e05483d59
+    path: Assets/Scenes/GameScene/0-0.StartScene.unity
+    guid: 25851fdccab83134db4943e7aa97df4c
+  - enabled: 1
+    path: Assets/Scenes/GameScene/1-0.MainScene.unity
+    guid: a5fbc4259204b5448a94aca42abe778e
+  - enabled: 1
+    path: Assets/Scenes/GameScene/2-0.GoodEndScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/GameScene/2-1.BadEndScene.unity
+    guid: d547c92b885bdaa4b8f23929be0680a6
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 41a124a4815b60e49aaa14d3d31ddc43,
       type: 2}
