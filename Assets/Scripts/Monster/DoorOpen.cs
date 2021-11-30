@@ -20,6 +20,8 @@ public class DoorOpen : MonoBehaviour
 
     public void Open()
     {
+        Debug.Log("¹® ¿ÀÇÂ");
+
         if (m_ShouldReverse)
         {
             m_Animator.Play(m_AniamtionName + m_Reverse.ToString());
