@@ -8,18 +8,12 @@ public class Essence : MonoBehaviour, IMixFunc
     const int maxAmount = 2;
     bool creatable = false;
 
+    [Tooltip("1: 물약 제조 성공, 2: 물약 제조 실패")]
+    public AudioClip[] clips;
+
     void Start()
     {
         essence = new Queue<Ingredient>();
-    }
-
-    void Update()
-    {
-        if (creatable)
-            if (Input.GetKeyDown(KeyCode.Space))
-                CreatePotion();
-        if (Input.GetKeyDown(KeyCode.Return))
-            ClearEssence();
     }
 
     public void AddToEssence(Ingredient component)
@@ -40,11 +34,13 @@ public class Essence : MonoBehaviour, IMixFunc
         {
             Debug.Log("제조 실패!");
             Destroy(potion);
+            SoundController.instance.source.PlayOneShot(clips[1]);
         }
         else
         {
             Debug.Log(potion.name + " 제조 성공!");
             Instantiate(potion);
+            SoundController.instance.source.PlayOneShot(clips[0]);
         }
         creatable = false;
     }
