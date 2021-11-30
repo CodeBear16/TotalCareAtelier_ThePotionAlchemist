@@ -904,9 +904,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterSpawner: {fileID: 0}
+  player: {fileID: 0}
   nav: {fileID: 1151568202045370903, guid: 80fdcdde588b84556bda3bedbcf8bfe6, type: 3}
   destinations: []
   animator: {fileID: 5008533062992975808}
+  state: 
 --- !u!54 &-1442153252895767492
 Rigidbody:
   m_ObjectHideFlags: 0
