@@ -46,14 +46,14 @@ public class GameManager : Singleton<GameManager>
     #region Various Events
     public void GoodEndEvent()
     {
-        Debug.Log("½Â¸®!");
+        Debug.Log("ï¿½Â¸ï¿½!");
         SceneManager.LoadScene(2);
         SoundController.instance.MusicState = 3;
     }
 
     public void BadEndEvent()
     {
-        Debug.Log("ÆÐ¹è...");
+        Debug.Log("ï¿½Ð¹ï¿½...");
         SceneManager.LoadScene(3);
         SoundController.instance.MusicState = 4;
     }
