@@ -105,14 +105,14 @@ public class MonsterState : MonoBehaviour
         }
 
         // monster가 spawner에 도착하면 비활성화
-        if (state == "DestinationToSpawner")
-        {
-            if (other.tag == "Spawner")
-            {
-                gameObject.SetActive(false);
-                monsterSpawner.spawnerCount--;
-                Debug.Log(gameObject.name + "이 비활성화 되었습니다");
-            }
-        }
+        //if (state == "DestinationToSpawner")
+        //{
+        //    if (other.tag == "Spawner")
+        //    {
+        //        gameObject.SetActive(false);
+        //        monsterSpawner.spawnerCount--;
+        //        Debug.Log(gameObject.name + "이 비활성화 되었습니다");
+        //    }
+        //}
     }
 }

@@ -46,16 +46,17 @@ public class MonsterSpawner : MonoBehaviour
         {
             Spawn();
             // 20~40초에 한 번씩 몬스터 활성화
-            yield return new WaitForSeconds(UnityEngine.Random.Range(1,5));
+            yield return new WaitForSeconds(UnityEngine.Random.Range(3,5));
         }
     }
-
+    int temp = 0;
     void Spawn()
     {
         // 몬스터 랜덤 생성
-        int selection = UnityEngine.Random.Range(0, monsters.Length);
-        GameObject monster = monstersSpawner[selection];
+        //int selection = UnityEngine.Random.Range(0, monsters.Length);
+        GameObject monster = monstersSpawner[temp];
         monster.transform.position = transform.position;
+        temp++;
 
         // 이미 활성화된 몬스터
         if (monster.activeSelf == true) return;
