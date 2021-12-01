@@ -6,9 +6,11 @@ using UnityEngine.AI;
 public class MonsterState : MonoBehaviour
 {
     public MonsterSpawner monsterSpawner;
+    Transform spawnerPosition;
     
     GameObject player;
     Transform playerPosition;
+    public bool isSuccess; // ------------------------------ player와 연동해야 함, 삭제 필
 
     // monster 이동
     public NavMeshAgent nav;
@@ -21,21 +23,19 @@ public class MonsterState : MonoBehaviour
     // switch 값
     public string state;
 
-    public bool isHeal = false;
-
     // isHeal property
-    public bool IsHeal
+    public bool IsSuccess
     {
         get
         {
-            return isHeal;
+            return isSuccess;
         }
 
         set
         {
-            isHeal = value;
+            isSuccess = value;
 
-            if (isHeal == true)
+            if (isSuccess == true)
                 GameManager.instance.score += 100;
 
             else
@@ -52,7 +52,7 @@ public class MonsterState : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-        
+        isSuccess = false;
     }
 
     public void Setting()
@@ -60,37 +60,58 @@ public class MonsterState : MonoBehaviour
         destinations = MonsterSpawner.destinationsSpotList;
     }
 
-    public void Walking()
+    public void Walking(int num)
     {
         switch (state)
         {
-            // spawner에서 destination으로 이동
+            // [---------------- spawner에서 destination으로 이동 ----------------]
             case "SpawnerToDestination":
 
-                animator.SetBool("Walking", true);
-                playerPosition = player.transform;
-                int selectDestination = Random.Range(0, destinations.Count);
-                GameObject destination = destinations[selectDestination];
-
-                if (destination.activeSelf == false)
+                while (num > 0)
                 {
-                    nav.SetDestination(destination.transform.position);
-                    destination.SetActive(true);
-                }
+                    if (num == 0) break;
 
-                // destination이 활성화 상태일 때, 다시 비활성화 상태인 destination을 찾는 것
-                else
-                {
-                    
-                }
+                    animator.SetBool("Walking", true);
+                    playerPosition = player.transform;
+                    int selectDestination = Random.Range(0, destinations.Count);
+                    GameObject destination = destinations[selectDestination];
 
+                    if (destination.activeSelf == false)
+                    {
+                        nav.SetDestination(destination.transform.position);
+                        destination.SetActive(true);
+                        num--;
+                        break;
+                    }
+
+                    // destination이 활성화 상태일 때, 다시 비활성화 상태인 destination을 찾는 것
+                    else
+                    {
+                        continue;
+                    }
+
+                }
                 break;
 
-            // destination에서 spawner로 이동
+            // [---------------- destination에서 spawner로 이동 ----------------]
             case "DestinationToSpawner":
 
-                // if : drinking을 했을 때는 그냥 이동
-                // else : 화났을 때, sad wallking
+                // 성공
+                if(isSuccess == true)
+                {
+                    animator.SetBool("Drinking", true);
+                    animator.SetBool("Walking", true);
+                    spawnerPosition = monsterSpawner.gameObject.transform;
+                    nav.SetDestination(spawnerPosition.position);
+                }
+
+                // 실패
+                else
+                {
+                    animator.SetBool("SadWalk", true);
+                    spawnerPosition = monsterSpawner.gameObject.transform;
+                    nav.SetDestination(spawnerPosition.position);
+                }
 
                 break;
         }
@@ -112,7 +133,11 @@ public class MonsterState : MonoBehaviour
         // monster가 spawner에 도착하면 비활성화
         if (state == "DestinationToSpawner")
         {
-            if (other.tag == "Spawner") gameObject.SetActive(false);
+            if (other.tag == "Spawner")
+            {
+                nav.speed = 0;
+                gameObject.SetActive(false);
+            }
         }
     }
 }
