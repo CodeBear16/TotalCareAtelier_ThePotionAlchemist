@@ -15,6 +15,9 @@ public class MonsterState : MonoBehaviour
     public List<GameObject> destinations;
     public Animator animator;
 
+    // monster state
+    string monsterState = "MonsterState";
+
     // switch 값
     public string state;
 
@@ -49,6 +52,7 @@ public class MonsterState : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        
     }
 
     public void Setting()
@@ -68,8 +72,6 @@ public class MonsterState : MonoBehaviour
                 int selectDestination = Random.Range(0, destinations.Count);
                 GameObject destination = destinations[selectDestination];
 
-                Debug.Log("이동 포인트  : " + destination.name + selectDestination);
-
                 if (destination.activeSelf == false)
                 {
                     nav.SetDestination(destination.transform.position);
@@ -79,7 +81,7 @@ public class MonsterState : MonoBehaviour
                 // destination이 활성화 상태일 때, 다시 비활성화 상태인 destination을 찾는 것
                 else
                 {
-                    // return Walking();
+                    
                 }
 
                 break;
@@ -102,17 +104,15 @@ public class MonsterState : MonoBehaviour
             animator.SetBool("Walking", false);
             transform.LookAt(playerPosition.position);
             nav.speed = 0;
+            int aniSelection = Random.Range(1, 6);
+            Debug.Log(gameObject.name + " : " + aniSelection);
+            animator.SetInteger(monsterState, aniSelection);
         }
 
         // monster가 spawner에 도착하면 비활성화
-        //if (state == "DestinationToSpawner")
-        //{
-        //    if (other.tag == "Spawner")
-        //    {
-        //        gameObject.SetActive(false);
-        //        monsterSpawner.spawnerCount--;
-        //        Debug.Log(gameObject.name + "이 비활성화 되었습니다");
-        //    }
-        //}
+        if (state == "DestinationToSpawner")
+        {
+            if (other.tag == "Spawner") gameObject.SetActive(false);
+        }
     }
 }
