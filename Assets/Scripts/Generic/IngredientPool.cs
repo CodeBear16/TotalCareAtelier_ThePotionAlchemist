@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IngredientPool<T> : Singleton<IngredientPool<T>> where T : Ingredient
+public class IngredientPool<T> : MonoBehaviour where T : Ingredient
 {
+    [HideInInspector]
     public GameObject[] content;
+    string contentName;
     public Queue<GameObject> pool;
     public Queue<GameObject> usedPool;
     const int maxSize = 20;
@@ -14,23 +16,26 @@ public class IngredientPool<T> : Singleton<IngredientPool<T>> where T : Ingredie
     [HideInInspector]
     public GameObject tempObj;
 
-    Transform spawnPos;
+    Vector3 spawnPos;
 
     void Start()
     {
+        contentName = name.Replace("Pool", string.Empty);
+        content = Resources.LoadAll<GameObject>("Ingredient/" + contentName);
         pool = new Queue<GameObject>();
         usedPool = new Queue<GameObject>();
-        spawnPos = GetComponentInChildren<Transform>();
+
+        spawnPos = transform.position + Vector3.up * 1; 
 
         FillingPool();
-        ShowContent();
+        CallOnePool();
 
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            FireContent();
+        if (Input.GetKeyDown(KeyCode.Return))
+            FireAllPool();
     }
 
     public void FillingPool()
@@ -39,21 +44,20 @@ public class IngredientPool<T> : Singleton<IngredientPool<T>> where T : Ingredie
         {
             randomNum = Random.Range(0, content.Length);
             tempObj = Instantiate(content[randomNum]);
-            tempObj.transform.position = spawnPos.position;
-            tempObj.transform.rotation = spawnPos.rotation;
+            tempObj.transform.position = spawnPos;
             tempObj.SetActive(false);
+            tempObj.transform.parent = transform;
             pool.Enqueue(tempObj);
         }
     }
-
-    public void ShowContent()
+    public void CallOnePool()
     {
         tempObj = pool.Dequeue();
         tempObj.SetActive(true);
         usedPool.Enqueue(tempObj);
     }
 
-    public void FireContent()
+    public void FireAllPool()
     {
         while (pool.Count != 0)
         {
@@ -61,5 +65,4 @@ public class IngredientPool<T> : Singleton<IngredientPool<T>> where T : Ingredie
             tempObj.SetActive(true);
         }
     }
-
 }

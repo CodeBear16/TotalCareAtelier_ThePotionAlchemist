@@ -7,10 +7,8 @@ public class Essence : MonoBehaviour, IMixFunc
     public static Queue<GameObject> essence;
     const int maxAmount = 2;
 
-    public GameObject deburnPotion;
-    public GameObject deparalysePotion;
-    public GameObject detoxPotion;
-    public GameObject explodePotion;
+    [HideInInspector]
+    public GameObject deburnPotion, deparalysePotion, detoxPotion, explodePotion;
 
     [Tooltip("1: 물약 제조 성공, 2: 물약 제조 실패")]
     public AudioClip[] clips;
@@ -79,24 +77,16 @@ public class Essence : MonoBehaviour, IMixFunc
     {
         if ((component0.GetComponent<Bone>() != null && component1.GetComponent<Egg>() != null)
               || (component0.GetComponent<Egg>() != null && component1.GetComponent<Bone>() != null))
-        {
             return detoxPotion;
-        }
         else if ((component0.GetComponent<Crystal>() != null && component1.GetComponent<Mushroom>() != null)
               || (component0.GetComponent<Mushroom>() != null && component1.GetComponent<Crystal>() != null))
-        {
             return deparalysePotion;
-        }
         else if ((component0.GetComponent<Seed>() != null && component1.GetComponent<Mushroom>() != null)
          || (component0.GetComponent<Mushroom>() != null && component1.GetComponent<Seed>() != null))
-        {
             return detoxPotion;
-        }
         else if ((component0.GetComponent<Flower>() != null && component1.GetComponent<Seed>() != null)
               || (component0.GetComponent<Seed>() != null && component1.GetComponent<Flower>() != null))
-        {
             return explodePotion;
-        }
         else
             return null;
     }
