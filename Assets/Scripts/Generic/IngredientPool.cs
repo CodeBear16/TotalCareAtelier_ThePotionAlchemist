@@ -14,8 +14,6 @@ public class IngredientPool<T> : MonoBehaviour where T : Ingredient
     public GameObject tempObj;
 
     Transform spawnPos;
-    const float spawnOffset = 10f;
-
 
     void Start()
     {

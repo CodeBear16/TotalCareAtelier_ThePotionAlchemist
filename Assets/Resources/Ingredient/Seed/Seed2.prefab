@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4791495256287828995}
   - component: {fileID: 5307278770412468650}
   - component: {fileID: 1965225636032694983}
+  - component: {fileID: -6877593464343735035}
   m_Layer: 0
   m_Name: Seed2
   m_TagString: Untagged
@@ -136,10 +137,24 @@ Rigidbody:
   m_GameObject: {fileID: 4877526625178590927}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.1
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &-6877593464343735035
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4877526625178590927}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300004, guid: 03e31ea610078dd4496bc68434f5c45b, type: 3}
