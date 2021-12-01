@@ -9,6 +9,8 @@ TagManager:
   - Door
   - Destination
   - Spawner
+  - Weapon
+  - Ground
   layers:
   - Default
   - TransparentFX

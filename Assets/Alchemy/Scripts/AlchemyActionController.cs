@@ -32,7 +32,7 @@ public class AlchemyActionController : MonoBehaviour
             {
                 m_Animator.Play(m_AniamtionName + m_Reverse.ToString());
 
-                if (m_ShoulPlaySound && m_AudioSource != null && !m_AudioSource.isPlaying)
+                //if (m_ShoulPlaySound && m_AudioSource != null && !m_AudioSource.isPlaying)
                     m_AudioSource.PlayOneShot(m_Clips[m_Reverse]);
 
                 m_Reverse++;
@@ -43,7 +43,7 @@ public class AlchemyActionController : MonoBehaviour
             {
                 m_Animator.Play(m_AniamtionName);
 
-                if (m_ShoulPlaySound && m_AudioSource != null && !m_AudioSource.isPlaying)
+                //if (m_ShoulPlaySound && m_AudioSource != null && !m_AudioSource.isPlaying)
                     m_AudioSource.PlayOneShot(m_Clips[m_Reverse]);
             }
         }
