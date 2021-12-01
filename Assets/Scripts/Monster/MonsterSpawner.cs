@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class MonsterSpawner : MonoBehaviour
+public class MonsterSpawner : MonsterState
 {
     // 도착지 리스트
     public static List<GameObject> destinationsSpotList = new List<GameObject>();
@@ -46,7 +46,7 @@ public class MonsterSpawner : MonoBehaviour
         {
             Spawn();
             // 20~30초에 한 번씩 몬스터 활성화
-            yield return new WaitForSeconds(UnityEngine.Random.Range(20,30));
+            yield return new WaitForSeconds(UnityEngine.Random.Range(1,7));
         }
     }
    
@@ -66,6 +66,6 @@ public class MonsterSpawner : MonoBehaviour
         monster[spawnerCount].GetComponent<MonsterState>().Setting();
         GameObject.FindGameObjectWithTag("Door").GetComponent<DoorOpen>().Open();
         monster[spawnerCount].GetComponent<MonsterState>().state = "SpawnerToDestination";
-        monster[spawnerCount].GetComponent<MonsterState>().Walking();
+        monster[spawnerCount].GetComponent<MonsterState>().Walking(destinationsSpotList.Count);
     }
 }
