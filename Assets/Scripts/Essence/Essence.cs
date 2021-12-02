@@ -4,19 +4,27 @@ using UnityEngine;
 
 public class Essence : MonoBehaviour, IMixFunc
 {
-    public static Queue<Ingredient> essence;
+    public static Queue<GameObject> essence;
     const int maxAmount = 2;
-    bool creatable = false;
+
+    public GameObject deburnPotion;
+    public GameObject deparalysePotion;
+    public GameObject detoxPotion;
+    public GameObject explodePotion;
 
     [Tooltip("1: 물약 제조 성공, 2: 물약 제조 실패")]
     public AudioClip[] clips;
 
     void Start()
     {
-        essence = new Queue<Ingredient>();
+        essence = new Queue<GameObject>();
+        deburnPotion = Resources.Load<GameObject>("Potion/DeburnPotion");
+        deparalysePotion = Resources.Load<GameObject>("Potion/DeparalysePotion");
+        detoxPotion = Resources.Load<GameObject>("Potion/DetoxPotion");
+        explodePotion = Resources.Load<GameObject>("Potion/ExplodePotion");
     }
 
-    public void AddToEssence(Ingredient component)
+    public void AddToEssence(GameObject component)
     {
         Debug.Log("재료를 추가한다.");
         essence.Enqueue(component);
@@ -26,10 +34,9 @@ public class Essence : MonoBehaviour, IMixFunc
     public void CreatePotion()
     {
         Debug.Log("제작을 시작한다.");
-        Potion potion = new Potion();
-        Ingredient component0 = essence.Dequeue();
-        Ingredient component1 = essence.Dequeue();
-        potion.CheckCombi(component0, component1);
+        GameObject component0 = essence.Dequeue();
+        GameObject component1 = essence.Dequeue();
+        GameObject potion = CheckCombination(component0, component1);
         if (potion == null)
         {
             Debug.Log("제조 실패!");
@@ -39,10 +46,9 @@ public class Essence : MonoBehaviour, IMixFunc
         else
         {
             Debug.Log(potion.name + " 제조 성공!");
-            Instantiate(potion);
+            Instantiate(potion, transform.position + Vector3.up + Vector3.back, Quaternion.identity);
             SoundController.instance.source.PlayOneShot(clips[0]);
         }
-        creatable = false;
     }
 
     public void ClearEssence()
@@ -60,12 +66,38 @@ public class Essence : MonoBehaviour, IMixFunc
             Debug.Log("재료를 인식했다.");
             if (essence.Count < maxAmount)
             {
-                AddToEssence(other.GetComponent<IAddFunc>().Add());
+                AddToEssence(other.gameObject);
                 if (essence.Count == maxAmount)
-                    creatable = true;
+                    CreatePotion();
             }
             else
                 return;
         }
+    }
+
+    public GameObject CheckCombination(GameObject component0, GameObject component1)
+    {
+        if ((component0.GetComponent<Bone>() != null && component1.GetComponent<Egg>() != null)
+              || (component0.GetComponent<Egg>() != null && component1.GetComponent<Bone>() != null))
+        {
+            return detoxPotion;
+        }
+        else if ((component0.GetComponent<Crystal>() != null && component1.GetComponent<Mushroom>() != null)
+              || (component0.GetComponent<Mushroom>() != null && component1.GetComponent<Crystal>() != null))
+        {
+            return deparalysePotion;
+        }
+        else if ((component0.GetComponent<Seed>() != null && component1.GetComponent<Mushroom>() != null)
+         || (component0.GetComponent<Mushroom>() != null && component1.GetComponent<Seed>() != null))
+        {
+            return detoxPotion;
+        }
+        else if ((component0.GetComponent<Flower>() != null && component1.GetComponent<Seed>() != null)
+              || (component0.GetComponent<Seed>() != null && component1.GetComponent<Flower>() != null))
+        {
+            return explodePotion;
+        }
+        else
+            return null;
     }
 }
