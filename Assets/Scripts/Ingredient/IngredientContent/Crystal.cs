@@ -4,9 +4,5 @@ using UnityEngine;
 
 public class Crystal : Ingredient
 {
-    public override Ingredient Add()
-    {
-        gameObject.SetActive(false);
-        return this;
-    }
+
 }

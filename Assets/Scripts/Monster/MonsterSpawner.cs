@@ -33,7 +33,6 @@ public class MonsterSpawner : MonsterState
             int selection = UnityEngine.Random.Range(0, monsters.Length);
             tempObject = Instantiate(monsters[selection], transform.position, transform.rotation);
             tempObject.GetComponent<MonsterState>().monsterSpawner = this;
-            tempObject.transform.parent = transform; // 하이어라키창 정리
             tempObject.SetActive(false);
             monster.Add(tempObject);
         }
@@ -46,7 +45,7 @@ public class MonsterSpawner : MonsterState
         {
             Spawn();
             // 20~30초에 한 번씩 몬스터 활성화
-            yield return new WaitForSeconds(UnityEngine.Random.Range(1,7));
+            yield return new WaitForSeconds(UnityEngine.Random.Range(1,5));
         }
     }
    
@@ -64,8 +63,7 @@ public class MonsterSpawner : MonsterState
         monster[spawnerCount].SetActive(true);
         Debug.Log(monster[spawnerCount].name + "생성되었습니다");
         monster[spawnerCount].GetComponent<MonsterState>().Setting();
-        GameObject.FindGameObjectWithTag("Door").GetComponent<DoorOpen>().Open();
         monster[spawnerCount].GetComponent<MonsterState>().state = "SpawnerToDestination";
-        monster[spawnerCount].GetComponent<MonsterState>().Walking(destinationsSpotList.Count);
+        monster[spawnerCount].GetComponent<MonsterState>().Walking();
     }
 }
