@@ -4,8 +4,22 @@ using UnityEngine;
 
 public class Bone : Ingredient
 {
-    private void Start()
+    void Start()
     {
         ingredientName = "Bone";
+    }
+
+    public override IEnumerator ReturnToSpawner()
+    {
+        yield return new WaitForSeconds(2);
+        Debug.Log(name + " ¿Áº“»Ø");
+        BonePool.instance.ResupplyObj(gameObject);
+    }
+
+    public override void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("IngredientPool"))
+            if (collision.gameObject.name == ingredientName + "Pool")
+                BonePool.instance.SpawnOneObj();
     }
 }

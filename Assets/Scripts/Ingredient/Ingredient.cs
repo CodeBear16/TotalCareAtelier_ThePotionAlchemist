@@ -10,15 +10,21 @@ public class Ingredient : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         Debug.Log(name + " ¿Áº“»Ø");
-        //Debug.Log(IngredientPool<Ingredient>.instance.contentName);
         IngredientPool<Ingredient>.instance.ResupplyObj(gameObject);
     }
 
     public virtual void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
-        {
             StartCoroutine(ReturnToSpawner());
-        }
+        if (collision.gameObject.CompareTag("MapBoundary"))
+            StartCoroutine(ReturnToSpawner());
+    }
+
+    public virtual void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("IngredientPool"))
+            if (collision.gameObject.name == ingredientName + "Pool")
+                IngredientPool<Ingredient>.instance.SpawnOneObj();
     }
 }

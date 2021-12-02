@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089dd3a046658f74aadf1de4c89ba086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ingredientName: Mushroom
 --- !u!114 &8893368153319827214
 MonoBehaviour:
   m_ObjectHideFlags: 0

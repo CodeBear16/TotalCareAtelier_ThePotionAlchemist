@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 808ec24fc2d260748a553d6a9af04a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ingredientName: Egg
 --- !u!114 &-5756534063485791199
 MonoBehaviour:
   m_ObjectHideFlags: 0

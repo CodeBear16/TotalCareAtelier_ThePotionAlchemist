@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a63dc909137a2478ce54f0de0c4c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ingredientName: Flower
 --- !u!114 &1541215066205118795
 MonoBehaviour:
   m_ObjectHideFlags: 0
