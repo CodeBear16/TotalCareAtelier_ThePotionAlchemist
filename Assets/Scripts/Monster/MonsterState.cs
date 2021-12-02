@@ -15,12 +15,13 @@ public class MonsterState : MonoBehaviour
     // monster 이동
     public NavMeshAgent nav;
     public List<GameObject> destinations;
+    int selectDestination;
     public Animator animator;
-    public GameObject particles;
-    public List<GameObject> particle;
+    public GameObject particle;
+    public List<ParticleSystem> particles;
 
     public GameObject returnDestination = null;
-    public GameObject effect = null;
+    public ParticleSystem effect = null;
 
     // monster state
     string monsterState = "MonsterState";
@@ -57,24 +58,16 @@ public class MonsterState : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-        particles = GameObject.FindGameObjectWithTag("Effect");
-        particle = new List<GameObject>();
+        particle = GameObject.FindGameObjectWithTag("Effect");
+        particles = new List<ParticleSystem>();
 
-        /////////////////////////////////////////////////////////////
-        particle.Add(particles.transform.GetChild(0).gameObject);
-        particle.Add(particles.transform.GetChild(1).gameObject);
-        particle.Add(particles.transform.GetChild(2).gameObject);
-        particles.transform.GetChild(0).gameObject.SetActive(true);
-        particles.transform.GetChild(1).gameObject.SetActive(true);
-        particles.transform.GetChild(2).gameObject.SetActive(true);
-        /////////////////////////////////////////////////////////////
+        // 파티클 가져오기
+        for(int i = 0; i < particle.transform.childCount; i++)
+        {
+            // particles.Add(particle.transform.GetChild(i).parent);
+        }
+
         isSuccess = false;
-    }
-
-    private void Update()
-    {
-        Debug.Log(particles);
-        Debug.Log(particle.Count);
     }
 
     public void Setting()
@@ -94,7 +87,7 @@ public class MonsterState : MonoBehaviour
                 GameObject.FindGameObjectWithTag("Door").GetComponent<DoorOpen>().Open();
                 animator.SetBool("Walking", true);
                 playerPosition = player.transform;
-                int selectDestination = Random.Range(0, destinations.Count);
+                selectDestination = Random.Range(0, destinations.Count);
                 GameObject destination = destinations[selectDestination];
 
                 if (destination.activeSelf == false)
@@ -114,7 +107,7 @@ public class MonsterState : MonoBehaviour
                 // 성공
                 if (isSuccess == true)
                 {
-                    effect.SetActive(false);
+                    effect.Stop();
                     animator.SetBool("Drinking", true);
                     animator.SetBool("Walking", true);
                 }
@@ -124,6 +117,7 @@ public class MonsterState : MonoBehaviour
 
                 spawnerPosition = monsterSpawner.gameObject.transform;
                 nav.SetDestination(spawnerPosition.position);
+                MonsterSpawner.destinationsSpotList.Add(returnDestination);
                 returnDestination.SetActive(false);
 
                 break;
@@ -145,9 +139,9 @@ public class MonsterState : MonoBehaviour
                 animator.SetInteger(monsterState, aniSelection);
 
                 // 랜덤 effect(particle)
-                int effectSelection = Random.Range(0, 2);
-                particles.transform.GetChild(effectSelection).gameObject.SetActive(true);
-                effect = particle[effectSelection];
+                int effectSelection = Random.Range(0, 3);
+                particles[effectSelection].Play();
+                effect = particles[effectSelection];
             }
         }
 
