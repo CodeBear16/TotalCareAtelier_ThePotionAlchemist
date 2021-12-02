@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IngredientPool<T> : MonoBehaviour where T : Ingredient
+public class IngredientPool<T> : Singleton<IngredientPool<T>> where T : Ingredient
 {
     [HideInInspector]
-    public GameObject[] content;
-    string contentName;
-    public Queue<GameObject> pool;
-    public Queue<GameObject> usedPool;
+    public GameObject[] contentPrefabs;
+    public string contentName;
+
+    public Queue<GameObject> contentPoolQueue = new Queue<GameObject>();
     const int maxSize = 20;
 
     [HideInInspector]
@@ -21,48 +21,50 @@ public class IngredientPool<T> : MonoBehaviour where T : Ingredient
     void Start()
     {
         contentName = name.Replace("Pool", string.Empty);
-        content = Resources.LoadAll<GameObject>("Ingredient/" + contentName);
-        pool = new Queue<GameObject>();
-        usedPool = new Queue<GameObject>();
+        contentPrefabs = Resources.LoadAll<GameObject>("Ingredient/" + contentName);
 
-        spawnPos = transform.position + Vector3.up * 1; 
+        spawnPos = transform.position + Vector3.up * 1;
 
-        FillingPool();
-        CallOnePool();
+        StartCoroutine(FillAllPool());
+        SpawnOneObj();
 
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))
-            FireAllPool();
+            SpawnAllObj();
     }
 
-    public void FillingPool()
+    IEnumerator FillAllPool()
     {
-        while (pool.Count < maxSize)
+        while (contentPoolQueue.Count < maxSize)
         {
-            randomNum = Random.Range(0, content.Length);
-            tempObj = Instantiate(content[randomNum]);
-            tempObj.transform.position = spawnPos;
-            tempObj.SetActive(false);
-            tempObj.transform.parent = transform;
-            pool.Enqueue(tempObj);
+            randomNum = Random.Range(0, contentPrefabs.Length);
+            tempObj = Instantiate(contentPrefabs[randomNum]);
+            ResupplyObj(tempObj);
+            yield return null;
         }
     }
-    public void CallOnePool()
+
+    public void SpawnOneObj()
     {
-        tempObj = pool.Dequeue();
+        tempObj = contentPoolQueue.Dequeue();
+        tempObj.transform.parent = null;
         tempObj.SetActive(true);
-        usedPool.Enqueue(tempObj);
     }
 
-    public void FireAllPool()
+    public void SpawnAllObj()
     {
-        while (pool.Count != 0)
-        {
-            tempObj = pool.Dequeue();
-            tempObj.SetActive(true);
-        }
+        while (contentPoolQueue.Count != 0)
+            SpawnOneObj();
+    }
+
+    public virtual void ResupplyObj(GameObject tempObj)
+    {
+        tempObj.transform.position = spawnPos;
+        tempObj.transform.parent = transform;
+        tempObj.SetActive(false);
+        contentPoolQueue.Enqueue(tempObj);
     }
 }

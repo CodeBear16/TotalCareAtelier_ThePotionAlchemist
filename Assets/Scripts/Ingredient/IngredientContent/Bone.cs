@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class Bone : Ingredient
 {
-
+    private void Start()
+    {
+        ingredientName = "Bone";
+    }
 }
