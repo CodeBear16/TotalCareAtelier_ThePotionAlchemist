@@ -12,6 +12,8 @@ TagManager:
   - Weapon
   - Ground
   - Effect
+  - MapBoundary
+  - IngredientPool
   layers:
   - Default
   - TransparentFX

@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ad168ab89e982499578662fa16ef80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ingredientName: Bone
 --- !u!114 &2994272650394751235
 MonoBehaviour:
   m_ObjectHideFlags: 0

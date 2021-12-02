@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fd95d975c27414e8f543d202c327a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ingredientName: Seed
 --- !u!114 &8158209390510388572
 MonoBehaviour:
   m_ObjectHideFlags: 0
