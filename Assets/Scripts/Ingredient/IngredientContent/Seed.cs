@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class Seed : Ingredient
 {
-
+    private void Start()
+    {
+        ingredientName = "Seed";
+    }
 }
