@@ -10,7 +10,7 @@ public struct Recipe
     public List<Ingredient> ingredients;
 }
 
-public class Pot : MonoBehaviour
+public class Pot : Singleton<Pot>
 {
     #region Audio Clips
     [Tooltip("0: DEBURN\n1: DEPARALYSE\n2: DETOX\n3: EXPLODE")]
