@@ -18,16 +18,17 @@ public class MonsterState : MonoBehaviour
     int selectDestination;
     public Animator animator;
     public GameObject particle;
-    public List<ParticleSystem> particles;
+    public List<GameObject> particles;
 
     public GameObject returnDestination = null;
-    public ParticleSystem effect = null;
+    public GameObject effect = null;
 
     // monster state
     string monsterState = "MonsterState";
 
     // switch 값
     public string state;
+    GameTimer gameTimer;
 
     // isSuccess property
     public bool IsSuccess
@@ -59,15 +60,15 @@ public class MonsterState : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         particle = GameObject.FindGameObjectWithTag("Effect");
-        particles = new List<ParticleSystem>();
+        particles = new List<GameObject>();
 
         // 파티클 가져오기
         for(int i = 0; i < particle.transform.childCount; i++)
-        {
-            // particles.Add(particle.transform.GetChild(i).parent);
-        }
+            particles.Add(particle.transform.GetChild(i).gameObject);
+        Debug.Log("파티클 갯수 : " + particles.Count);
 
         isSuccess = false;
+        gameTimer = new GameTimer();
     }
 
     public void Setting()
@@ -107,7 +108,7 @@ public class MonsterState : MonoBehaviour
                 // 성공
                 if (isSuccess == true)
                 {
-                    effect.Stop();
+                    effect.SetActive(false);
                     animator.SetBool("Drinking", true);
                     animator.SetBool("Walking", true);
                 }
@@ -135,13 +136,17 @@ public class MonsterState : MonoBehaviour
                 nav.speed = 0;
 
                 // 랜덤 animation
-                int aniSelection = Random.Range(1, 6);
+                int aniSelection = Random.Range(1, 6); 
                 animator.SetInteger(monsterState, aniSelection);
 
                 // 랜덤 effect(particle)
-                int effectSelection = Random.Range(0, 3);
-                particles[effectSelection].Play();
+                int effectSelection = Random.Range(0, particles.Count);
+                particles[effectSelection].SetActive(true);
+                Debug.Log("파티클 활성화 : " + gameObject.name + particles[effectSelection].name);
                 effect = particles[effectSelection];
+
+                // 타이머 시작
+                // gameTimer.timer[selectDestination].
             }
         }
 
