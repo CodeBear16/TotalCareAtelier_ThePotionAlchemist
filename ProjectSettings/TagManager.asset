@@ -15,6 +15,7 @@ TagManager:
   - MapBoundary
   - IngredientPool
   - Timer
+  - Target
   layers:
   - Default
   - TransparentFX
