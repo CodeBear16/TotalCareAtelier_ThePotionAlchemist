@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.061653297, g: 0.084985904, b: 0.14079715, a: 1}
+  m_IndirectSpecularColor: {r: 0.06165286, g: 0.08498528, b: 0.1407959, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -19973,35 +19973,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3554607964472687819}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &3587298367387781553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8329660659753295857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_allowOffhandGrab: 1
-  m_snapPosition: 0
-  m_snapOrientation: 0
-  m_snapOffset: {fileID: 0}
-  m_grabPoints: []
---- !u!114 &4707395993484308423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8329660659753295857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89bb366c4650e1b4eab4d07fbe9ba7cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!33 &4714355699961540446
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -20306,9 +20277,7 @@ GameObject:
   - component: {fileID: 8951963924315639279}
   - component: {fileID: 4714355699961540446}
   - component: {fileID: 2886585180107895531}
-  - component: {fileID: 4707395993484308423}
   - component: {fileID: 462406537639407527}
-  - component: {fileID: 3587298367387781553}
   - component: {fileID: 2132321957497155645}
   - component: {fileID: 3525378901424182736}
   m_Layer: 0

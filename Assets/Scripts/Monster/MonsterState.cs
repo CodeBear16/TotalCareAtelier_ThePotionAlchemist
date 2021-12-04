@@ -19,12 +19,16 @@ public class MonsterState : MonoBehaviour
     public Animator animator;
     public GameObject particle;
     public List<GameObject> particles;
+    public ParticleSystem[] particlesArray;
 
     public GameObject returnDestination = null;
     public GameObject effect = null;
 
     // monster state
     string monsterState = "MonsterState";
+
+    // Potion 받는 위치
+    public Transform potionHand;
 
     // switch 값
     public string state;
@@ -53,7 +57,8 @@ public class MonsterState : MonoBehaviour
     private void OnEnable()
     {
         nav = GetComponent<NavMeshAgent>();
-        player = GameObject.Find("Target");
+        player = GameObject.Find("Player");
+        potionHand = transform.Find("PotionPos");
     }
 
     private void Start()
@@ -85,7 +90,7 @@ public class MonsterState : MonoBehaviour
 
                 if (destinations.Count <= 0) break;
 
-                GameObject.FindGameObjectWithTag("Door").GetComponent<DoorOpen>().Open();
+                //GameObject.FindGameObjectWithTag("Door").GetComponent<DoorOpen>().Open();
                 animator.SetBool("Walking", true);
                 playerPosition = player.transform;
                 selectDestination = Random.Range(0, destinations.Count);
@@ -136,7 +141,7 @@ public class MonsterState : MonoBehaviour
                 nav.speed = 0;
 
                 // 랜덤 animation
-                int aniSelection = Random.Range(1, 6); 
+                int aniSelection = Random.Range(1, 6);
                 animator.SetInteger(monsterState, aniSelection);
 
                 // 랜덤 effect(particle)
@@ -157,6 +162,19 @@ public class MonsterState : MonoBehaviour
             {
                 nav.speed = 0;
                 gameObject.SetActive(false);
+            }
+        }
+
+        // potion을 받았을 때
+        if (other.tag == "Potion")
+        {
+            //if (other.name == 증상 이름)
+            if (other.GetComponent<OVRGrabbable>().isGrabbed == false)
+            {
+                other.transform.position = potionHand.transform.position;
+                //state = "DestinationToSpawner";
+                // 마시는 함수
+                // isSuccess = true;
             }
         }
     }
