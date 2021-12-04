@@ -6,23 +6,19 @@ using UnityEngine.AI;
 public class MonsterState : MonoBehaviour
 {
     public MonsterSpawner monsterSpawner;
-    Transform spawnerPosition;
+    GameObject exit;
     
     GameObject player;
     Transform playerPosition;
-    public bool isSuccess; // ------------------------------ player와 연동해야 함, 삭제 필
+    public bool isSuccess = false; // ------------------------------ player와 연동해야 함, 삭제 필
 
     // monster 이동
     public NavMeshAgent nav;
     public List<GameObject> destinations;
-    int selectDestination;
-    public Animator animator;
-    public GameObject particle;
-    public List<GameObject> particles;
-    public ParticleSystem[] particlesArray;
-
     public GameObject returnDestination = null;
-    public GameObject effect = null;
+
+    public Animator animator;
+    MonsterEffect monsterEffect = new MonsterEffect();
 
     // monster state
     string monsterState = "MonsterState";
@@ -32,27 +28,6 @@ public class MonsterState : MonoBehaviour
 
     // switch 값
     public string state;
-    GameTimer gameTimer;
-
-    // isSuccess property
-    public bool IsSuccess
-    {
-        get
-        {
-            return isSuccess;
-        }
-
-        set
-        {
-            isSuccess = value;
-
-            if (isSuccess == true)
-                GameManager.instance.score += 100;
-
-            else
-                GameManager.instance.score -= 100;
-        }
-    }
 
     private void OnEnable()
     {
@@ -64,16 +39,7 @@ public class MonsterState : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-        particle = GameObject.FindGameObjectWithTag("Effect");
-        particles = new List<GameObject>();
-
-        // 파티클 가져오기
-        for(int i = 0; i < particle.transform.childCount; i++)
-            particles.Add(particle.transform.GetChild(i).gameObject);
-        Debug.Log("파티클 갯수 : " + particles.Count);
-
         isSuccess = false;
-        gameTimer = new GameTimer();
     }
 
     public void Setting()
@@ -90,10 +56,10 @@ public class MonsterState : MonoBehaviour
 
                 if (destinations.Count <= 0) break;
 
-                //GameObject.FindGameObjectWithTag("Door").GetComponent<DoorOpen>().Open();
+                GameObject.FindGameObjectWithTag("Door").GetComponent<DoorOpen>().Open();
                 animator.SetBool("Walking", true);
                 playerPosition = player.transform;
-                selectDestination = Random.Range(0, destinations.Count);
+                int selectDestination = Random.Range(0, destinations.Count);
                 GameObject destination = destinations[selectDestination];
 
                 if (destination.activeSelf == false)
@@ -107,27 +73,36 @@ public class MonsterState : MonoBehaviour
 
                 break;
 
-            // [---------------- destination에서 spawner로 이동 ----------------]
-            case "DestinationToSpawner":
+            // [---------------- destination에서 exit로 이동 ----------------]
+            case "DestinationToExit":
 
-                // 성공
-                if (isSuccess == true)
-                {
-                    effect.SetActive(false);
-                    animator.SetBool("Drinking", true);
-                    animator.SetBool("Walking", true);
-                }
-
-                // 실패
-                else animator.SetBool("SadWalk", true);
-
-                spawnerPosition = monsterSpawner.gameObject.transform;
-                nav.SetDestination(spawnerPosition.position);
+                exit = GameObject.Find("Exit");
+                nav.SetDestination(exit.transform.position);
                 MonsterSpawner.destinationsSpotList.Add(returnDestination);
                 returnDestination.SetActive(false);
 
                 break;
         }
+    }
+    
+    public void TakePotion()
+    {
+        if (isSuccess)
+        {
+            GameManager.instance.Score += 10;
+            animator.SetBool("Drinking", true);
+            animator.SetBool("Walking", true);
+            monsterEffect.ChangeEffect();
+        }
+
+        else
+        {
+            GameManager.instance.Score -= 10;
+            animator.SetBool("SadWalk", true);
+        }
+
+        state = "DestinationToExit";
+        Walking();
     }
 
     public void OnTriggerEnter(Collider other)
@@ -143,39 +118,30 @@ public class MonsterState : MonoBehaviour
                 // 랜덤 animation
                 int aniSelection = Random.Range(1, 6);
                 animator.SetInteger(monsterState, aniSelection);
-
-                // 랜덤 effect(particle)
-                int effectSelection = Random.Range(0, particles.Count);
-                particles[effectSelection].SetActive(true);
-                Debug.Log("파티클 활성화 : " + gameObject.name + particles[effectSelection].name);
-                effect = particles[effectSelection];
-
-                // 타이머 시작
-                // gameTimer.timer[selectDestination].
             }
         }
 
-        // monster가 spawner에 도착하면 비활성화
-        if (state == "DestinationToSpawner")
+        // monster가 exit에 도착하면 오브젝트 비활성화
+        if (other.tag == "Exit")
         {
-            if (other.tag == "Spawner")
-            {
-                nav.speed = 0;
-                gameObject.SetActive(false);
-            }
+            Debug.Log("exit 태그에 들어옴");
+            nav.speed = 0;
+            gameObject.SetActive(false);
         }
 
         // potion을 받았을 때
         if (other.tag == "Potion")
         {
-            //if (other.name == 증상 이름)
-            if (other.GetComponent<OVRGrabbable>().isGrabbed == false)
-            {
-                other.transform.position = potionHand.transform.position;
-                //state = "DestinationToSpawner";
-                // 마시는 함수
-                // isSuccess = true;
-            }
+            // -------------------------------- OVRGrabbable 오류 떠요 namespace 없대요ㅜㅜ
+            //if (other.GetComponent<OVRGrabbable>().isGrabbed == false)
+            //{
+            //    other.transform.position = potionHand.transform.position;
+
+            //    //if (포션 이름 == particles[effectSelection].name) isSuccess = true;
+            //    //else isSuccess = false;
+
+            //    TakePotion();
+            //}
         }
     }
 }

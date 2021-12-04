@@ -5,26 +5,25 @@ using TMPro;
 
 public class GameTimer : MonsterSpawner
 {
+    GameObject gameTimer;
     public List<GameObject> timer;
+    TextMeshProUGUI currentTime;
     float time = 60;
-    TextMeshProUGUI gameTimer;
 
     private void Start()
     {
-        timer = new List<GameObject>(GameObject.FindGameObjectsWithTag("Timer"));
+        gameTimer = this.gameObject;
+        timer = new List<GameObject>();
+
+        for (int i = 0; i < gameTimer.transform.childCount; i++)
+            timer.Add(gameTimer.transform.GetChild(i).gameObject);
         
-        for(int i = 0; i < timer.Count; i ++)
-        {
-            destinations[i] = timer[i];
-        }
-        
-        gameTimer = GameObject.FindGameObjectWithTag("Timer").transform.GetComponent<TextMeshProUGUI>();
-        gameTimer.text = timer.ToString();
+        currentTime.text = timer.ToString();
     }
 
     public void DecreaseTime()
     {
-        while(time <= 0)
+        while(time >= 0 && time <= 60)
             time -= Time.deltaTime;
     }
 
@@ -41,7 +40,7 @@ public class GameTimer : MonsterSpawner
 
             if(time <= 0 || isSuccess == true)
             {
-                monster[spawnerCount].GetComponent<MonsterState>().state = "DestinationToSpawner";
+                monster[spawnerCount].GetComponent<MonsterState>().state = "DestinationToExit";
                 time = 60;
             } 
         }
