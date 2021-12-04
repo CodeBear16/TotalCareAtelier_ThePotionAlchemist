@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7456061177118329038}
+  - component: {fileID: 4270576362215751877}
   m_Layer: 0
   m_Name: Effect
   m_TagString: Effect
@@ -31,8 +32,20 @@ Transform:
   - {fileID: 644306746596487877}
   - {fileID: 8224143531419430255}
   m_Father: {fileID: 6885607503258414861}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4270576362215751877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557380450313111962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad3989e5bcaf214fab89b5c5b41eb5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6885607503258514081
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,7 +513,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6885607503258414861}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &6885607503261629975
 SkinnedMeshRenderer:
@@ -697,7 +710,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6885607503258414861}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &6885607503261629973
 SkinnedMeshRenderer:
@@ -861,7 +874,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6885607503258414861}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &6885607503261629971
 SkinnedMeshRenderer:
@@ -1056,7 +1069,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6885607503258414861}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &6885607503261629969
 SkinnedMeshRenderer:
@@ -1345,7 +1358,7 @@ Transform:
   m_Children:
   - {fileID: 6885607503258414963}
   m_Father: {fileID: 6885607503258414861}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6885607503258514247
 GameObject:
@@ -1686,7 +1699,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6885607503258414861}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &6885607503261629977
 SkinnedMeshRenderer:
@@ -2069,6 +2082,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
+  - {fileID: 1571548350474093619}
   - {fileID: 6885607503258414899}
   - {fileID: 6885607503258414905}
   - {fileID: 6885607503258414889}
@@ -2138,10 +2152,9 @@ MonoBehaviour:
   nav: {fileID: 1151568202045370903, guid: 80fdcdde588b84556bda3bedbcf8bfe6, type: 3}
   destinations: []
   animator: {fileID: 6885607503265890515}
-  particle:
-  - {fileID: 0}
   returnDestination: {fileID: 0}
   effect: {fileID: 0}
+  potionHand: {fileID: 0}
   state: 
 --- !u!54 &-4906770655310266604
 Rigidbody:
@@ -2355,7 +2368,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6885607503258414861}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &6885607503261629979
 SkinnedMeshRenderer:
@@ -2552,6 +2565,36 @@ Transform:
   m_Father: {fileID: 6885607503258414915}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8681526745789754039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1571548350474093619}
+  m_Layer: 0
+  m_Name: PotionPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1571548350474093619
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8681526745789754039}
+  m_LocalRotation: {x: 0.7097194, y: 1.4779289e-11, z: 7.844392e-12, w: 0.7044846}
+  m_LocalPosition: {x: 0.74, y: 0.9, z: 0.0029999986}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6885607503258414861}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90.423004, y: 0, z: 0}
 --- !u!1001 &3583798299027660273
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2642,7 +2685,7 @@ PrefabInstance:
     - target: {fileID: 3093714301863329291, guid: 3228a22491941734bb83ad691d17fcb9,
         type: 3}
       propertyPath: m_Name
-      value: FlamesParticleEffect
+      value: Burns
       objectReference: {fileID: 0}
     - target: {fileID: 3093714301863329291, guid: 3228a22491941734bb83ad691d17fcb9,
         type: 3}
@@ -2752,7 +2795,7 @@ PrefabInstance:
     - target: {fileID: 8000544296648245801, guid: 5c54293bd29e820498ddc49a16856b48,
         type: 3}
       propertyPath: m_Name
-      value: Line_006
+      value: Poisoning
       objectReference: {fileID: 0}
     - target: {fileID: 8000544296648245801, guid: 5c54293bd29e820498ddc49a16856b48,
         type: 3}
@@ -2782,7 +2825,7 @@ PrefabInstance:
     - target: {fileID: 887723849843311222, guid: 96730f8640590934eacb6f860058e7f9,
         type: 3}
       propertyPath: m_Name
-      value: PlasmaExplosionEffect
+      value: Paralysis
       objectReference: {fileID: 0}
     - target: {fileID: 887723849843311222, guid: 96730f8640590934eacb6f860058e7f9,
         type: 3}

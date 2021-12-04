@@ -16,6 +16,7 @@ TagManager:
   - IngredientPool
   - Timer
   - Target
+  - Exit
   layers:
   - Default
   - TransparentFX

@@ -118,7 +118,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1062603876531326}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.038147565, y: -1.2160256, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4558840752774958}
@@ -1174,12 +1174,9 @@ MonoBehaviour:
   nav: {fileID: 1151568202045370903, guid: 80fdcdde588b84556bda3bedbcf8bfe6, type: 3}
   destinations: []
   animator: {fileID: 95346476175356632}
-  particle:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   returnDestination: {fileID: 0}
   effect: {fileID: 0}
+  potionHand: {fileID: 0}
   state: 
 --- !u!54 &1640361081226910216
 Rigidbody:
@@ -1892,6 +1889,7 @@ Transform:
   - {fileID: 4512056410674234}
   - {fileID: 4574187225633588}
   - {fileID: 4872216499142884}
+  - {fileID: 1159709979157008336}
   m_Father: {fileID: 4990932111936334}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2705,6 +2703,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6765616370554037872}
+  - component: {fileID: 7489044141448743895}
   m_Layer: 0
   m_Name: Effect
   m_TagString: Effect
@@ -2729,6 +2728,48 @@ Transform:
   m_Father: {fileID: 4558840752774958}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7489044141448743895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2327614123063564502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad3989e5bcaf214fab89b5c5b41eb5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &9056077378461426004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1159709979157008336}
+  m_Layer: 0
+  m_Name: PotionPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1159709979157008336
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9056077378461426004}
+  m_LocalRotation: {x: 0.7097194, y: 1.4779289e-11, z: 7.844392e-12, w: 0.7044846}
+  m_LocalPosition: {x: -0.5, y: 0.23, z: -0.91}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4988063382640642}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 90.423004, y: 0, z: 0}
 --- !u!1001 &1865479785270266935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2739,7 +2780,7 @@ PrefabInstance:
     - target: {fileID: 887723849843311222, guid: 96730f8640590934eacb6f860058e7f9,
         type: 3}
       propertyPath: m_Name
-      value: PlasmaExplosionEffect
+      value: Paralysis
       objectReference: {fileID: 0}
     - target: {fileID: 887723849843311222, guid: 96730f8640590934eacb6f860058e7f9,
         type: 3}
@@ -2919,7 +2960,7 @@ PrefabInstance:
     - target: {fileID: 8000544296648245801, guid: 5c54293bd29e820498ddc49a16856b48,
         type: 3}
       propertyPath: m_Name
-      value: Line_006
+      value: Poisoning
       objectReference: {fileID: 0}
     - target: {fileID: 8000544296648245801, guid: 5c54293bd29e820498ddc49a16856b48,
         type: 3}
@@ -3024,7 +3065,7 @@ PrefabInstance:
     - target: {fileID: 3093714301863329291, guid: 3228a22491941734bb83ad691d17fcb9,
         type: 3}
       propertyPath: m_Name
-      value: FlamesParticleEffect
+      value: Burns
       objectReference: {fileID: 0}
     - target: {fileID: 3093714301863329291, guid: 3228a22491941734bb83ad691d17fcb9,
         type: 3}

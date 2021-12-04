@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7891652642310622175}
+  - component: {fileID: 7437270955118280921}
   m_Layer: 0
   m_Name: Effect
   m_TagString: Effect
@@ -31,8 +32,20 @@ Transform:
   - {fileID: 2897716520754576307}
   - {fileID: 3019825364666410824}
   m_Father: {fileID: 5870629044615271944}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7437270955118280921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2165306409878954710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad3989e5bcaf214fab89b5c5b41eb5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5870629044615498240
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,7 +135,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5870629044615271944}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &5870629044620707680
 SkinnedMeshRenderer:
@@ -782,6 +795,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
+  - {fileID: 3912668443725641195}
   - {fileID: 5870629044615272008}
   - {fileID: 5870629044615272004}
   - {fileID: 5870629044615272020}
@@ -850,10 +864,9 @@ MonoBehaviour:
   nav: {fileID: 1151568202045370903, guid: 80fdcdde588b84556bda3bedbcf8bfe6, type: 3}
   destinations: []
   animator: {fileID: 5870629044624865704}
-  particle:
-  - {fileID: 0}
   returnDestination: {fileID: 0}
   effect: {fileID: 0}
+  potionHand: {fileID: 0}
   state: 
 --- !u!54 &-103304672658906323
 Rigidbody:
@@ -1192,7 +1205,7 @@ Transform:
   m_Children:
   - {fileID: 5870629044615271946}
   m_Father: {fileID: 5870629044615271944}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5870629044615498302
 GameObject:
@@ -1317,7 +1330,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5870629044615271944}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &5870629044620707690
 SkinnedMeshRenderer:
@@ -1481,7 +1494,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5870629044615271944}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &5870629044620707688
 SkinnedMeshRenderer:
@@ -1769,7 +1782,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5870629044615271944}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &5870629044620707692
 SkinnedMeshRenderer:
@@ -1901,7 +1914,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5870629044615271944}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &5870629044620707694
 SkinnedMeshRenderer:
@@ -2377,6 +2390,36 @@ Transform:
   m_Father: {fileID: 5870629044615271978}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6627380320714906479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3912668443725641195}
+  m_Layer: 0
+  m_Name: PotionPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3912668443725641195
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6627380320714906479}
+  m_LocalRotation: {x: 0.7097194, y: 1.4779289e-11, z: 7.844392e-12, w: 0.7044846}
+  m_LocalPosition: {x: 0.9, y: 0.85, z: -0.91}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5870629044615271944}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90.423004, y: 0, z: 0}
 --- !u!1001 &2717077350103217252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2387,7 +2430,7 @@ PrefabInstance:
     - target: {fileID: 887723849843311222, guid: 96730f8640590934eacb6f860058e7f9,
         type: 3}
       propertyPath: m_Name
-      value: PlasmaExplosionEffect
+      value: Paralysis
       objectReference: {fileID: 0}
     - target: {fileID: 887723849843311222, guid: 96730f8640590934eacb6f860058e7f9,
         type: 3}
@@ -2567,7 +2610,7 @@ PrefabInstance:
     - target: {fileID: 8000544296648245801, guid: 5c54293bd29e820498ddc49a16856b48,
         type: 3}
       propertyPath: m_Name
-      value: Line_006
+      value: Poisoning
       objectReference: {fileID: 0}
     - target: {fileID: 8000544296648245801, guid: 5c54293bd29e820498ddc49a16856b48,
         type: 3}
@@ -2672,7 +2715,7 @@ PrefabInstance:
     - target: {fileID: 3093714301863329291, guid: 3228a22491941734bb83ad691d17fcb9,
         type: 3}
       propertyPath: m_Name
-      value: FlamesParticleEffect
+      value: Burns
       objectReference: {fileID: 0}
     - target: {fileID: 3093714301863329291, guid: 3228a22491941734bb83ad691d17fcb9,
         type: 3}
