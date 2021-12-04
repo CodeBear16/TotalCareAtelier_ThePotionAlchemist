@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DetoxPotion : Potion
 {
-    public override void Effect()
+    void Start()
     {
-
+        symptom = "Poisoning";
+        potionName = "DetoxPotion";
     }
-
 }

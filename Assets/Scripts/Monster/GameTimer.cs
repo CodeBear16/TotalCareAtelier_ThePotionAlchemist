@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class GameTimer : MonsterSpawner
+public class GameTimer : MonoBehaviour
 {
     GameObject gameTimer;
     public List<GameObject> timer;
@@ -38,11 +38,11 @@ public class GameTimer : MonsterSpawner
         {
             time = value;
 
-            if(time <= 0 || isSuccess == true)
-            {
-                monster[spawnerCount].GetComponent<MonsterState>().state = "DestinationToExit";
-                time = 60;
-            } 
+            //if(time <= 0 || isSuccess == true)
+            //{
+            //    monsterPool[spawnCount].GetComponent<MonsterState>().monsterState = "DestinationToExit";
+            //    time = 60;
+            //} 
         }
     }
 }

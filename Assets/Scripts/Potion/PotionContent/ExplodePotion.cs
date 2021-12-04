@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ExplodePotion : Potion
 {
-    public override void Effect()
+    void Start()
     {
-
+        symptom = "FoundEnemy";
+        potionName = "ExplodePotion";
     }
-
 }

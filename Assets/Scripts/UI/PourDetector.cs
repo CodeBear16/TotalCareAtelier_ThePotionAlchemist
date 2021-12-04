@@ -51,6 +51,7 @@ public class PourDetector : MonoBehaviour
     private WaterStream CreateStream()
     {
         GameObject streamObject = Instantiate(streamPrefab, origin.position, Quaternion.identity, transform);
+        streamObject.transform.parent = origin;
         return streamObject.GetComponent<WaterStream>();
     }
 }

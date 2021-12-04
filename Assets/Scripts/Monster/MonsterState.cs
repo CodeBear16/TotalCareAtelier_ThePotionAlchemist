@@ -5,94 +5,99 @@ using UnityEngine.AI;
 
 public class MonsterState : MonoBehaviour
 {
-    public MonsterSpawner monsterSpawner;
-    GameObject exit;
-    
+    #region Monster's Lifecycle 몬스터의 루틴
+    ///public MonsterSpawner monsterSpawner;
+    ///public List<GameObject> destinationList;
+    public GameObject destination;
+    public GameObject exit;
+
+    NavMeshAgent nav;
     GameObject player;
-    Transform playerPosition;
-    public bool isSuccess = false; // ------------------------------ player와 연동해야 함, 삭제 필
-
-    // monster 이동
-    public NavMeshAgent nav;
-    public List<GameObject> destinations;
-    public GameObject returnDestination = null;
-
-    public Animator animator;
-    MonsterEffect monsterEffect = new MonsterEffect();
-
-    // monster state
-    string monsterState = "MonsterState";
-
-    // Potion 받는 위치
-    public Transform potionHand;
+    #endregion
 
     // switch 값
-    public string state;
+    string monsterState;
 
-    private void OnEnable()
+    ///Transform playerPosition;
+    public bool isSuccess = false; // ------------------------------ player와 연동해야 함, 삭제 필
+
+    Animator animator;
+    MonsterEffect monsterEffect;
+
+    // Potion 받는 손 위치
+    public Transform potionHand;
+    public GameObject potion;
+
+    ///string state;
+
+    void OnEnable()
     {
+        exit = GameObject.Find("Exit");
         nav = GetComponent<NavMeshAgent>();
         player = GameObject.Find("Player");
+        
+        isSuccess = false;
+        animator = GetComponent<Animator>();
+        monsterEffect = GetComponent<MonsterEffect>();
         potionHand = transform.Find("PotionPos");
     }
 
-    private void Start()
+    public void Setting(GameObject destination)
     {
-        animator = GetComponent<Animator>();
-        isSuccess = false;
-    }
-
-    public void Setting()
-    {
-        destinations = MonsterSpawner.destinationsSpotList;
+        this.destination = destination;
+        ///destinationList = MonsterSpawner.destinationList;
+        monsterState = "SpawnerToDestination";
+        Walking();
     }
 
     public void Walking()
     {
-        switch (state)
+        switch (monsterState)
         {
             // [---------------- spawner에서 destination으로 이동 ----------------]
             case "SpawnerToDestination":
 
-                if (destinations.Count <= 0) break;
+                ///if (destinationList.Count <= 0) break;
 
                 GameObject.FindGameObjectWithTag("Door").GetComponent<DoorOpen>().Open();
                 animator.SetBool("Walking", true);
-                playerPosition = player.transform;
-                int selectDestination = Random.Range(0, destinations.Count);
-                GameObject destination = destinations[selectDestination];
+                ///playerPosition = player.transform;
+                ///int selectDestination = Random.Range(0, destinationList.Count);
+                ///GameObject destination = destinationList[selectDestination];
 
-                if (destination.activeSelf == false)
-                {
-                    nav.SetDestination(destination.transform.position);
-                    destination.SetActive(true);
-                    returnDestination = destination;
-                    MonsterSpawner.destinationsSpotList.RemoveAt(selectDestination);
-                    Debug.Log(gameObject.name + "이동 성공" + destination.name);
-                }
-
+                ///if (destination.activeSelf == false)
+                ///{
+                nav.SetDestination(destination.transform.position);
+                ///destination.SetActive(true);
+                ///this.destination = destination;
+                ///MonsterSpawner.destinationList.RemoveAt(selectDestination);
+                Debug.Log(destination.name + "로 이동하는 " + gameObject.name);
+                ///}
+                destination.GetComponent<MonsterDestination>().Occupy();
                 break;
-
             // [---------------- destination에서 exit로 이동 ----------------]
             case "DestinationToExit":
 
-                exit = GameObject.Find("Exit");
                 nav.SetDestination(exit.transform.position);
-                MonsterSpawner.destinationsSpotList.Add(returnDestination);
-                returnDestination.SetActive(false);
-
+                ///MonsterSpawner.destinationList.Add(this.destination);
+                ///this.destination.SetActive(false);
+                destination.GetComponent<MonsterDestination>().Leave();
                 break;
         }
     }
     
-    public void TakePotion()
+    public void TakePotion(GameObject potion)
     {
+        potion.transform.position = potionHand.position;
+        potion.transform.parent = potionHand;
+        this.potion = potion;
+
         if (isSuccess)
         {
             GameManager.instance.Score += 10;
             animator.SetBool("Drinking", true);
             animator.SetBool("Walking", true);
-            monsterEffect.ChangeEffect();
+            monsterEffect.HideEffect();
         }
 
         else
@@ -101,47 +106,52 @@ public class MonsterState : MonoBehaviour
             animator.SetBool("SadWalk", true);
         }
 
-        state = "DestinationToExit";
+        monsterState = "DestinationToExit";
         Walking();
     }
 
-    public void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         // monster가 destination에 도착하면 멈춤
-        if (other.tag == "Destination")
+        ///if (other.tag == "Destination")
+        if (other.gameObject == destination)
         {
-            if (other.gameObject == returnDestination)
-            {
-                transform.LookAt(playerPosition.position);
-                nav.speed = 0;
+            ///if (other.gameObject == destination)
+            ///{
+            transform.LookAt(player.transform.position);
+            nav.speed = 0;
+            animator.SetBool("Walking", false);
+            // 랜덤 animation
+            int aniSelection = Random.Range(1, 6);
+            animator.SetInteger("MonsterState", aniSelection);
 
-                // 랜덤 animation
-                int aniSelection = Random.Range(1, 6);
-                animator.SetInteger(monsterState, aniSelection);
-            }
+            monsterEffect.ShowEffect();
+            ///}
         }
 
         // monster가 exit에 도착하면 오브젝트 비활성화
         if (other.tag == "Exit")
         {
-            Debug.Log("exit 태그에 들어옴");
+            Debug.Log("출구에 도착");
             nav.speed = 0;
-            gameObject.SetActive(false);
+            Destroy(potion);
+            MonsterSpawner.instance.ReturnToSpawner(gameObject);
+            ///gameObject.SetActive(false);
         }
 
         // potion을 받았을 때
         if (other.tag == "Potion")
         {
-            // -------------------------------- OVRGrabbable 오류 떠요 namespace 없대요ㅜㅜ
-            //if (other.GetComponent<OVRGrabbable>().isGrabbed == false)
-            //{
-            //    other.transform.position = potionHand.transform.position;
-
-            //    //if (포션 이름 == particles[effectSelection].name) isSuccess = true;
-            //    //else isSuccess = false;
-
-            //    TakePotion();
-            //}
+            if (other.GetComponent<OVRGrabbable>().isGrabbed == false)
+            {
+                if (other.GetComponent<Potion>().symptom == monsterEffect.effect.name)
+                    isSuccess = true;
+                else
+                    isSuccess = false;
+                //if (포션 이름 == particles[effectSelection].name) isSuccess = true;
+                //else isSuccess = false;
+                TakePotion(other.gameObject);
+            }
         }
     }
 }
