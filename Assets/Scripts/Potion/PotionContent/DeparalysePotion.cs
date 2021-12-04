@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DeparalysePotion : Potion
 {
-    public override void Effect()
+    void Start()
     {
-
+        symptom = "Paralysis";
+        potionName = "DeparalysePotion";
     }
-
 }

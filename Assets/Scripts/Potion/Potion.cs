@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Potion : MonoBehaviour, IEffectFunc
+public class Potion : MonoBehaviour
 {
-
-    public virtual void Effect()
-    {
-
-    }
+    public string symptom;
+    public string potionName;
 }

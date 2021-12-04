@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DeburnPotion : Potion
 {
-    public override void Effect()
+    void Start()
     {
-        
+        symptom = "Burns";
+        potionName = "DeburnPotion";
     }
-
 }
