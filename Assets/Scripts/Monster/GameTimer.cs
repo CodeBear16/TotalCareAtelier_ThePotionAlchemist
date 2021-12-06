@@ -6,19 +6,37 @@ using TMPro;
 public class GameTimer : MonoBehaviour
 {
     TextMeshProUGUI currentTime;
-    public int time = 60;
+    public int time;
     MonsterState monsterState;
 
     private void Start()
     {
-        monsterState = new MonsterState();
+        time = 20;
+        monsterState = GetComponentInParent<MonsterState>();
+        Debug.Log("몬스터 스테이트 ;" + monsterState);
         currentTime = GetComponent<TextMeshProUGUI>();
         currentTime.text = time.ToString();
     }
 
     public void DecreaseTime()
     {
-        time--;
+        Debug.Log("DecreaseTime");
+        StartCoroutine(DecreaseingTime());
+    }
+
+    IEnumerator DecreaseingTime()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(1);
+            time --;
+            currentTime.text = time.ToString();
+            if (time == 0)
+            {
+                ResetTime();
+                break;
+            }
+        }
     }
 
     public void ResetTime()
@@ -27,9 +45,8 @@ public class GameTimer : MonoBehaviour
         {
             monsterState.monsterState = "DestinationToExit";
             monsterState.Walking();
-            GameManager.instance.score -= 10;
+            GameManager.instance.Score -= 10;
         }
-
         time = 60;
     }
 }

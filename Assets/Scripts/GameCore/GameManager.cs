@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    public int score;
+    public int score = 100;
     public int Score
     {
         get
@@ -37,8 +37,10 @@ public class GameManager : Singleton<GameManager>
     }
     public const int loseDistance = 1000;
 
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
+        Debug.Log(instance);
         DontDestroyOnLoad(gameObject);
         Score = 0;
         HeroImminent = 0;

@@ -82,6 +82,7 @@ public class MonsterState : MonoBehaviour
             case "DestinationToExit":
 
                 nav.SetDestination(exit.transform.position);
+                Debug.Log(exit.name + "로 이동하는 " + gameObject.name);
                 ///MonsterSpawner.destinationList.Add(this.destination);
                 ///this.destination.SetActive(false);
                 destination.GetComponent<MonsterDestination>().Leave();
@@ -132,6 +133,7 @@ public class MonsterState : MonoBehaviour
 
             monsterEffect.ShowEffect();
             gameTimer.DecreaseTime();
+            Debug.Log("시간 감소시작");
             ///}
         }
 

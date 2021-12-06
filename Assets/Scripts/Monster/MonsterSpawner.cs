@@ -87,6 +87,8 @@ public class MonsterSpawner : Singleton<MonsterSpawner>
         tempObject.SetActive(true);
         Debug.Log(tempObject.name + "가 출현했습니다.");
         // 도착지 지정
+        Debug.Log(tempObject);
+        Debug.Log(tempObject.GetComponent<MonsterState>());
         tempObject.GetComponent<MonsterState>().Setting(destination.gameObject);
         ///tempObject.GetComponent<MonsterState>().state = "SpawnerToDestination";
         ///tempObject.GetComponent<MonsterState>().Walking();

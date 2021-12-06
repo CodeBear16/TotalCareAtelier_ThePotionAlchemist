@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MoveCTRLDemo : MonoBehaviour {
-
+public class MoveCTRLDemo : MonoBehaviour, IAttackFunc, IGetHitFunc
+{
+	// 에셋에 포함되어있던 것
 	private float move = 20;
 	private bool stop = false;	
 	private float blend;
@@ -11,15 +12,46 @@ public class MoveCTRLDemo : MonoBehaviour {
 	public float AddWalkSpeed = 1;
 	private bool hasAniComp = false;
 
+	// 추가
+	public int devilHp = 100;
+
 	// Use this for initialization
 	void Start () 
 	{
-	
-		if ( null != GetComponent<Animation>() )
-		{
-			hasAniComp = true;
-		}
+		if ( null != GetComponent<Animation>() ) hasAniComp = true;
+		StartCoroutine(DevilAttack());
+	}
 
+	IEnumerator DevilAttack()
+    {
+		while(true)
+        {
+			yield return new WaitForSeconds(2);
+			Attack();
+
+			if (devilHp <= 0) Die();
+		}
+    }
+
+	public void Attack()
+	{
+		if (CheckAniClip("attack_short_001") == false) return;
+
+		GetComponent<Animation>().CrossFade("attack_short_001", 0.0f);
+		GetComponent<Animation>().CrossFadeQueued("idle_combat");
+	}
+
+	public void GetHit()
+	{
+		GameObject.Find("Devil").transform.GetChild(0).gameObject.SetActive(false);
+	}
+
+	public void Die()
+    {
+		if (CheckAniClip("dead") == false) return;
+
+		GetComponent<Animation>().CrossFade("dead", 0.2f);
+		gameObject.SetActive(false);
 	}
 
 	void Move ()
@@ -89,7 +121,6 @@ public class MoveCTRLDemo : MonoBehaviour {
 				speed = Time.deltaTime*add;
 				transform.Translate( 0,0,speed );
 			}
-
 		}
 	}
 
@@ -106,7 +137,6 @@ public class MoveCTRLDemo : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-	
 		Move();
 
 		if ( hasAniComp == true )
@@ -117,9 +147,7 @@ public class MoveCTRLDemo : MonoBehaviour {
 
 				GetComponent<Animation>().CrossFade("dead",0.2f);
 				//					animation.CrossFadeQueued("idle_normal");
-			} 
-
-
+			}
 
 			if (Input.GetKey(KeyCode.Q))
 			{	
@@ -129,8 +157,6 @@ public class MoveCTRLDemo : MonoBehaviour {
 				GetComponent<Animation>().CrossFadeQueued("idle_combat");
 			}
 
-
-
 			if (Input.GetKey(KeyCode.Z))
 			{	
 				if ( CheckAniClip( "damage_001" ) == false ) return;
@@ -138,8 +164,6 @@ public class MoveCTRLDemo : MonoBehaviour {
 				GetComponent<Animation>().CrossFade("damage_001",0.0f);
 				GetComponent<Animation>().CrossFadeQueued("idle_combat");
 			}
-
-		
 
 			if (Input.GetKey(KeyCode.D))
 			{	
