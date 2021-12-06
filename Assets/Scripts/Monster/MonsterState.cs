@@ -16,7 +16,7 @@ public class MonsterState : MonoBehaviour
     #endregion
 
     // switch 값
-    string monsterState;
+    public string monsterState;
 
     ///Transform playerPosition;
     public bool isSuccess = false; // ------------------------------ player와 연동해야 함, 삭제 필
@@ -28,18 +28,21 @@ public class MonsterState : MonoBehaviour
     public Transform potionHand;
     public GameObject potion;
 
+    GameTimer gameTimer;
+
     ///string state;
 
     void OnEnable()
     {
-        exit = GameObject.Find("Exit");
-        nav = GetComponent<NavMeshAgent>();
-        player = GameObject.Find("Player");
-        
         isSuccess = false;
+        player = GameObject.Find("Player");
+        exit = GameObject.Find("Exit");
+        potionHand = transform.Find("PotionPos");
+
+        nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         monsterEffect = GetComponent<MonsterEffect>();
-        potionHand = transform.Find("PotionPos");
+        gameTimer = transform.Find("Canvas").GetComponentInChildren<GameTimer>();
     }
 
     public void Setting(GameObject destination)
@@ -73,8 +76,8 @@ public class MonsterState : MonoBehaviour
                 ///MonsterSpawner.destinationList.RemoveAt(selectDestination);
                 Debug.Log(destination.name + "로 이동하는 " + gameObject.name);
                 ///}
-                destination.GetComponent<MonsterDestination>().Occupy();
                 break;
+
             // [---------------- destination에서 exit로 이동 ----------------]
             case "DestinationToExit":
 
@@ -121,11 +124,14 @@ public class MonsterState : MonoBehaviour
             transform.LookAt(player.transform.position);
             nav.speed = 0;
             animator.SetBool("Walking", false);
+            destination.GetComponent<MonsterDestination>().Occupy();
+
             // 랜덤 animation
             int aniSelection = Random.Range(1, 6);
             animator.SetInteger("MonsterState", aniSelection);
 
             monsterEffect.ShowEffect();
+            gameTimer.DecreaseTime();
             ///}
         }
 
@@ -150,6 +156,7 @@ public class MonsterState : MonoBehaviour
                     isSuccess = false;
                 //if (포션 이름 == particles[effectSelection].name) isSuccess = true;
                 //else isSuccess = false;
+                gameTimer.ResetTime();
                 TakePotion(other.gameObject);
             }
         }
