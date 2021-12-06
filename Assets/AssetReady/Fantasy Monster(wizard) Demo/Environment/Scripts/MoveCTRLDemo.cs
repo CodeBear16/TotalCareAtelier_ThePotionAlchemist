@@ -147,7 +147,6 @@ public class MoveCTRLDemo : MonoBehaviour, IAttackFunc, IGetHitFunc
 
 				GetComponent<Animation>().CrossFade("dead",0.2f);
 				//					animation.CrossFadeQueued("idle_normal");
-			}
 
 			if (Input.GetKey(KeyCode.Q))
 			{	
@@ -156,7 +155,6 @@ public class MoveCTRLDemo : MonoBehaviour, IAttackFunc, IGetHitFunc
 				GetComponent<Animation>().CrossFade("attack_short_001",0.0f);
 				GetComponent<Animation>().CrossFadeQueued("idle_combat");
 			}
-
 			if (Input.GetKey(KeyCode.Z))
 			{	
 				if ( CheckAniClip( "damage_001" ) == false ) return;

@@ -13,7 +13,7 @@ public class GameTimer : MonoBehaviour
     {
         time = 20;
         monsterState = GetComponentInParent<MonsterState>();
-        Debug.Log("¸ó½ºÅÍ ½ºÅ×ÀÌÆ® ;" + monsterState);
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ;" + monsterState);
         currentTime = GetComponent<TextMeshProUGUI>();
         currentTime.text = time.ToString();
     }
@@ -38,7 +38,6 @@ public class GameTimer : MonoBehaviour
             }
         }
     }
-
     public void ResetTime()
     {
         if (time == 0)
