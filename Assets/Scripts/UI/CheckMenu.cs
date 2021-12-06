@@ -5,42 +5,35 @@ using UnityEngine.SceneManagement;
 
 public class CheckMenu : MonoBehaviour
 {
-    public GameObject complitePotion;
-    Potion potion;
-    float timeSpan;  //경과 시간을 갖는 변수
-    float[] checkTime = { 1.0f, 3.0f, 5.0f };  // 특정 시간을 갖는 변수
-    float[] size = { 0.01f, 0.05f, 0.12f };
-    void Start()
-    {
-        timeSpan = 0.0f;
-        //checkTime = 5.0f;  // 특정시간을 5초로 지정
-    }
-    public void check()
-    {
-        Debug.Log("ㅎ2");
-    }
+    public GameObject fulfillment;
 
-    public void putWaterCheck()
+    float timeSpan = 0f;
+    float[] fillTime = { 1f, 2f, 3f, 4f, 5f };
+    float[] fillSize = { 0.02f, 0.04f, 0.06f, 0.08f, 0.10f };
+
+    public void PutWaterCheck(WaterStream stream)
     {
         Debug.Log("현재 닿은시간 :" + timeSpan);
-        timeSpan += Time.deltaTime;  // 경과 시간을 계속 등록
-       
-        // 시간경과에 따라 항아리속 물크기 증가
-        for (int i = 0; i < checkTime.Length; i++)
-        {
-            if (timeSpan > checkTime[i])  // 경과 시간이 특정 시간이 보다 커졋을 경우
-            {
-                complitePotion.transform.localScale = new Vector3(0.35f, size[i], 0.35f);
+        timeSpan += Time.deltaTime;
 
-                /*
-                  항아리 안의 물크기 체크 후 
-                */
-                if (i == 2)
+        for (int i = 0; i < fillTime.Length; i++)
+        {
+            if (timeSpan > fillTime[i])
+            {
+                fulfillment.transform.localScale = new Vector3(0.35f, fillSize[i], 0.35f);
+
+                if (timeSpan >= fillTime[fillTime.Length - 1])
                 {
                     timeSpan = 0;
-                    SceneManager.LoadScene("_Scene");
+                    Debug.Log(stream);
+                    if (stream.name.Contains("StartStream"))
+                        GameManager.instance.GameStartEvent();
+                    else if (stream.name.Contains("EndStream"))
+                        GameManager.instance.GameEndEvent();
                 }
             }
         }
     }
+
+
 }
