@@ -35,27 +35,53 @@ public class GameManager : Singleton<GameManager>
                 BadEndEvent();
         }
     }
-    public const int loseDistance = 100;
+    public const int loseDistance = 1000;
 
-    void Start()
+    private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         Score = 0;
         HeroImminent = 0;
     }
 
+
+
     #region Various Events
+    public void GameStartEvent()
+    {
+        Debug.Log("게임 시작");
+        SceneManager.LoadScene(1);
+        SoundController.instance.MusicLoader = 1;
+    }
+
+    public void DemonIncomeEvent()
+    {
+        Debug.Log("방해꾼 도착");
+        SoundController.instance.MusicLoader = 2;
+    }
+
     public void GoodEndEvent()
     {
         Debug.Log("승리!");
         SceneManager.LoadScene(2);
-        SoundController.instance.MusicState = 3;
+        SoundController.instance.MusicLoader = 3;
     }
 
     public void BadEndEvent()
     {
         Debug.Log("패배...");
         SceneManager.LoadScene(3);
-        SoundController.instance.MusicState = 4;
+        SoundController.instance.MusicLoader = 4;
     }
-    #endregion
+
+    public void GameEndEvent()
+    {
+        Debug.Log("게임 종료");
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
+#endregion
 }

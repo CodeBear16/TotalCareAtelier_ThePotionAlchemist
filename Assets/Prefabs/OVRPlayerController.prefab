@@ -412,6 +412,7 @@ GameObject:
   - component: {fileID: 3251581671342343398}
   - component: {fileID: 3251581671342543012}
   - component: {fileID: 3251581671342511610}
+  - component: {fileID: 3468565400577475352}
   m_Layer: 0
   m_Name: OVRPlayerController
   m_TagString: Untagged
@@ -447,7 +448,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 0.1
+  m_Radius: 0.2
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.01
@@ -507,6 +508,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b71d1996d67004241a3b69960856ffcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3468565400577475352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3251581671335817476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce3b162d934a74458f76d19048d2ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3251581671335817478
