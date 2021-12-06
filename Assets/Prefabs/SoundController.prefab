@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8443913102202887372}
   m_Layer: 0
   m_Name: SoundController
-  m_TagString: Untagged
+  m_TagString: GameCore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,11 +43,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6908601920ee2f4cb7a91070ae773dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 0}
+  sources:
+  - {fileID: 0}
+  - {fileID: 0}
   clips:
   - {fileID: 8300000, guid: 99e4b2b86ba9cd5429246501f4d71335, type: 3}
   - {fileID: 8300000, guid: 3eca6ea294cd7c54c949c1b8aa4c7e16, type: 3}
   - {fileID: 8300000, guid: af13cd2ac6379a64e8aa59047de6fbf7, type: 3}
   - {fileID: 8300000, guid: 6fb3a67036a977e40b18472d1914ba01, type: 3}
   - {fileID: 8300000, guid: 47c4afdad2f7328499436c094aef1aed, type: 3}
-  musicState: 0
+  musicLoader: 0

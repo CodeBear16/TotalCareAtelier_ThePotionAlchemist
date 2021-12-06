@@ -37,8 +37,9 @@ public class GameManager : Singleton<GameManager>
     }
     public const int loseDistance = 1000;
 
-    private void Awake()
+    private new void Awake()
     {
+        base.Awake();
         DontDestroyOnLoad(gameObject);
         Score = 0;
         HeroImminent = 0;
