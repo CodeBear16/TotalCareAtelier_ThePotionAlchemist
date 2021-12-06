@@ -18,6 +18,7 @@ TagManager:
   - Target
   - Exit
   - Devil
+  - GameCore
   layers:
   - Default
   - TransparentFX

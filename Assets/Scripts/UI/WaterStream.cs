@@ -47,7 +47,7 @@ public class WaterStream : MonoBehaviour
             {
                 Debug.Log("닿은 부분 :" + hit.collider.name);
                 if(hit.collider.gameObject.name.Equals("HitCheck"))
-                    hit.collider.gameObject.GetComponent<CheckMenu>().PutWaterCheck(this);
+                    hit.collider.gameObject.GetComponent<CheckMenu>().PutWaterCheck(name);
             }
 
             targetPosition = FindEndPoint();
