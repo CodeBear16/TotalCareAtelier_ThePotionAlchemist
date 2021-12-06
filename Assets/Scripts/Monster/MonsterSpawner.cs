@@ -54,7 +54,7 @@ public class MonsterSpawner : Singleton<MonsterSpawner>
         {
             Spawn();
             // 20~30초에 한 번씩 몬스터 활성화
-            spawnDelay = Random.Range(1, 5);
+            spawnDelay = Random.Range(1,5);
             yield return new WaitForSeconds(spawnDelay);
         }
     }
@@ -112,4 +112,4 @@ public class MonsterSpawner : Singleton<MonsterSpawner>
         tempObject.transform.rotation = transform.rotation;
         tempObject.SetActive(false);
     }
-}
+} 

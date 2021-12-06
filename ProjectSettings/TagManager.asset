@@ -17,6 +17,7 @@ TagManager:
   - Timer
   - Target
   - Exit
+  - Devil
   layers:
   - Default
   - TransparentFX
