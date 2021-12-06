@@ -76,7 +76,7 @@ public class Pot : Singleton<Pot>
             {
                 Instantiate(resultDic[currentRecipe], createSpot);
                 Debug.Log(resultDic[currentRecipe].name + "포션 조제 성공!");
-                SoundController.instance.source.PlayOneShot(clipDic[resultDic[currentRecipe]]);
+                SoundController.instance.sources[0].PlayOneShot(clipDic[resultDic[currentRecipe]]);
                 potList.Clear();
                 return;
             }
@@ -86,7 +86,7 @@ public class Pot : Singleton<Pot>
         }
 
         Debug.Log("조제 실패... 냄비를 비웠다.");
-        SoundController.instance.source.PlayOneShot(resultFailClips[Random.Range(0, resultFailClips.Length)]);
+        SoundController.instance.sources[0].PlayOneShot(resultFailClips[Random.Range(0, resultFailClips.Length)]);
         potList.Clear();
     }
 

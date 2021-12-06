@@ -2,16 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBehaviour : MonoBehaviour, IAttackFunc, IGetHitFunc
+public class PlayerBehaviour : Singleton<PlayerBehaviour>, IAttackFunc, IGetHitFunc
 {
-    void Start()
+    private void Awake()
     {
-        
-    }
-
-    void Update()
-    {
-        
+        DontDestroyOnLoad(gameObject);
     }
 
     public void Attack()

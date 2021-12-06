@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class WaterStream : MonoBehaviour
 {
-    private LineRenderer lineRenderer = null;
-    private ParticleSystem splashParticle = null;
-    private Coroutine pourRoutine = null;
     public Transform origin = null;
-    private Vector3 targetPosition = Vector3.zero;
+
+    LineRenderer lineRenderer = null;
+    ParticleSystem splashParticle = null;
+    Coroutine pourRoutine = null;
+    
+    Vector3 targetPosition = Vector3.zero;
 
     private void Awake()
     {
@@ -33,6 +35,7 @@ public class WaterStream : MonoBehaviour
         StopCoroutine(pourRoutine);
         pourRoutine = StartCoroutine(EndPour());
     }
+
     private IEnumerator BeginPour()
     {
         while (gameObject.activeSelf)
@@ -42,9 +45,9 @@ public class WaterStream : MonoBehaviour
             //int layerMask = LayerMask.NameToLayer("HitCheck");
             if (Physics.Raycast(transform.position, Vector3.down * 1f, out hit))
             {
-                Debug.Log("닿은녀석 :" + hit.collider.name);
+                Debug.Log("닿은 부분 :" + hit.collider.name);
                 if(hit.collider.gameObject.name.Equals("HitCheck"))
-                    hit.collider.gameObject.GetComponent<CheckMenu>().putWaterCheck();
+                    hit.collider.gameObject.GetComponent<CheckMenu>().PutWaterCheck(this);
             }
 
             targetPosition = FindEndPoint();
@@ -107,6 +110,5 @@ public class WaterStream : MonoBehaviour
             splashParticle.gameObject.SetActive(isHitting);
             yield return null;
         }
-        
     }
 }
