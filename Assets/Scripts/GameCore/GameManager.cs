@@ -74,9 +74,10 @@ public class GameManager : Singleton<GameManager>
 
 
 
-    private new void Awake()
+    public override void Awake()
     {
         base.Awake();
+        Debug.Log(instance);
         DontDestroyOnLoad(gameObject);
         Score = 0;
         HeroTime = 0;

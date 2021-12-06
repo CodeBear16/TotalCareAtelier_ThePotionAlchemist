@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DevilBehaviour : MonoBehaviour, IAttackFunc, IGetHitFunc
+public class DevilBehaviour : MonoBehaviour
 {
     private void Start()
     {
@@ -13,6 +13,7 @@ public class DevilBehaviour : MonoBehaviour, IAttackFunc, IGetHitFunc
     {
         while (true)
         {
+
             int randomAppear = Random.Range(30, 40);
             yield return new WaitForSeconds(randomAppear);
             // GameObject.FindGameObjectWithTag("Devil").SetActive(true);
@@ -36,12 +37,12 @@ public class DevilBehaviour : MonoBehaviour, IAttackFunc, IGetHitFunc
         {
             GetComponent<Animation>().CrossFade("attack_short_001", 0.0f);
             GetComponent<Animation>().CrossFadeQueued("idle_combat");
-            // ÇÃ·¹ÀÌ¾î hit¿¡ hp°¡ ÁÙ¾îµå´Â ÄÚµå ÇÊ¿ä
+            // í”Œë ˆì´ì–´ hitì— hpê°€ ì¤„ì–´ë“œëŠ” ì½”ë“œ í•„ìš”
         }
     }
 
     public void GetHit()
     {
-        // ¸ó½ºÅÍÀÇ hp°¡ ÁÙ¾îµå´Â ÄÚµå ÇÊ¿ä
+        // ëª¬ìŠ¤í„°ì˜ hpê°€ ì¤„ì–´ë“œëŠ” ì½”ë“œ í•„ìš”
     }
 }
