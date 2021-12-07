@@ -6,34 +6,7 @@ using TMPro;
 
 public class GameManager : Singleton<GameManager>
 {
-    Dictionary<int, string> foodList = new Dictionary<int, string>();
-    Dictionary<int, string> foodKindList = new Dictionary<int, string>();
-    public void MuMukG()
-    {
-        foodList.Add(0, "한식");
-        foodList.Add(1, "중식");
-        foodList.Add(2, "양식");
-        foodList.Add(3, "일식");
-
-        foodKindList.Add(0, "면");
-        foodKindList.Add(1, "밥");
-        foodKindList.Add(2, "빵");
-        foodKindList.Add(3, "고기");
-
-        int alcohol = Random.Range(0, 3);
-
-
-        int kind = 0;
-        kind = Random.Range(0, 3);
-        int foodKind = Random.Range(0, 3);
-        Debug.Log(" 음식 뭐먹지? " + foodList[kind]);
-        Debug.Log(" 음식 종류 : " + foodKindList[foodKind]);
-        if (alcohol == 1)
-            Debug.Log("마셔마셔~");
-        else
-            Debug.Log("술은 마시지 말자");
-    }
-
+    #region Variables
     public TextMeshProUGUI scoreWatch;
     public int score;
     public int Score
@@ -45,8 +18,7 @@ public class GameManager : Singleton<GameManager>
         set
         {
             score = value;
-            //잠깐 수정함 쏘리
-            //scoreWatch.text = score + "점";
+            scoreWatch.text = score + "점";
             if (score >= winScore)
                 GoodEndEvent();
         }
@@ -64,48 +36,53 @@ public class GameManager : Singleton<GameManager>
         set
         {
             heroTime = value;
-            //잠깐 수정함 쏘리
-            //heroTimeWatch.text = ToWatch(heroTime);
-            if (heroTime >= loseTime)
+            heroTimeWatch.text = ToWatch(heroTime);
+            if (heroTime <= loseTime)
                 BadEndEvent();
         }
     }
-    public const int loseTime = 600;
+    public const int giveTime = 600;
+    public const int loseTime = 0;
+
+    AsyncOperation startAsync;
+    #endregion
 
 
-
-    public override void Awake()
+    #region Methods
+    private void Start()
     {
-        base.Awake();
-        Debug.Log(instance);
-        DontDestroyOnLoad(gameObject);
-        Score = 0;
-        HeroTime = 0;
-        MuMukG();
+        startAsync = SceneManager.LoadSceneAsync(1);
+        startAsync.allowSceneActivation = false;
     }
 
     public string ToWatch(int time)
     {
-        return (time / 60) + "분 " + (time % 60) + "초";
+        return (time / 60) + "분 : " + (time % 60) + "초";
     }
 
     public IEnumerator GameTimer()
     {
+        yield return new WaitForSeconds(3);
+
         while (true)
         {
-            
+            yield return new WaitForSeconds(1);
+            HeroTime--;
             yield return null;
         }
     }
-
+    #endregion
 
 
     #region Various Events
     public void GameStartEvent()
     {
         Debug.Log("게임 시작");
-        SceneManager.LoadScene(1);
         SoundController.instance.MusicLoader = 1;
+        Score = 0;
+        HeroTime = giveTime;
+        startAsync.allowSceneActivation = true;
+        StartCoroutine(GameTimer());
     }
 
     public void DemonIncomeEvent()

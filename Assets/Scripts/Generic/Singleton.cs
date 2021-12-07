@@ -6,13 +6,13 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
 {
     public static T instance = null;
 
-    public virtual void Awake()
+    public void Awake()
     {
         if (instance == null)
             instance = (T)this;
         else
             Destroy(gameObject);
 
-        //DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 }

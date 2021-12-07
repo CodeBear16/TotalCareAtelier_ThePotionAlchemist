@@ -13,41 +13,41 @@ public class BottleCorkPopper : MonoBehaviour
     private AudioSource source;
     private OVRGrabbable grabbable;
 
-    void Start()
+    private void Start()
     {
         source = GetComponent<AudioSource>();
         grabbable = GetComponent<OVRGrabbable>();
     }
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Keypad0))
+        //if (Input.GetKeyDown(KeyCode.Keypad0))
+        //{
+        //    Debug.Log("누름");
+        //    cork.SetActive(false);
+        //    pour.SetActive(true);
+        //    source.PlayOneShot(popClip);
+        //}
+        if (grabbable.isGrabbed)
         {
-            Debug.Log("누름");
-            cork.SetActive(false);
-            pour.SetActive(true);
-            source.PlayOneShot(popClip);
+            if (cork.activeSelf)
+            {
+                if (OVRInput.GetDown(OVRInput.Button.One) || OVRInput.GetDown(OVRInput.Button.Three))
+                {
+                    cork.SetActive(false);
+                    pour.SetActive(true);
+                    source.PlayOneShot(popClip);
+                }
+            }
         }
-        //if (grabbable.isGrabbed)
-        //{
-        //    if (cork.activeSelf)
-        //    {
-        //        if (OVRInput.GetDown(OVRInput.Button.One) || OVRInput.GetDown(OVRInput.Button.Three))
-        //        {
-        //            cork.SetActive(false);
-        //            pour.SetActive(true);
-        //            source.PlayOneShot(popClip);
-        //        }
-        //    }
-        //}
-        //else
-        //{
-        //    if (cork.activeSelf == false)
-        //    {
-        //        cork.SetActive(true);
-        //        pour.SetActive(false);
-        //        source.PlayOneShot(putClip);
-        //    }
-        //}
+        else
+        {
+            if (cork.activeSelf == false)
+            {
+                cork.SetActive(true);
+                pour.SetActive(false);
+                source.PlayOneShot(putClip);
+            }
+        }
     }
 }

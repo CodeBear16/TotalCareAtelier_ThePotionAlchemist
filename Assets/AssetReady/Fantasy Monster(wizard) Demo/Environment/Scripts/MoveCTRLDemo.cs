@@ -15,8 +15,7 @@ public class MoveCTRLDemo : MonoBehaviour, IAttackFunc, IGetHitFunc
 	// 추가
 	public int devilHp = 100;
 
-	// Use this for initialization
-	void Start () 
+	private void Start () 
 	{
 		if ( null != GetComponent<Animation>() ) hasAniComp = true;
 		StartCoroutine(DevilAttack());
@@ -30,6 +29,7 @@ public class MoveCTRLDemo : MonoBehaviour, IAttackFunc, IGetHitFunc
 			Attack();
 
 			if (devilHp <= 0) Die();
+			yield return null;
 		}
     }
 
@@ -134,61 +134,60 @@ public class MoveCTRLDemo : MonoBehaviour, IAttackFunc, IGetHitFunc
 		return false;
 	}
 
-	// Update is called once per frame
 	void Update () 
 	{
 		Move();
 
-		if ( hasAniComp == true )
-		{	
+		if (hasAniComp == true)
+		{
 			if (Input.GetKey(KeyCode.V))
-			{	
-				if ( CheckAniClip( "dead" ) == false ) return;
+			{
+				if (CheckAniClip("dead") == false) return;
 
-				GetComponent<Animation>().CrossFade("dead",0.2f);
+				GetComponent<Animation>().CrossFade("dead", 0.2f);
 				//					animation.CrossFadeQueued("idle_normal");
 
-			if (Input.GetKey(KeyCode.Q))
-			{	
-				if ( CheckAniClip( "attack_short_001" ) == false ) return;
+				if (Input.GetKey(KeyCode.Q))
+				{
+					if (CheckAniClip("attack_short_001") == false) return;
 
-				GetComponent<Animation>().CrossFade("attack_short_001",0.0f);
-				GetComponent<Animation>().CrossFadeQueued("idle_combat");
+					GetComponent<Animation>().CrossFade("attack_short_001", 0.0f);
+					GetComponent<Animation>().CrossFadeQueued("idle_combat");
+				}
+				if (Input.GetKey(KeyCode.Z))
+				{
+					if (CheckAniClip("damage_001") == false) return;
+
+					GetComponent<Animation>().CrossFade("damage_001", 0.0f);
+					GetComponent<Animation>().CrossFadeQueued("idle_combat");
+				}
+
+				if (Input.GetKey(KeyCode.D))
+				{
+					if (CheckAniClip("idle_normal") == false) return;
+
+					GetComponent<Animation>().CrossFade("idle_normal", 0.0f);
+					GetComponent<Animation>().CrossFadeQueued("idle_normal");
+				}
+
+				if (Input.GetKey(KeyCode.F))
+				{
+					if (CheckAniClip("idle_combat") == false) return;
+
+					GetComponent<Animation>().CrossFade("idle_combat", 0.0f);
+					GetComponent<Animation>().CrossFadeQueued("idle_normal");
+				}
 			}
-			if (Input.GetKey(KeyCode.Z))
-			{	
-				if ( CheckAniClip( "damage_001" ) == false ) return;
 
-				GetComponent<Animation>().CrossFade("damage_001",0.0f);
-				GetComponent<Animation>().CrossFadeQueued("idle_combat");
+			if (Input.GetKey(KeyCode.LeftArrow))
+			{
+				transform.Rotate(0, Time.deltaTime * -100, 0);
 			}
 
-			if (Input.GetKey(KeyCode.D))
-			{	
-				if ( CheckAniClip( "idle_normal" ) == false ) return;
-
-				GetComponent<Animation>().CrossFade("idle_normal",0.0f);
-				GetComponent<Animation>().CrossFadeQueued("idle_normal");			
-			}			
-
-			if (Input.GetKey(KeyCode.F))
-			{	
-				if ( CheckAniClip( "idle_combat" ) == false ) return;
-
-				GetComponent<Animation>().CrossFade("idle_combat",0.0f);
-				GetComponent<Animation>().CrossFadeQueued("idle_normal");			
-			}			
+			if (Input.GetKey(KeyCode.RightArrow))
+			{
+				transform.Rotate(0, Time.deltaTime * 100, 0);
+			}
 		}
-
-		if ( Input.GetKey(KeyCode.LeftArrow))
-		{
-			transform.Rotate( 0,Time.deltaTime*-100,0);
-		}
-
-		if (Input.GetKey(KeyCode.RightArrow))
-		{
-			transform.Rotate(0,Time.deltaTime*100,0);
-		}
-
 	}
 }
