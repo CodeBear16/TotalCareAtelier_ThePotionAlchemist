@@ -13,11 +13,9 @@ public class DevilBehaviour : MonoBehaviour
     {
         while (true)
         {
-
-            int randomAppear = Random.Range(30, 40);
+            int randomAppear = Random.Range(1, 5);
             yield return new WaitForSeconds(randomAppear);
-            // GameObject.FindGameObjectWithTag("Devil").SetActive(true);
-            Attack();
+            gameObject.transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 
@@ -29,20 +27,5 @@ public class DevilBehaviour : MonoBehaviour
             return true;
 
         return false;
-    }
-
-    public void Attack()
-    {
-        if (CheckAniClip("attack_short_001") == false) return;
-        {
-            GetComponent<Animation>().CrossFade("attack_short_001", 0.0f);
-            GetComponent<Animation>().CrossFadeQueued("idle_combat");
-            // 플레이어 hit에 hp가 줄어드는 코드 필요
-        }
-    }
-
-    public void GetHit()
-    {
-        // 몬스터의 hp가 줄어드는 코드 필요
     }
 }

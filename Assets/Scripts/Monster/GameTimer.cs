@@ -13,14 +13,12 @@ public class GameTimer : MonoBehaviour
     {
         time = 20;
         monsterState = GetComponentInParent<MonsterState>();
-        Debug.Log("���� ������Ʈ ;" + monsterState);
         currentTime = GetComponent<TextMeshProUGUI>();
         currentTime.text = time.ToString();
     }
 
     public void DecreaseTime()
     {
-        Debug.Log("DecreaseTime");
         StartCoroutine(DecreaseingTime());
     }
 
