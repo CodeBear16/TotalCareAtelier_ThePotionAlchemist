@@ -30,8 +30,6 @@ public class MonsterState : MonoBehaviour
 
     GameTimer gameTimer;
 
-    ///string state;
-
     void OnEnable()
     {
         isSuccess = false;
@@ -90,11 +88,17 @@ public class MonsterState : MonoBehaviour
         }
     }
     
-    public void TakePotion(GameObject potion)
+    public void TakePotion(Potion potion)
     {
+        if (potion.symptom == monsterEffect.effect.name)
+            isSuccess = true;
+        else
+            isSuccess = false;
+        gameTimer.ResetTime();
+
         potion.transform.position = potionHand.position;
         potion.transform.parent = potionHand;
-        this.potion = potion;
+        this.potion = potion.gameObject;
 
         if (isSuccess)
         {
@@ -121,15 +125,11 @@ public class MonsterState : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // monster가 destination에 도착하면 멈춤
-        ///if (other.tag == "Destination")
         if (other.gameObject == destination)
         {
-            ///if (other.gameObject == destination)
-            ///{
             transform.LookAt(player.transform.position);
             nav.speed = 0;
             animator.SetBool("Walking", false);
-            destination.GetComponent<MonsterDestination>().Occupy();
 
             // 랜덤 animation
             int aniSelection = Random.Range(1, 6);
@@ -138,7 +138,6 @@ public class MonsterState : MonoBehaviour
             monsterEffect.ShowEffect();
             gameTimer.DecreaseTime();
             Debug.Log("시간 감소시작");
-            ///}
         }
 
         // monster가 exit에 도착하면 오브젝트 비활성화
@@ -148,23 +147,13 @@ public class MonsterState : MonoBehaviour
             nav.speed = 0;
             Destroy(potion);
             MonsterSpawner.instance.ReturnToSpawner(gameObject);
-            ///gameObject.SetActive(false);
         }
 
-        // potion을 받았을 때
+        // potion이 닿으면 받는 동작
         if (other.tag == "Potion")
         {
-            if (other.GetComponent<OVRGrabbable>().isGrabbed == false)
-            {
-                if (other.GetComponent<Potion>().symptom == monsterEffect.effect.name)
-                    isSuccess = true;
-                else
-                    isSuccess = false;
-                //if (포션 이름 == particles[effectSelection].name) isSuccess = true;
-                //else isSuccess = false;
-                gameTimer.ResetTime();
-                TakePotion(other.gameObject);
-            }
+            Debug.Log("포션 받음");
+            TakePotion(other.GetComponent<Potion>());
         }
     }
 }

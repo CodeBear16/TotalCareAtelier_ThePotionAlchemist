@@ -37,6 +37,8 @@ public class BottleCorkPopper : MonoBehaviour
                     cork.SetActive(false);
                     pour.SetActive(true);
                     source.PlayOneShot(popClip);
+                    OVRInput.SetControllerVibration(0.5f, 0.5f, 5.5f, OVRInput.Controller.RTouch);
+                    OVRInput.SetControllerVibration(0.5f, 0.5f, 5.5f, OVRInput.Controller.LTouch);
                 }
             }
         }
