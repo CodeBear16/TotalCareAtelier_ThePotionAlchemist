@@ -4,9 +4,20 @@ using UnityEngine;
 
 public class PlayerBehaviour : Singleton<PlayerBehaviour>, IAttackFunc, IGetHitFunc
 {
+    public int time = 0;
+
     public void Attack()
     {
+        StartCoroutine(IncreasingTime());
+    }
 
+    IEnumerator IncreasingTime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            time++;
+        }
     }
 
     public void GetHit()
