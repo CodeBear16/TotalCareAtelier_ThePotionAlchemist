@@ -54,7 +54,7 @@ public class MonsterSpawner : Singleton<MonsterSpawner>
         {
             Spawn();
             // 20~30초에 한 번씩 몬스터 활성화
-            spawnDelay = Random.Range(1, 5);
+            spawnDelay = Random.Range(1,5);
             yield return new WaitForSeconds(spawnDelay);
         }
     }
@@ -87,6 +87,8 @@ public class MonsterSpawner : Singleton<MonsterSpawner>
         tempObject.SetActive(true);
         Debug.Log(tempObject.name + "가 출현했습니다.");
         // 도착지 지정
+        Debug.Log(tempObject);
+        Debug.Log(tempObject.GetComponent<MonsterState>());
         tempObject.GetComponent<MonsterState>().Setting(destination.gameObject);
         ///tempObject.GetComponent<MonsterState>().state = "SpawnerToDestination";
         ///tempObject.GetComponent<MonsterState>().Walking();
@@ -112,4 +114,4 @@ public class MonsterSpawner : Singleton<MonsterSpawner>
         tempObject.transform.rotation = transform.rotation;
         tempObject.SetActive(false);
     }
-}
+} 

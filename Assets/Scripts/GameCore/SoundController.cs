@@ -35,8 +35,9 @@ public class SoundController : Singleton<SoundController>
         }
     }
 
-    private void Awake()
+    private new void Awake()
     {
+        base.Awake();
         DontDestroyOnLoad(gameObject);
     }
 

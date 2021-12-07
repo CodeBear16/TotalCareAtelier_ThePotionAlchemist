@@ -13,14 +13,21 @@ public class BottleCorkPopper : MonoBehaviour
     private AudioSource source;
     private OVRGrabbable grabbable;
 
-    void Start()
+    private void Start()
     {
         source = GetComponent<AudioSource>();
         grabbable = GetComponent<OVRGrabbable>();
     }
 
-    void Update()
+    private void Update()
     {
+        //if (Input.GetKeyDown(KeyCode.Keypad0))
+        //{
+        //    Debug.Log("´©¸§");
+        //    cork.SetActive(false);
+        //    pour.SetActive(true);
+        //    source.PlayOneShot(popClip);
+        //}
         if (grabbable.isGrabbed)
         {
             if (cork.activeSelf)

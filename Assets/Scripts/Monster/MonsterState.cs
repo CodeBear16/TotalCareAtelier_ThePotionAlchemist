@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class MonsterState : MonoBehaviour
 {
-    #region Monster's Lifecycle ¸ó½ºÅÍÀÇ ·çÆ¾
+    #region Monster's Lifecycle ëª¬ìŠ¤í„°ì˜ ë£¨í‹´
     ///public MonsterSpawner monsterSpawner;
     ///public List<GameObject> destinationList;
     public GameObject destination;
@@ -15,31 +15,34 @@ public class MonsterState : MonoBehaviour
     GameObject player;
     #endregion
 
-    // switch °ª
-    string monsterState;
+    // switch ê°’
+    public string monsterState;
 
     ///Transform playerPosition;
-    public bool isSuccess = false; // ------------------------------ player¿Í ¿¬µ¿ÇØ¾ß ÇÔ, »èÁ¦ ÇÊ
+    public bool isSuccess = false; // ------------------------------ playerì™€ ì—°ë™í•´ì•¼ í•¨, ì‚­ì œ í•„
 
     Animator animator;
     MonsterEffect monsterEffect;
 
-    // Potion ¹Ş´Â ¼Õ À§Ä¡
+    // Potion ë°›ëŠ” ì† ìœ„ì¹˜
     public Transform potionHand;
     public GameObject potion;
+
+    GameTimer gameTimer;
 
     ///string state;
 
     void OnEnable()
     {
-        exit = GameObject.Find("Exit");
-        nav = GetComponent<NavMeshAgent>();
-        player = GameObject.Find("Player");
-        
         isSuccess = false;
+        player = GameObject.Find("Player");
+        exit = GameObject.Find("Exit");
+        potionHand = transform.Find("PotionPos");
+
+        nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         monsterEffect = GetComponent<MonsterEffect>();
-        potionHand = transform.Find("PotionPos");
+        gameTimer = transform.Find("Canvas").GetComponentInChildren<GameTimer>();
     }
 
     public void Setting(GameObject destination)
@@ -54,7 +57,7 @@ public class MonsterState : MonoBehaviour
     {
         switch (monsterState)
         {
-            // [---------------- spawner¿¡¼­ destinationÀ¸·Î ÀÌµ¿ ----------------]
+            // [---------------- spawnerì—ì„œ destinationìœ¼ë¡œ ì´ë™ ----------------]
             case "SpawnerToDestination":
 
                 ///if (destinationList.Count <= 0) break;
@@ -71,14 +74,15 @@ public class MonsterState : MonoBehaviour
                 ///destination.SetActive(true);
                 ///this.destination = destination;
                 ///MonsterSpawner.destinationList.RemoveAt(selectDestination);
-                Debug.Log(destination.name + "·Î ÀÌµ¿ÇÏ´Â " + gameObject.name);
+                Debug.Log(destination.name + "ë¡œ ì´ë™í•˜ëŠ” " + gameObject.name);
                 ///}
-                destination.GetComponent<MonsterDestination>().Occupy();
                 break;
-            // [---------------- destination¿¡¼­ exit·Î ÀÌµ¿ ----------------]
+
+            // [---------------- destinationì—ì„œ exitë¡œ ì´ë™ ----------------]
             case "DestinationToExit":
 
                 nav.SetDestination(exit.transform.position);
+                Debug.Log(exit.name + "ë¡œ ì´ë™í•˜ëŠ” " + gameObject.name);
                 ///MonsterSpawner.destinationList.Add(this.destination);
                 ///this.destination.SetActive(false);
                 destination.GetComponent<MonsterDestination>().Leave();
@@ -95,6 +99,7 @@ public class MonsterState : MonoBehaviour
         if (isSuccess)
         {
             GameManager.instance.Score += 10;
+            HeroComing.instance.comingDistance -= Time.deltaTime * 2;
             animator.SetBool("Drinking", true);
             animator.SetBool("Walking", true);
             monsterEffect.HideEffect();
@@ -103,7 +108,10 @@ public class MonsterState : MonoBehaviour
         else
         {
             GameManager.instance.Score -= 10;
+            HeroComing.instance.comingDistance += Time.deltaTime * 2;
             animator.SetBool("SadWalk", true);
+            GameObject.Find("MonsterUnHappy").transform.GetChild(GameManager.instance.monsterUnhappy).gameObject.SetActive(true);
+            GameManager.instance.MonsterUnhappy++;
         }
 
         monsterState = "DestinationToExit";
@@ -112,7 +120,7 @@ public class MonsterState : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // monster°¡ destination¿¡ µµÂøÇÏ¸é ¸ØÃã
+        // monsterê°€ destinationì— ë„ì°©í•˜ë©´ ë©ˆì¶¤
         ///if (other.tag == "Destination")
         if (other.gameObject == destination)
         {
@@ -121,25 +129,29 @@ public class MonsterState : MonoBehaviour
             transform.LookAt(player.transform.position);
             nav.speed = 0;
             animator.SetBool("Walking", false);
-            // ·£´ı animation
+            destination.GetComponent<MonsterDestination>().Occupy();
+
+            // ëœë¤ animation
             int aniSelection = Random.Range(1, 6);
             animator.SetInteger("MonsterState", aniSelection);
 
             monsterEffect.ShowEffect();
+            gameTimer.DecreaseTime();
+            Debug.Log("ì‹œê°„ ê°ì†Œì‹œì‘");
             ///}
         }
 
-        // monster°¡ exit¿¡ µµÂøÇÏ¸é ¿ÀºêÁ§Æ® ºñÈ°¼ºÈ­
+        // monsterê°€ exitì— ë„ì°©í•˜ë©´ ì˜¤ë¸Œì íŠ¸ ë¹„í™œì„±í™”
         if (other.tag == "Exit")
         {
-            Debug.Log("Ãâ±¸¿¡ µµÂø");
+            Debug.Log("ì¶œêµ¬ì— ë„ì°©");
             nav.speed = 0;
             Destroy(potion);
             MonsterSpawner.instance.ReturnToSpawner(gameObject);
             ///gameObject.SetActive(false);
         }
 
-        // potionÀ» ¹Ş¾ÒÀ» ¶§
+        // potionì„ ë°›ì•˜ì„ ë•Œ
         if (other.tag == "Potion")
         {
             if (other.GetComponent<OVRGrabbable>().isGrabbed == false)
@@ -148,8 +160,9 @@ public class MonsterState : MonoBehaviour
                     isSuccess = true;
                 else
                     isSuccess = false;
-                //if (Æ÷¼Ç ÀÌ¸§ == particles[effectSelection].name) isSuccess = true;
+                //if (í¬ì…˜ ì´ë¦„ == particles[effectSelection].name) isSuccess = true;
                 //else isSuccess = false;
+                gameTimer.ResetTime();
                 TakePotion(other.gameObject);
             }
         }

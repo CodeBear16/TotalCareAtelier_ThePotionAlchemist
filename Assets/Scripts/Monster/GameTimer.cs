@@ -5,44 +5,45 @@ using TMPro;
 
 public class GameTimer : MonoBehaviour
 {
-    GameObject gameTimer;
-    public List<GameObject> timer;
     TextMeshProUGUI currentTime;
-    float time = 60;
+    public int time;
+    MonsterState monsterState;
 
     private void Start()
     {
-        gameTimer = this.gameObject;
-        timer = new List<GameObject>();
-
-        for (int i = 0; i < gameTimer.transform.childCount; i++)
-            timer.Add(gameTimer.transform.GetChild(i).gameObject);
-        
-        currentTime.text = timer.ToString();
+        time = 20;
+        monsterState = GetComponentInParent<MonsterState>();
+        currentTime = GetComponent<TextMeshProUGUI>();
+        currentTime.text = time.ToString();
     }
 
     public void DecreaseTime()
     {
-        while(time >= 0 && time <= 60)
-            time -= Time.deltaTime;
+        StartCoroutine(DecreaseingTime());
     }
 
-    public float Timer
+    IEnumerator DecreaseingTime()
     {
-        get
+        while(true)
         {
-            return time;
+            yield return new WaitForSeconds(1);
+            time --;
+            currentTime.text = time.ToString();
+            if (time == 0)
+            {
+                ResetTime();
+                break;
+            }
         }
-
-        set
+    }
+    public void ResetTime()
+    {
+        if (time == 0)
         {
-            time = value;
-
-            //if(time <= 0 || isSuccess == true)
-            //{
-            //    monsterPool[spawnCount].GetComponent<MonsterState>().monsterState = "DestinationToExit";
-            //    time = 60;
-            //} 
+            monsterState.monsterState = "DestinationToExit";
+            monsterState.Walking();
+            GameManager.instance.Score -= 10;
         }
+        time = 60;
     }
 }
