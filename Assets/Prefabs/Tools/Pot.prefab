@@ -214,8 +214,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7994c7ed62f75eb48b39d118b2a995f0, type: 3}
   - {fileID: 8300000, guid: 8b74e6156d79865448fdf17efa6c98b6, type: 3}
   resultFailClips:
-  - {fileID: 8300000, guid: 9716826031f157048ad73ce3e2c09627, type: 3}
-  - {fileID: 8300000, guid: 5fb01698291b85e49b598e4d137e0b9c, type: 3}
+  - {fileID: 8300000, guid: 186f096c593887c489a57445e0a21734, type: 3}
+  - {fileID: 8300000, guid: c318578ccc168364db5e0fa85571d024, type: 3}
+  loopBoilingClip: {fileID: 8300000, guid: 7266281c520c6cb43956d16dadbbfc17, type: 3}
   createSpot: {fileID: 0}
   recipes:
   - result: {fileID: 6995862889047349806, guid: e85f0a6619691bf489ca67bb35082102,

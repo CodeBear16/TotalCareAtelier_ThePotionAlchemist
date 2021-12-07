@@ -21,6 +21,7 @@ public class Pot : Singleton<Pot>
     }
     Dictionary<GameObject, AudioClip> clipDic = new Dictionary<GameObject, AudioClip>();
     public AudioClip[] resultFailClips;
+    public AudioClip loopBoilingClip;
     #endregion
 
     #region Recipes
