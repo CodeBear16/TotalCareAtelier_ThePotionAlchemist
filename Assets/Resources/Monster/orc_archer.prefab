@@ -2715,6 +2715,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5956190687346144323, guid: 0fbdfb39a340b794c8fcb147daa8cc12,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b4c937059ca8e884498dc1d3e3281b85,
+        type: 2}
+    - target: {fileID: 5956190687346144323, guid: 0fbdfb39a340b794c8fcb147daa8cc12,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8238436496296694434, guid: b4c937059ca8e884498dc1d3e3281b85,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fbdfb39a340b794c8fcb147daa8cc12, type: 3}
 --- !u!224 &7645473967130553077 stripped

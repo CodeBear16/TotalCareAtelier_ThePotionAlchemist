@@ -7,6 +7,7 @@ using TMPro;
 public class GameManager : Singleton<GameManager>
 {
     #region Variables
+    // 스코어 조건
     public TextMeshProUGUI scoreWatch;
     public int score;
     public int Score
@@ -44,6 +45,23 @@ public class GameManager : Singleton<GameManager>
     public const int giveTime = 600;
     public const int loseTime = 0;
 
+    // 게임 오버 조건
+    public bool isGameOver;
+    public int monsterUnhappy;
+    public int MonsterUnhappy
+    { 
+        get
+        {
+            return monsterUnhappy;
+        }
+
+        set
+        {
+            monsterUnhappy = value;
+            if (monsterUnhappy == 4) BadEndEvent();
+        }
+    }
+
     AsyncOperation startAsync;
     #endregion
 
@@ -53,6 +71,10 @@ public class GameManager : Singleton<GameManager>
     {
         startAsync = SceneManager.LoadSceneAsync(1);
         startAsync.allowSceneActivation = false;
+
+        score = 0;
+        isGameOver = false;
+        monsterUnhappy = 0;
     }
 
     public string ToWatch(int time)
@@ -72,6 +94,7 @@ public class GameManager : Singleton<GameManager>
         }
     }
     #endregion
+
 
 
     #region Various Events

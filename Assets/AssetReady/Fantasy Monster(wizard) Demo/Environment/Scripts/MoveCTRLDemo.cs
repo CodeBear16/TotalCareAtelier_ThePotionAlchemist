@@ -5,7 +5,7 @@ public class MoveCTRLDemo : MonoBehaviour, IAttackFunc, IGetHitFunc
 {
 	// 에셋에 포함되어있던 것
 	private float move = 20;
-	private bool stop = false;	
+	private bool stop = false;
 	private float blend;
 	private float delay = 0;
 	public float AddRunSpeed = 1;
@@ -17,21 +17,20 @@ public class MoveCTRLDemo : MonoBehaviour, IAttackFunc, IGetHitFunc
 
 	private void Start () 
 	{
-		if ( null != GetComponent<Animation>() ) hasAniComp = true;
+		if (null != GetComponent<Animation>()) hasAniComp = true;
 		StartCoroutine(DevilAttack());
 	}
 
 	IEnumerator DevilAttack()
-    {
-		while(true)
-        {
+	{
+		while (true)
+		{
 			yield return new WaitForSeconds(2);
 			Attack();
-
 			if (devilHp <= 0) Die();
 			yield return null;
 		}
-    }
+	}
 
 	public void Attack()
 	{
@@ -47,67 +46,67 @@ public class MoveCTRLDemo : MonoBehaviour, IAttackFunc, IGetHitFunc
 	}
 
 	public void Die()
-    {
+	{
 		if (CheckAniClip("dead") == false) return;
 
 		GetComponent<Animation>().CrossFade("dead", 0.2f);
 		gameObject.SetActive(false);
 	}
 
-	void Move ()
-	{ 
-		float speed =0.0f;
-		float add =0.0f;
+	void Move()
+	{
+		float speed = 0.0f;
+		float add = 0.0f;
 
-		if ( hasAniComp == true )
-		{	
-			if ( Input.GetKey(KeyCode.UpArrow) )
-			{  	
+		if (hasAniComp == true)
+		{
+			if (Input.GetKey(KeyCode.UpArrow))
+			{
 				move *= 1.015F;
 
-				if ( move>250 && CheckAniClip( "move_forward_fast" )==true )
+				if (move > 250 && CheckAniClip("move_forward_fast") == true)
 				{
 					{
 						GetComponent<Animation>().CrossFade("move_forward_fast");
-						add = 20*AddRunSpeed;
+						add = 20 * AddRunSpeed;
 					}
 				}
 				else
 				{
 					GetComponent<Animation>().Play("move_forward");
-					add = 5*AddWalkSpeed;
+					add = 5 * AddWalkSpeed;
 				}
 
-				speed = Time.deltaTime*add;
+				speed = Time.deltaTime * add;
 
-				transform.Translate( 0,0,speed );
+				transform.Translate(0, 0, speed);
 			}
 
 
-			if ( Input.GetKeyUp(KeyCode.UpArrow))
+			if (Input.GetKeyUp(KeyCode.UpArrow))
 			{
-				if ( GetComponent<Animation>().IsPlaying("move_forward"))
-				{	GetComponent<Animation>().CrossFade("idle_normal",0.3f); }
-				if ( GetComponent<Animation>().IsPlaying("move_forward_fast"))
-				{	
-					GetComponent<Animation>().CrossFade("idle_normal",0.5f);
+				if (GetComponent<Animation>().IsPlaying("move_forward"))
+				{ GetComponent<Animation>().CrossFade("idle_normal", 0.3f); }
+				if (GetComponent<Animation>().IsPlaying("move_forward_fast"))
+				{
+					GetComponent<Animation>().CrossFade("idle_normal", 0.5f);
 					stop = true;
-				}	
+				}
 				move = 20;
 			}
 
 			if (stop == true)
-			{	
-				float max = Time.deltaTime*20*AddRunSpeed;
-				blend = Mathf.Lerp(max,0,delay);
+			{
+				float max = Time.deltaTime * 20 * AddRunSpeed;
+				blend = Mathf.Lerp(max, 0, delay);
 
-				if ( blend > 0 )
-				{	
-					transform.Translate( 0,0,blend );
-					delay += 0.025f; 
-				}	
-				else 
-				{	
+				if (blend > 0)
+				{
+					transform.Translate(0, 0, blend);
+					delay += 0.025f;
+				}
+				else
+				{
 					stop = false;
 					delay = 0.0f;
 				}
@@ -115,20 +114,20 @@ public class MoveCTRLDemo : MonoBehaviour, IAttackFunc, IGetHitFunc
 		}
 		else
 		{
-			if ( Input.GetKey(KeyCode.UpArrow) )
-			{  	
-				add = 5*AddWalkSpeed;
-				speed = Time.deltaTime*add;
-				transform.Translate( 0,0,speed );
+			if (Input.GetKey(KeyCode.UpArrow))
+			{
+				add = 5 * AddWalkSpeed;
+				speed = Time.deltaTime * add;
+				transform.Translate(0, 0, speed);
 			}
 		}
 	}
 
-	bool CheckAniClip ( string clipname )
-	{	
-		if( this.GetComponent<Animation>().GetClip(clipname) == null ) 
+	bool CheckAniClip(string clipname)
+	{
+		if (this.GetComponent<Animation>().GetClip(clipname) == null)
 			return false;
-		else if ( this.GetComponent<Animation>().GetClip(clipname) != null ) 
+		else if (this.GetComponent<Animation>().GetClip(clipname) != null)
 			return true;
 
 		return false;
