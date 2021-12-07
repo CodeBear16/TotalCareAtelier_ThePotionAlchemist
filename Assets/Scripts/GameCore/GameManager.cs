@@ -47,7 +47,7 @@ public class GameManager : Singleton<GameManager>
 
     // 게임 오버 조건
     public bool isGameOver;
-    public int monsterUnhappy;
+    public int monsterUnhappy = 0;
     public int MonsterUnhappy
     { 
         get
