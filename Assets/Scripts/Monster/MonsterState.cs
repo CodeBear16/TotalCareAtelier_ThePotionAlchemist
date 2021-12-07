@@ -99,6 +99,7 @@ public class MonsterState : MonoBehaviour
         if (isSuccess)
         {
             GameManager.instance.Score += 10;
+            HeroComing.instance.comingDistance -= Time.deltaTime * 2;
             animator.SetBool("Drinking", true);
             animator.SetBool("Walking", true);
             monsterEffect.HideEffect();
@@ -107,7 +108,10 @@ public class MonsterState : MonoBehaviour
         else
         {
             GameManager.instance.Score -= 10;
+            HeroComing.instance.comingDistance += Time.deltaTime * 2;
             animator.SetBool("SadWalk", true);
+            GameObject.Find("MonsterUnHappy").transform.GetChild(GameManager.instance.monsterUnhappy).gameObject.SetActive(true);
+            GameManager.instance.MonsterUnhappy++;
         }
 
         monsterState = "DestinationToExit";

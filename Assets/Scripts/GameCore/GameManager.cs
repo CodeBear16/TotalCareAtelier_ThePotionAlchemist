@@ -6,36 +6,17 @@ using TMPro;
 
 public class GameManager : Singleton<GameManager>
 {
-    Dictionary<int, string> foodList = new Dictionary<int, string>();
-    Dictionary<int, string> foodKindList = new Dictionary<int, string>();
-    public void MuMukG()
-    {
-        foodList.Add(0, "한식");
-        foodList.Add(1, "중식");
-        foodList.Add(2, "양식");
-        foodList.Add(3, "일식");
-
-        foodKindList.Add(0, "면");
-        foodKindList.Add(1, "밥");
-        foodKindList.Add(2, "빵");
-        foodKindList.Add(3, "고기");
-
-        int alcohol = Random.Range(0, 3);
-
-
-        int kind = 0;
-        kind = Random.Range(0, 3);
-        int foodKind = Random.Range(0, 3);
-        Debug.Log(" 음식 뭐먹지? " + foodList[kind]);
-        Debug.Log(" 음식 종류 : " + foodKindList[foodKind]);
-        if (alcohol == 1)
-            Debug.Log("마셔마셔~");
-        else
-            Debug.Log("술은 마시지 말자");
-    }
-
+    // 스코어 조건
     public TextMeshProUGUI scoreWatch;
     public int score;
+
+    private void Start()
+    {
+        score = 0;
+        isGameOver = false;
+        monsterUnhappy = 0;
+    }
+
     public int Score
     {
         get
@@ -51,6 +32,7 @@ public class GameManager : Singleton<GameManager>
                 GoodEndEvent();
         }
     }
+
     public const int winScore = 600;
 
     public TextMeshProUGUI heroTimeWatch;
@@ -72,8 +54,6 @@ public class GameManager : Singleton<GameManager>
     }
     public const int loseTime = 600;
 
-
-
     public override void Awake()
     {
         base.Awake();
@@ -81,7 +61,6 @@ public class GameManager : Singleton<GameManager>
         DontDestroyOnLoad(gameObject);
         Score = 0;
         HeroTime = 0;
-        MuMukG();
     }
 
     public string ToWatch(int time)
@@ -93,12 +72,27 @@ public class GameManager : Singleton<GameManager>
     {
         while (true)
         {
-            
             yield return null;
         }
     }
 
+    // 게임 오버 조건
+    public bool isGameOver;
+    public int monsterUnhappy;
 
+    public int MonsterUnhappy
+    { 
+        get
+        {
+            return monsterUnhappy;
+        }
+
+        set
+        {
+            monsterUnhappy = value;
+            if (monsterUnhappy == 4) BadEndEvent();
+        }
+    }
 
     #region Various Events
     public void GameStartEvent()
