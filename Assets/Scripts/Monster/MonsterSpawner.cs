@@ -68,8 +68,7 @@ public class MonsterSpawner : Singleton<MonsterSpawner>
         availableNum.Clear();
 
         spawnCount++;
-        // spawnCount 가 50보다 커지면 다시 처음으로 돌아가게 한다. 
-        ///if (spawnerCount > spawnerMaxSize) spawnerCount = 0;
+        // spawnCount 가 50보다 커지면 다시 처음으로 돌아가게 한다.
         if (spawnCount > monsterPool.Count)
             spawnCount = 0;
 
@@ -83,15 +82,11 @@ public class MonsterSpawner : Singleton<MonsterSpawner>
         }
 
         // 몬스터 활성화
-        ///monsterPool[spawnerCount].transform.position = transform.position;
         tempObject.SetActive(true);
         Debug.Log(tempObject.name + "가 출현했습니다.");
         // 도착지 지정
-        Debug.Log(tempObject);
-        Debug.Log(tempObject.GetComponent<MonsterState>());
+        destination.Occupy();
         tempObject.GetComponent<MonsterState>().Setting(destination.gameObject);
-        ///tempObject.GetComponent<MonsterState>().state = "SpawnerToDestination";
-        ///tempObject.GetComponent<MonsterState>().Walking();
     }
 
     public void CheckDestination()

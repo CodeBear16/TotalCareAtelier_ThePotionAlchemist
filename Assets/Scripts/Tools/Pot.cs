@@ -13,15 +13,16 @@ public struct Recipe
 public class Pot : Singleton<Pot>
 {
     #region Audio Clips
+    public AudioClip[] ingredientPutClips;
     [Tooltip("0: DEBURN\n1: DEPARALYSE\n2: DETOX\n3: EXPLODE")]
     public AudioClip[] resultGoodClips;
-    enum POTION_TYPE
-    {
-        DEBURN, DEPARALYSE, DETOX, EXPLODE
-    }
     Dictionary<GameObject, AudioClip> clipDic = new Dictionary<GameObject, AudioClip>();
     public AudioClip[] resultFailClips;
+    public AudioClip loopBoilingClip;
+    AudioSource source;
     #endregion
+
+    public GameObject particle;
 
     #region Recipes
     public Transform createSpot;
@@ -36,6 +37,10 @@ public class Pot : Singleton<Pot>
     {
         for (int i = 0; i < recipes.Count; i++)
             CreateRecipe(recipes[i].result, recipes[i].ingredients, i);
+        source = GetComponent<AudioSource>();
+        source.clip = loopBoilingClip;
+        source.loop = true;
+        source.Play();
     }
 
     public void CreateRecipe(GameObject resultObj, List<Ingredient> ingredients, int i)
@@ -76,7 +81,7 @@ public class Pot : Singleton<Pot>
             {
                 Instantiate(resultDic[currentRecipe], createSpot);
                 Debug.Log(resultDic[currentRecipe].name + "포션 조제 성공!");
-                SoundController.instance.sources[0].PlayOneShot(clipDic[resultDic[currentRecipe]]);
+                source.PlayOneShot(clipDic[resultDic[currentRecipe]]);
                 potList.Clear();
                 return;
             }
@@ -84,30 +89,38 @@ public class Pot : Singleton<Pot>
             isPossible = true;
             count++;
         }
-
-        Debug.Log("조제 실패... 냄비를 비웠다.");
-        SoundController.instance.sources[0].PlayOneShot(resultFailClips[Random.Range(0, resultFailClips.Length)]);
-        potList.Clear();
+        StartCoroutine(PotionFail());
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Ingredient>() != null)
+        if (other.GetComponent<Ingredient>() != null || other.GetComponent<OVRGrabbable>().isGrabbed == false)
         {
-            if (other.GetComponent<OVRGrabbable>().isGrabbed == false)
-            {
-                string content = other.GetComponent<Ingredient>().ingredientName;
-                if (potList.Contains(content) == false)
-                {
-                    potList.Add(content);
-                    Debug.Log(content + "를 투하했다.");
-                    other.gameObject.SetActive(false);
-                    StartCoroutine(other.GetComponent<Ingredient>().ReturnToSpawner());
-                }
-            }
+            Ingredient content = other.GetComponent<Ingredient>();
+            if (potList.Contains(content.ingredientName) == false)
+                PutIngredient(content);
         }
 
         if (other.GetComponent<IMixFunc>() != null)
             CombineRecipe();
+    }
+
+    private void PutIngredient(Ingredient content)
+    {
+        Debug.Log(content.ingredientName + "를 투하했다.");
+        source.PlayOneShot(ingredientPutClips[Random.Range(0, ingredientPutClips.Length)]);
+        potList.Add(content.ingredientName);
+        content.gameObject.SetActive(false);
+        StartCoroutine(content.ReturnToSpawner());
+    }
+
+    private IEnumerator PotionFail()
+    {
+        Debug.Log("조제 실패... 냄비를 비웠다.");
+        source.PlayOneShot(resultFailClips[Random.Range(0, resultFailClips.Length)]);
+        particle.SetActive(true);
+        potList.Clear();
+        yield return new WaitForSeconds(3);
+        particle.SetActive(false);
     }
 }
