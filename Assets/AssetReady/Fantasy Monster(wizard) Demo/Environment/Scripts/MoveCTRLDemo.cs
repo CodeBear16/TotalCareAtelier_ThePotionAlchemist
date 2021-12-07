@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MoveCTRLDemo : MonoBehaviour, IAttackFunc, IGetHitFunc
+public class MoveCTRLDemo : Singleton<MoveCTRLDemo>, IAttackFunc, IGetHitFunc
 {
 	// 에셋에 포함되어있던 것
 	private float move = 20;
@@ -25,7 +25,7 @@ public class MoveCTRLDemo : MonoBehaviour, IAttackFunc, IGetHitFunc
 	{
 		while (true)
 		{
-			yield return new WaitForSeconds(2);
+			yield return new WaitForSeconds(5);
 			Attack();
 			if (devilHp <= 0) Die();
 			yield return null;
