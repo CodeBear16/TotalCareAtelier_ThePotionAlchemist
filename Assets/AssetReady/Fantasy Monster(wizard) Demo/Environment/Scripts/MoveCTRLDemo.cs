@@ -15,8 +15,7 @@ public class MoveCTRLDemo : MonoBehaviour, IAttackFunc, IGetHitFunc
 	// 추가
 	public int devilHp = 100;
 
-	// Use this for initialization
-	void Start()
+	private void Start () 
 	{
 		if (null != GetComponent<Animation>()) hasAniComp = true;
 		StartCoroutine(DevilAttack());
@@ -29,6 +28,7 @@ public class MoveCTRLDemo : MonoBehaviour, IAttackFunc, IGetHitFunc
 			yield return new WaitForSeconds(2);
 			Attack();
 			if (devilHp <= 0) Die();
+			yield return null;
 		}
 	}
 
@@ -133,8 +133,7 @@ public class MoveCTRLDemo : MonoBehaviour, IAttackFunc, IGetHitFunc
 		return false;
 	}
 
-	// Update is called once per frame
-	void Update()
+	void Update () 
 	{
 		Move();
 
@@ -188,7 +187,6 @@ public class MoveCTRLDemo : MonoBehaviour, IAttackFunc, IGetHitFunc
 			{
 				transform.Rotate(0, Time.deltaTime * 100, 0);
 			}
-
 		}
 	}
 }

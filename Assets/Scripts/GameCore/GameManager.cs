@@ -6,17 +6,10 @@ using TMPro;
 
 public class GameManager : Singleton<GameManager>
 {
+    #region Variables
     // 스코어 조건
     public TextMeshProUGUI scoreWatch;
     public int score;
-
-    private void Start()
-    {
-        score = 0;
-        isGameOver = false;
-        monsterUnhappy = 0;
-    }
-
     public int Score
     {
         get
@@ -26,13 +19,11 @@ public class GameManager : Singleton<GameManager>
         set
         {
             score = value;
-            //잠깐 수정함 쏘리
-            //scoreWatch.text = score + "점";
+            scoreWatch.text = score + "점";
             if (score >= winScore)
                 GoodEndEvent();
         }
     }
-
     public const int winScore = 600;
 
     public TextMeshProUGUI heroTimeWatch;
@@ -46,40 +37,17 @@ public class GameManager : Singleton<GameManager>
         set
         {
             heroTime = value;
-            //잠깐 수정함 쏘리
-            //heroTimeWatch.text = ToWatch(heroTime);
-            if (heroTime >= loseTime)
+            heroTimeWatch.text = ToWatch(heroTime);
+            if (heroTime <= loseTime)
                 BadEndEvent();
         }
     }
-    public const int loseTime = 600;
-
-    public override void Awake()
-    {
-        base.Awake();
-        Debug.Log(instance);
-        DontDestroyOnLoad(gameObject);
-        Score = 0;
-        HeroTime = 0;
-    }
-
-    public string ToWatch(int time)
-    {
-        return (time / 60) + "분 " + (time % 60) + "초";
-    }
-
-    public IEnumerator GameTimer()
-    {
-        while (true)
-        {
-            yield return null;
-        }
-    }
+    public const int giveTime = 600;
+    public const int loseTime = 0;
 
     // 게임 오버 조건
     public bool isGameOver;
     public int monsterUnhappy;
-
     public int MonsterUnhappy
     { 
         get
@@ -94,12 +62,50 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    AsyncOperation startAsync;
+    #endregion
+
+
+    #region Methods
+    private void Start()
+    {
+        startAsync = SceneManager.LoadSceneAsync(1);
+        startAsync.allowSceneActivation = false;
+
+        score = 0;
+        isGameOver = false;
+        monsterUnhappy = 0;
+    }
+
+    public string ToWatch(int time)
+    {
+        return (time / 60) + "분 : " + (time % 60) + "초";
+    }
+
+    public IEnumerator GameTimer()
+    {
+        yield return new WaitForSeconds(3);
+
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            HeroTime--;
+            yield return null;
+        }
+    }
+    #endregion
+
+
+
     #region Various Events
     public void GameStartEvent()
     {
         Debug.Log("게임 시작");
-        SceneManager.LoadScene(1);
         SoundController.instance.MusicLoader = 1;
+        Score = 0;
+        HeroTime = giveTime;
+        startAsync.allowSceneActivation = true;
+        StartCoroutine(GameTimer());
     }
 
     public void DemonIncomeEvent()
