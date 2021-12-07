@@ -1529,6 +1529,33 @@ public static class OVRInput
 		}
 	}
 
+	public static void SetControllerVibration(float frequency, float amplitude, float duration, Controller controllerMask = Controller.Active)
+	{
+		if (OVRManager.loadedXRDevice == OVRManager.XRDevice.Oculus)
+		{
+			if ((controllerMask & Controller.Active) != 0)
+				controllerMask |= activeControllerType;
+
+			for (int i = 0; i < controllers.Count; i++)
+			{
+				OVRControllerBase controller = controllers[i];
+
+				if (ShouldResolveController(controller.controllerType, controllerMask))
+				{
+					controller.SetControllerVibration(frequency, amplitude);
+				}
+			}
+		}
+		else if (OVRManager.loadedXRDevice == OVRManager.XRDevice.OpenVR)
+		{
+			if (controllerMask == Controller.LTouch || controllerMask == Controller.RTouch)
+			{
+				Node controllerNode = (controllerMask == Controller.LTouch) ? Node.LeftHand : Node.RightHand;
+				StartVibration(amplitude, duration, controllerNode);
+			}
+		}
+	}
+
 	/// <summary>
 	/// Returns the battery percentage remaining for the specified controller. Values range from 0 to 100.
 	/// Only applicable to controllers that report battery level.

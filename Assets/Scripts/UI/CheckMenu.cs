@@ -33,7 +33,6 @@ public class CheckMenu : MonoBehaviour
                         Debug.Log(GameManager.instance);
                         GameManager.instance.GameEndEvent();
                     }
-                        
                 }
             }
         }
