@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class SoundController : Singleton<SoundController>
 {
+    [Header("플레이어의 오디오 소스 2개")]
     public AudioSource[] sources;
-    AudioSource tempSource;
+    private AudioSource tempSource;
 
+    [Header("배경음악(상세클립은 툴팁 참고)")]
     [Tooltip("0: 스타트 장면 음악\n1: 인게임 평상시 음악\n2: 긴박한 상황 음악\n3: 굿엔딩 음악\n4: 배드엔딩 음악")]
     public AudioClip[] clips;
 
-    public int musicLoader = 0;
+    [Header("현재 재생 중인 배경음악 클립")]
+    private int musicLoader = 0;
     public int MusicLoader
     {
-        get
-        {
-            return musicLoader;
-        }
+        get { return musicLoader; }
         set
         {
             musicLoader = value;
@@ -27,33 +27,27 @@ public class SoundController : Singleton<SoundController>
                 {
                     tempSource = sources[i];
                     tempSource.clip = clips[musicLoader];
-                    tempSource.Play();
-                    CrossFade(tempSource, sources[Mathf.Abs(i - sources.Length + 1)]);
+                    StartCoroutine(CrossFade(tempSource, sources[Mathf.Abs(i - sources.Length + 1)]));
                     break;
                 }
             }
         }
     }
 
-    private new void Awake()
-    {
-        base.Awake();
-        DontDestroyOnLoad(gameObject);
-    }
-
-    public IEnumerator CrossFade(AudioSource fadeIn, AudioSource fadeOut)
+    private IEnumerator CrossFade(AudioSource fadeIn, AudioSource fadeOut)
     {
         float fadeInVol = 0;
         float fadeOutVol = 1;
 
+        fadeIn.Play();
         while (fadeOut.volume > 0)
         {
-            fadeInVol += Time.deltaTime * 100;
+            fadeInVol += Time.deltaTime/2;
             if (fadeInVol >= 1)
                 fadeInVol = 1;
             fadeIn.volume = fadeInVol;
 
-            fadeOutVol -= Time.deltaTime * 100;
+            fadeOutVol -= Time.deltaTime/2;
             if (fadeOutVol <= 0)
                 fadeOutVol = 0;
             fadeOut.volume = fadeOutVol;

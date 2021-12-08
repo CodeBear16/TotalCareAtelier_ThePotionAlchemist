@@ -21,7 +21,7 @@ public class MonsterState : MonoBehaviour
     ///Transform playerPosition;
     public bool isSuccess = false; // ------------------------------ player와 연동해야 함, 삭제 필
 
-    Animator animator;
+    public Animator animator;
     MonsterEffect monsterEffect;
 
     // Potion 받는 손 위치
@@ -94,7 +94,7 @@ public class MonsterState : MonoBehaviour
             isSuccess = true;
         else
             isSuccess = false;
-        gameTimer.ResetTime();
+        gameTimer.time = 20;
 
         potion.transform.position = potionHand.position;
         potion.transform.parent = potionHand;
@@ -103,7 +103,7 @@ public class MonsterState : MonoBehaviour
         if (isSuccess)
         {
             GameManager.instance.Score += 10;
-            HeroComing.instance.comingDistance -= Time.deltaTime * 2;
+            GameManager.instance.HeroDistance += 10;
             animator.SetBool("Drinking", true);
             animator.SetBool("Walking", true);
             monsterEffect.HideEffect();
@@ -112,10 +112,9 @@ public class MonsterState : MonoBehaviour
         else
         {
             GameManager.instance.Score -= 10;
-            HeroComing.instance.comingDistance += Time.deltaTime * 2;
-            animator.SetBool("SadWalk", true);
-            GameObject.Find("MonsterUnHappy").transform.GetChild(GameManager.instance.monsterUnhappy).gameObject.SetActive(true);
+            GameManager.instance.HeroDistance -= 10;
             GameManager.instance.MonsterUnhappy++;
+            animator.SetBool("SadWalk", true);
         }
 
         monsterState = "DestinationToExit";
@@ -128,7 +127,7 @@ public class MonsterState : MonoBehaviour
         if (other.gameObject == destination)
         {
             transform.LookAt(player.transform.position);
-            nav.speed = 0;
+            //nav.speed = 0;
             animator.SetBool("Walking", false);
 
             // 랜덤 animation

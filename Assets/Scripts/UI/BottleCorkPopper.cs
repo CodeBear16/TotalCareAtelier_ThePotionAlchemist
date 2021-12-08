@@ -32,12 +32,18 @@ public class BottleCorkPopper : MonoBehaviour
         {
             if (cork.activeSelf)
             {
-                if (OVRInput.GetDown(OVRInput.Button.One) || OVRInput.GetDown(OVRInput.Button.Three))
+                if (OVRInput.GetDown(OVRInput.Button.One))
                 {
                     cork.SetActive(false);
                     pour.SetActive(true);
                     source.PlayOneShot(popClip);
                     OVRInput.SetControllerVibration(0.5f, 0.5f, 5.5f, OVRInput.Controller.RTouch);
+                }
+                else if (OVRInput.GetDown(OVRInput.Button.Three))
+                {
+                    cork.SetActive(false);
+                    pour.SetActive(true);
+                    source.PlayOneShot(popClip);
                     OVRInput.SetControllerVibration(0.5f, 0.5f, 5.5f, OVRInput.Controller.LTouch);
                 }
             }
