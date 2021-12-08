@@ -11,7 +11,7 @@ public class GameTimer : MonoBehaviour
 
     private void Start()
     {
-        time = 20;
+        time = 30;
         monsterState = GetComponentInParent<MonsterState>();
         currentTime = GetComponent<TextMeshProUGUI>();
         currentTime.text = time.ToString();
