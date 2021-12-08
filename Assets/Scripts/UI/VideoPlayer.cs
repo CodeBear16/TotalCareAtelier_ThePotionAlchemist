@@ -17,6 +17,6 @@ public class VideoPlayer : MonoBehaviour
 
     void GameEnd()
     {
-        GameManager.instance.GameEndEvent();
+        GameManager.instance.GameQuitEvent();
     }
 }
