@@ -1392,6 +1392,7 @@ GameObject:
   - component: {fileID: 8088007038372548460}
   - component: {fileID: -6292263142560688238}
   - component: {fileID: -114562976785692557}
+  - component: {fileID: -3716695120701998824}
   m_Layer: 0
   m_Name: demon_bomb
   m_TagString: Monster
@@ -1482,9 +1483,9 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1691502918888804}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.7515504
   m_Height: 2.392489
   m_Direction: 1
   m_Center: {x: 0, y: 0.6962445, z: 0}
@@ -1504,6 +1505,7 @@ MonoBehaviour:
   exit: {fileID: 0}
   monsterState: 
   isSuccess: 0
+  animator: {fileID: 0}
   potionHand: {fileID: 0}
   potion: {fileID: 0}
 --- !u!114 &-114562976785692557
@@ -1523,6 +1525,24 @@ MonoBehaviour:
   - {fileID: 1141701926737374290}
   - {fileID: 8084787280152415105}
   effect: {fileID: 523942130919923327}
+--- !u!114 &-3716695120701998824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691502918888804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 0
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1697300957351030
 GameObject:
   m_ObjectHideFlags: 0
@@ -2248,7 +2268,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 60
+  m_text: '30
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b4c937059ca8e884498dc1d3e3281b85, type: 2}
   m_sharedMaterial: {fileID: -8238436496296694434, guid: b4c937059ca8e884498dc1d3e3281b85,
@@ -2330,7 +2352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fdb86ffdff5e6b45b6eb99a48f6646d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 60
+  time: 30
 --- !u!1001 &255007503514005028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2652,15 +2674,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3228a22491941734bb83ad691d17fcb9, type: 3}
---- !u!4 &7908884729343886045 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3090222209084269461, guid: 3228a22491941734bb83ad691d17fcb9,
-    type: 3}
-  m_PrefabInstance: {fileID: 5125286024111481160}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7912746204154011459 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3093714301863329291, guid: 3228a22491941734bb83ad691d17fcb9,
+    type: 3}
+  m_PrefabInstance: {fileID: 5125286024111481160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7908884729343886045 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3090222209084269461, guid: 3228a22491941734bb83ad691d17fcb9,
     type: 3}
   m_PrefabInstance: {fileID: 5125286024111481160}
   m_PrefabAsset: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 19802030}
   - component: {fileID: 19901172}
   m_Layer: 0
-  m_Name: Sprays_01
+  m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

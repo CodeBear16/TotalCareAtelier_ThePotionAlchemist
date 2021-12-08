@@ -21,7 +21,7 @@ public class MonsterState : MonoBehaviour
     ///Transform playerPosition;
     public bool isSuccess = false; // ------------------------------ player와 연동해야 함, 삭제 필
 
-    Animator animator;
+    public Animator animator;
     MonsterEffect monsterEffect;
 
     // Potion 받는 손 위치
@@ -88,22 +88,23 @@ public class MonsterState : MonoBehaviour
         }
     }
     
-    public void TakePotion(Potion potion)
+    public void TakePotion(GameObject potion)
     {
-        if (potion.symptom == monsterEffect.effect.name)
+        if (potion.GetComponent<Potion>().symptom == monsterEffect.effect.name)
             isSuccess = true;
         else
             isSuccess = false;
-        gameTimer.ResetTime();
 
+        gameTimer.time = 30;
         potion.transform.position = potionHand.position;
         potion.transform.parent = potionHand;
+        potion.GetComponent<Rigidbody>().velocity = Vector3.zero;
         this.potion = potion.gameObject;
 
         if (isSuccess)
         {
             GameManager.instance.Score += 10;
-            HeroComing.instance.comingDistance -= Time.deltaTime * 2;
+            GameManager.instance.HeroDistance += 30;
             animator.SetBool("Drinking", true);
             animator.SetBool("Walking", true);
             monsterEffect.HideEffect();
@@ -112,10 +113,9 @@ public class MonsterState : MonoBehaviour
         else
         {
             GameManager.instance.Score -= 10;
-            HeroComing.instance.comingDistance += Time.deltaTime * 2;
-            animator.SetBool("SadWalk", true);
-            GameObject.Find("MonsterUnHappy").transform.GetChild(GameManager.instance.monsterUnhappy).gameObject.SetActive(true);
+            GameManager.instance.HeroDistance -= 10;
             GameManager.instance.MonsterUnhappy++;
+            animator.SetBool("SadWalk", true);
         }
 
         monsterState = "DestinationToExit";
@@ -128,7 +128,7 @@ public class MonsterState : MonoBehaviour
         if (other.gameObject == destination)
         {
             transform.LookAt(player.transform.position);
-            nav.speed = 0;
+            //nav.speed = 0;
             animator.SetBool("Walking", false);
 
             // 랜덤 animation
@@ -136,6 +136,7 @@ public class MonsterState : MonoBehaviour
             animator.SetInteger("MonsterState", aniSelection);
 
             monsterEffect.ShowEffect();
+            gameTimer.gameObject.SetActive(true);
             gameTimer.DecreaseTime();
             Debug.Log("시간 감소시작");
         }
@@ -153,7 +154,7 @@ public class MonsterState : MonoBehaviour
         if (other.tag == "Potion")
         {
             Debug.Log("포션 받음");
-            TakePotion(other.GetComponent<Potion>());
+            TakePotion(other.gameObject);
         }
     }
 }

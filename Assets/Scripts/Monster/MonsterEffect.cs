@@ -15,12 +15,9 @@ public class MonsterEffect : MonoBehaviour
 
     public void HideEffect()
     {
-        ///if (GetComponent<MonsterState>().isSuccess)
-        ///{
         effect.SetActive(false);
         effect = null;
         Debug.Log("파티클 비활성화");
-        ///}
     }
 
     public void ShowEffect()
