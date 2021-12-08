@@ -914,6 +914,7 @@ GameObject:
   - component: {fileID: 313528093751247594}
   - component: {fileID: 3488780952868328484}
   - component: {fileID: 4982232845873244302}
+  - component: {fileID: 7944241804974975755}
   m_Layer: 0
   m_Name: orc_peon
   m_TagString: Monster
@@ -1031,6 +1032,7 @@ MonoBehaviour:
   exit: {fileID: 0}
   monsterState: 
   isSuccess: 0
+  animator: {fileID: 0}
   potionHand: {fileID: 0}
   potion: {fileID: 0}
 --- !u!114 &4982232845873244302
@@ -1050,6 +1052,24 @@ MonoBehaviour:
   - {fileID: 3018866778163181074}
   - {fileID: 2897716520754860309}
   effect: {fileID: 2165306409878954710}
+--- !u!114 &7944241804974975755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5870629044615498280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 0
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &5870629044615498282
 GameObject:
   m_ObjectHideFlags: 0
@@ -2994,15 +3014,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3228a22491941734bb83ad691d17fcb9, type: 3}
---- !u!4 &8961403449781978332 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3090222209084269461, guid: 3228a22491941734bb83ad691d17fcb9,
-    type: 3}
-  m_PrefabInstance: {fileID: 6250961427927574345}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8957928526331337026 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3093714301863329291, guid: 3228a22491941734bb83ad691d17fcb9,
+    type: 3}
+  m_PrefabInstance: {fileID: 6250961427927574345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8961403449781978332 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3090222209084269461, guid: 3228a22491941734bb83ad691d17fcb9,
     type: 3}
   m_PrefabInstance: {fileID: 6250961427927574345}
   m_PrefabAsset: {fileID: 0}

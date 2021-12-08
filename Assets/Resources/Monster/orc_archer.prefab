@@ -2301,6 +2301,7 @@ GameObject:
   - component: {fileID: 9000228905669197241}
   - component: {fileID: -5772042662091760659}
   - component: {fileID: 2557253391473187789}
+  - component: {fileID: -5309590097960765640}
   m_Layer: 0
   m_Name: orc_archer
   m_TagString: Monster
@@ -2419,6 +2420,7 @@ MonoBehaviour:
   exit: {fileID: 0}
   monsterState: 
   isSuccess: 0
+  animator: {fileID: 0}
   potionHand: {fileID: 0}
   potion: {fileID: 0}
 --- !u!114 &2557253391473187789
@@ -2438,6 +2440,24 @@ MonoBehaviour:
   - {fileID: 8228004551057734709}
   - {fileID: 644306746596251747}
   effect: {fileID: 1557380450313111962}
+--- !u!114 &-5309590097960765640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6885607503258514285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 0
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &6885607503258514287
 GameObject:
   m_ObjectHideFlags: 0
