@@ -118,6 +118,7 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("승리!");
         SceneManager.LoadScene(2);
         SoundController.instance.MusicLoader = 3;
+        Destroy(PlayerBehaviour.instance.gameObject);
     }
 
     public void BadEndEvent()
@@ -125,6 +126,7 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("패배...");
         SceneManager.LoadScene(3);
         SoundController.instance.MusicLoader = 4;
+        Destroy(PlayerBehaviour.instance.gameObject);
     }
 
     public void GameEndEvent()
