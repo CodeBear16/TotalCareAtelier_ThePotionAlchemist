@@ -28,7 +28,7 @@ public class Potion : MonoBehaviour
         if (collision.gameObject.CompareTag("Monster"))
         {
             if (GetComponent<OVRGrabbable>().isGrabbed == false)
-                collision.gameObject.GetComponent<MonsterState>().TakePotion(this);
+                collision.gameObject.GetComponent<MonsterState>().TakePotion(gameObject);
         }
     }
 }

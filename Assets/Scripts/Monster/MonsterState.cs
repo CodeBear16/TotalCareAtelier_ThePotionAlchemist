@@ -88,16 +88,20 @@ public class MonsterState : MonoBehaviour
         }
     }
     
-    public void TakePotion(Potion potion)
+    public void TakePotion(GameObject potion)
     {
-        if (potion.symptom == monsterEffect.effect.name)
+        if (potion.GetComponent<Potion>().symptom == monsterEffect.effect.name)
             isSuccess = true;
         else
             isSuccess = false;
+        StopCoroutine(gameTimer.DecreaseingTime());
         gameTimer.time = 20;
+        gameTimer.gameObject.SetActive(false);
+        Debug.Log("시간 감소 중지");
 
         potion.transform.position = potionHand.position;
         potion.transform.parent = potionHand;
+        potion.GetComponent<Rigidbody>().velocity = Vector3.zero;
         this.potion = potion.gameObject;
 
         if (isSuccess)
@@ -135,6 +139,7 @@ public class MonsterState : MonoBehaviour
             animator.SetInteger("MonsterState", aniSelection);
 
             monsterEffect.ShowEffect();
+            gameTimer.gameObject.SetActive(true);
             gameTimer.DecreaseTime();
             Debug.Log("시간 감소시작");
         }
@@ -152,7 +157,7 @@ public class MonsterState : MonoBehaviour
         if (other.tag == "Potion")
         {
             Debug.Log("포션 받음");
-            TakePotion(other.GetComponent<Potion>());
+            TakePotion(other.gameObject);
         }
     }
 }
