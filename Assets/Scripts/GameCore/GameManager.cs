@@ -37,8 +37,9 @@ public class GameManager : Singleton<GameManager>
             heroDistance = value;
             distanceWatch.text = heroDistance + "km";
             distanceSlider.value = giveDistance - heroDistance;
-            if (heroDistance <= loseDistance)
-                BadEndEvent();
+
+            if (heroDistance > 600) GoodEndEvent();
+            if (heroDistance <= loseDistance) BadEndEvent();
         }
     }
     private const int giveDistance = 600;

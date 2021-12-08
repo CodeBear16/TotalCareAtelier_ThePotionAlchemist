@@ -94,8 +94,8 @@ public class MonsterState : MonoBehaviour
             isSuccess = true;
         else
             isSuccess = false;
-        gameTimer.time = 20;
 
+        gameTimer.time = 30;
         potion.transform.position = potionHand.position;
         potion.transform.parent = potionHand;
         this.potion = potion.gameObject;
@@ -103,7 +103,7 @@ public class MonsterState : MonoBehaviour
         if (isSuccess)
         {
             GameManager.instance.Score += 10;
-            GameManager.instance.HeroDistance += 10;
+            GameManager.instance.HeroDistance += 30;
             animator.SetBool("Drinking", true);
             animator.SetBool("Walking", true);
             monsterEffect.HideEffect();

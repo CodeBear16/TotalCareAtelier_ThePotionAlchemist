@@ -1504,6 +1504,7 @@ MonoBehaviour:
   exit: {fileID: 0}
   monsterState: 
   isSuccess: 0
+  animator: {fileID: 0}
   potionHand: {fileID: 0}
   potion: {fileID: 0}
 --- !u!114 &-114562976785692557
@@ -2248,7 +2249,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 60
+  m_text: '30
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b4c937059ca8e884498dc1d3e3281b85, type: 2}
   m_sharedMaterial: {fileID: -8238436496296694434, guid: b4c937059ca8e884498dc1d3e3281b85,
@@ -2330,7 +2333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fdb86ffdff5e6b45b6eb99a48f6646d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 60
+  time: 30
 --- !u!1001 &255007503514005028
 PrefabInstance:
   m_ObjectHideFlags: 0
