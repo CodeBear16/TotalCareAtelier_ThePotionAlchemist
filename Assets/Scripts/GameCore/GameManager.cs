@@ -108,27 +108,25 @@ public class GameManager : Singleton<GameManager>
         StartCoroutine(GameTimer());
     }
 
-    public void DemonIncomeEvent()
-    {
-        Debug.Log("방해꾼 도착");
-        SoundController.instance.MusicLoader = 2;
-    }
-
     public void GoodEndEvent()
     {
         Debug.Log("승리!");
         SceneManager.LoadScene(2);
-        SoundController.instance.MusicLoader = 3;
+        //SoundController.instance.MusicLoader = 3;
+        Destroy(PlayerBehaviour.instance.gameObject);
     }
 
     public void BadEndEvent()
     {
         Debug.Log("패배...");
         SceneManager.LoadScene(3);
-        SoundController.instance.MusicLoader = 4;
+        //SoundController.instance.MusicLoader = 4;
+        Destroy(PlayerBehaviour.instance.gameObject);
+        Destroy(MonsterSpawner.instance.gameObject);
+        Destroy(Pot.instance.gameObject);
     }
 
-    public void GameEndEvent()
+    public void GameQuitEvent()
     {
         Debug.Log("게임 종료");
 #if UNITY_EDITOR

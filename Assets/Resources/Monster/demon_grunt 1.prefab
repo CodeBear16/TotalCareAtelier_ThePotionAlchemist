@@ -1612,6 +1612,7 @@ GameObject:
   - component: {fileID: 426779127996834998}
   - component: {fileID: 4285868939290154332}
   - component: {fileID: 3060077499299228585}
+  - component: {fileID: 1485123769060151993}
   m_Layer: 0
   m_Name: demon_grunt 1
   m_TagString: Monster
@@ -1745,6 +1746,24 @@ MonoBehaviour:
   - {fileID: 8672017711470225317}
   - {fileID: 2470072751767602647}
   effect: {fileID: 4710727336681060009}
+--- !u!114 &1485123769060151993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805944652570914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 0
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1813282815630746
 GameObject:
   m_ObjectHideFlags: 0

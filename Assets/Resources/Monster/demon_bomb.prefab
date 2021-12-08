@@ -1392,6 +1392,7 @@ GameObject:
   - component: {fileID: 8088007038372548460}
   - component: {fileID: -6292263142560688238}
   - component: {fileID: -114562976785692557}
+  - component: {fileID: -3716695120701998824}
   m_Layer: 0
   m_Name: demon_bomb
   m_TagString: Monster
@@ -1524,6 +1525,24 @@ MonoBehaviour:
   - {fileID: 1141701926737374290}
   - {fileID: 8084787280152415105}
   effect: {fileID: 523942130919923327}
+--- !u!114 &-3716695120701998824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691502918888804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 0
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1697300957351030
 GameObject:
   m_ObjectHideFlags: 0
@@ -2655,15 +2674,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3228a22491941734bb83ad691d17fcb9, type: 3}
---- !u!4 &7908884729343886045 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3090222209084269461, guid: 3228a22491941734bb83ad691d17fcb9,
-    type: 3}
-  m_PrefabInstance: {fileID: 5125286024111481160}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7912746204154011459 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3093714301863329291, guid: 3228a22491941734bb83ad691d17fcb9,
+    type: 3}
+  m_PrefabInstance: {fileID: 5125286024111481160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7908884729343886045 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3090222209084269461, guid: 3228a22491941734bb83ad691d17fcb9,
     type: 3}
   m_PrefabInstance: {fileID: 5125286024111481160}
   m_PrefabAsset: {fileID: 0}

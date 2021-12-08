@@ -31,7 +31,7 @@ public class CheckMenu : MonoBehaviour
                     else if (streamName.Contains("EndStream"))
                     {
                         Debug.Log(GameManager.instance);
-                        GameManager.instance.GameEndEvent();
+                        GameManager.instance.GameQuitEvent();
                     }
                 }
             }

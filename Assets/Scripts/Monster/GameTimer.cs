@@ -22,7 +22,7 @@ public class GameTimer : MonoBehaviour
         StartCoroutine(DecreaseingTime());
     }
 
-    private IEnumerator DecreaseingTime()
+    public IEnumerator DecreaseingTime()
     {
         while (true)
         {
