@@ -19,6 +19,7 @@ TagManager:
   - Exit
   - Devil
   - GameCore
+  - Potion
   layers:
   - Default
   - TransparentFX

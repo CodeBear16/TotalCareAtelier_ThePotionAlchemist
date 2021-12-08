@@ -22,28 +22,32 @@ public class GameTimer : MonoBehaviour
         StartCoroutine(DecreaseingTime());
     }
 
-    IEnumerator DecreaseingTime()
+    private IEnumerator DecreaseingTime()
     {
-        while(true)
+        while (true)
         {
             yield return new WaitForSeconds(1);
-            time --;
+            time--;
             currentTime.text = time.ToString();
-            if (time == 0)
+            if (time <= 0)
             {
                 ResetTime();
                 break;
             }
         }
     }
+
     public void ResetTime()
     {
-        if (time == 0)
+        if (time <= 0)
         {
-            monsterState.monsterState = "DestinationToExit";
-            monsterState.Walking();
             GameManager.instance.Score -= 10;
+            GameManager.instance.HeroDistance -= 10;
+            GameManager.instance.MonsterUnhappy++;
+            monsterState.animator.SetBool("SadWalk", true);
         }
-        time = 60;
+
+        monsterState.monsterState = "DestinationToExit";
+        monsterState.Walking();
     }
 }

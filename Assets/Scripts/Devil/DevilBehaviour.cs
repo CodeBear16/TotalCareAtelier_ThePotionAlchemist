@@ -11,7 +11,7 @@ public class DevilBehaviour : Singleton<DevilBehaviour>
         StartCoroutine(Appear());
     }
 
-    IEnumerator Appear()
+    private IEnumerator Appear()
     {
         while (true)
         {
@@ -31,7 +31,7 @@ public class DevilBehaviour : Singleton<DevilBehaviour>
         }
     }
 
-    bool CheckAniClip(string clipname)
+    private bool CheckAniClip(string clipname)
     {
         if (this.GetComponent<Animation>().GetClip(clipname) == null)
             return false;
