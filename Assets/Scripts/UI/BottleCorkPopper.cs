@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BottleCorkPopper : MonoBehaviour
 {
     public GameObject cork;
     public GameObject pour;
 
-    public AudioClip popClip;
-    public AudioClip putClip;
+    [Tooltip("0: 마개 뽑는 소리\n1: 마개 꽂는 소리")]
+    public AudioClip[] corkClips;
 
     private AudioSource source;
     private OVRGrabbable grabbable;
@@ -34,28 +35,27 @@ public class BottleCorkPopper : MonoBehaviour
             {
                 if (OVRInput.GetDown(OVRInput.Button.One))
                 {
-                    cork.SetActive(false);
-                    pour.SetActive(true);
-                    source.PlayOneShot(popClip);
-                    OVRInput.SetControllerVibration(0.5f, 0.5f, 5.5f, OVRInput.Controller.RTouch);
+                    CorkWork(true);
+                    OVRInput.SetControllerVibration(0.5f, 0.5f, 0.5f, OVRInput.Controller.RTouch);
                 }
                 else if (OVRInput.GetDown(OVRInput.Button.Three))
                 {
-                    cork.SetActive(false);
-                    pour.SetActive(true);
-                    source.PlayOneShot(popClip);
-                    OVRInput.SetControllerVibration(0.5f, 0.5f, 5.5f, OVRInput.Controller.LTouch);
+                    CorkWork(true);
+                    OVRInput.SetControllerVibration(0.5f, 0.5f, 0.5f, OVRInput.Controller.LTouch);
                 }
             }
         }
         else
         {
             if (cork.activeSelf == false)
-            {
-                cork.SetActive(true);
-                pour.SetActive(false);
-                source.PlayOneShot(putClip);
-            }
+                CorkWork(false);
         }
+    }
+
+    private void CorkWork(bool isActive)
+    {
+        cork.SetActive(!isActive);
+        pour.SetActive(isActive);
+        source.PlayOneShot(corkClips[Convert.ToInt32(!isActive)]);
     }
 }

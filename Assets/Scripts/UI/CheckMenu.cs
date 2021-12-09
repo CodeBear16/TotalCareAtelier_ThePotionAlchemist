@@ -8,7 +8,7 @@ public class CheckMenu : MonoBehaviour
     public GameObject fulfillment;
 
     float timeSpan = 0f;
-    float[] fillTime = { 1f, 2f, 3f, 4f, 5f };
+    float[] fillTime = { 0.5f, 1.0f, 1.5f, 2.0f, 2.5f };
     float[] fillSize = { 0.02f, 0.04f, 0.06f, 0.08f, 0.10f };
 
     public void PutWaterCheck(string streamName)
@@ -24,7 +24,6 @@ public class CheckMenu : MonoBehaviour
 
                 if (timeSpan >= fillTime[fillTime.Length - 1])
                 {
-                    timeSpan = 0;
                     Debug.Log(streamName);
                     if (streamName.Contains("StartStream"))
                         GameManager.instance.GameStartEvent();
@@ -33,6 +32,8 @@ public class CheckMenu : MonoBehaviour
                         Debug.Log(GameManager.instance);
                         GameManager.instance.GameQuitEvent();
                     }
+                    timeSpan = 0;
+                    Destroy(gameObject);
                 }
             }
         }

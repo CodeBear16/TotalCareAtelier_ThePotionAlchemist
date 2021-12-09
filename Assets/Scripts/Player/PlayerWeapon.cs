@@ -8,7 +8,10 @@ public class PlayerWeapon : MonoBehaviour
     {
         if (other.tag == "Devil")
         {
-            if (PlayerBehaviour.instance.time >= 5) GameManager.instance.MonsterUnhappy++;
+            if (PlayerBehaviour.instance.time >= 5)
+            {
+                GameManager.instance.MonsterUnhappy++;
+            }
             else
             {
                 MoveCTRLDemo.instance.Die();
