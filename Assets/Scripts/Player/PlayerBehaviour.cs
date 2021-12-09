@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerBehaviour : Singleton<PlayerBehaviour>, IAttackFunc, IGetHitFunc
 {
-    [Header("게임 시작 시간")]
     public int time = 0;
 
     public void Attack()

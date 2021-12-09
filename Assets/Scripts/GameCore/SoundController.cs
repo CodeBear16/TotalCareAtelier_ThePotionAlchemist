@@ -8,7 +8,7 @@ public class SoundController : Singleton<SoundController>
     public AudioSource[] sources;
     private AudioSource tempSource;
 
-    [Header("배경음악(상세클립은 툴팁 참고)")]
+    [Header("배경음악(상세클립은 툴팁 안내)")]
     [Tooltip("0: 스타트 장면 음악\n1: 인게임 평상시 음악\n2: 긴박한 상황 음악\n3: 굿엔딩 음악\n4: 배드엔딩 음악")]
     public AudioClip[] clips;
 
@@ -55,5 +55,11 @@ public class SoundController : Singleton<SoundController>
             yield return null;
         }
         fadeOut.Stop();
+    }
+
+    public void StopMusic()
+    {
+        sources[0].Stop();
+        sources[1].Stop();
     }
 }

@@ -4,22 +4,18 @@ using UnityEngine;
 
 public class IngredientPool<T> : Singleton<IngredientPool<T>> where T : Ingredient
 {
-    [HideInInspector]
-    public GameObject[] contentPrefabs;
-    [HideInInspector]
-    public string contentName;
+    private GameObject[] contentPrefabs;
+    private string contentName;
 
     public Queue<GameObject> contentPoolQueue = new Queue<GameObject>();
     const int maxSize = 20;
 
-    [HideInInspector]
-    public int randomNum;
-    [HideInInspector]
-    public GameObject tempObj;
+    private int randomNum;
+    private GameObject tempObj;
 
-    Vector3 spawnPos;
+    private Vector3 spawnPos;
 
-    void Start()
+    private void Start()
     {
         contentName = name.Replace("Pool", string.Empty);
         contentPrefabs = Resources.LoadAll<GameObject>("Ingredient/" + contentName);
@@ -30,13 +26,13 @@ public class IngredientPool<T> : Singleton<IngredientPool<T>> where T : Ingredie
         SpawnOneObj();
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))
             SpawnAllObj();
     }
 
-    IEnumerator FillAllPool()
+    private IEnumerator FillAllPool()
     {
         while (contentPoolQueue.Count < maxSize)
         {
@@ -49,9 +45,12 @@ public class IngredientPool<T> : Singleton<IngredientPool<T>> where T : Ingredie
 
     public void SpawnOneObj()
     {
-        tempObj = contentPoolQueue.Dequeue();
-        tempObj.transform.parent = null;
-        tempObj.SetActive(true);
+        if (contentPoolQueue.Count != 0)
+        {
+            tempObj = contentPoolQueue.Dequeue();
+            tempObj.transform.parent = null;
+            tempObj.SetActive(true);
+        }
     }
 
     public void SpawnAllObj()

@@ -16,7 +16,7 @@ public class DevilBehaviour : Singleton<DevilBehaviour>
         while (true)
         {
             // 80, 90초에 한 번 등장 (수정해야 함)
-            int randomAppear = Random.Range(1, 5);
+            int randomAppear = Random.Range(80, 90);
             yield return new WaitForSeconds(randomAppear);
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
             PlayerBehaviour.instance.Attack();
