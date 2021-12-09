@@ -26,7 +26,7 @@ public class GameManager : Singleton<GameManager>
                 GoodEndEvent();
         }
     }
-    private const int winScore = 600;
+    private const int winScore = 60; // 난이도 조절 가능
 
     private int heroDistance;
     public int HeroDistance
@@ -60,7 +60,6 @@ public class GameManager : Singleton<GameManager>
     }
     #endregion
 
-
     AsyncOperation startAsync;
 
     #region Methods
@@ -89,6 +88,7 @@ public class GameManager : Singleton<GameManager>
     #endregion
 
 
+
     #region Various Events
     public void GameStartEvent()
     {
@@ -112,15 +112,17 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log("승리!");
         SceneManager.LoadScene(2);
-        //SoundController.instance.MusicLoader = 3;
+        SoundController.instance.StopMusic();
         Destroy(PlayerBehaviour.instance.gameObject);
+        Destroy(MonsterSpawner.instance.gameObject);
+        Destroy(Pot.instance.gameObject);
     }
 
     public void BadEndEvent()
     {
         Debug.Log("패배...");
         SceneManager.LoadScene(3);
-        //SoundController.instance.MusicLoader = 4;
+        SoundController.instance.StopMusic();
         Destroy(PlayerBehaviour.instance.gameObject);
         Destroy(MonsterSpawner.instance.gameObject);
         Destroy(Pot.instance.gameObject);

@@ -233,6 +233,9 @@ MonoBehaviour:
   pour: {fileID: 6768113222747580735}
   popClip: {fileID: 8300000, guid: ce50ed1747541604487481f3c9a9b7aa, type: 3}
   putClip: {fileID: 8300000, guid: 3629397a5a283d14db34c83678a2883c, type: 3}
+  corkClips:
+  - {fileID: 8300000, guid: ce50ed1747541604487481f3c9a9b7aa, type: 3}
+  - {fileID: 8300000, guid: 3629397a5a283d14db34c83678a2883c, type: 3}
 --- !u!82 &9126912484034009412
 AudioSource:
   m_ObjectHideFlags: 0
