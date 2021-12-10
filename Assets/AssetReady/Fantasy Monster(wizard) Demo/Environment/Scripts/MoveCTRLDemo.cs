@@ -42,7 +42,8 @@ public class MoveCTRLDemo : Singleton<MoveCTRLDemo>, IAttackFunc, IGetHitFunc
 
 	public void GetHit()
 	{
-		GameObject.Find("Devil").transform.GetChild(0).gameObject.SetActive(false);
+		GetComponent<Animation>().CrossFade("dead", 0.2f);
+		gameObject.SetActive(false);
 	}
 
 	public void Die()

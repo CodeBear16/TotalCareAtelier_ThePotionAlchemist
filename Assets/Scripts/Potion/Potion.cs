@@ -27,6 +27,7 @@ public class Potion : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Monster"))
         {
+            Debug.Log("몬스터에 포션 닿음");
             if (GetComponent<OVRGrabbable>().isGrabbed == false)
                 collision.gameObject.GetComponent<MonsterState>().TakePotion(gameObject);
         }
