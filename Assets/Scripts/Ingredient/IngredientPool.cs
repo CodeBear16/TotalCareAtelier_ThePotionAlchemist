@@ -13,6 +13,7 @@ public class IngredientPool<T> : Singleton<IngredientPool<T>> where T : Ingredie
     private int randomNum;
     private GameObject tempObj;
 
+    public Transform parent;
     private Vector3 spawnPos;
 
     private void Start()
@@ -48,7 +49,6 @@ public class IngredientPool<T> : Singleton<IngredientPool<T>> where T : Ingredie
         if (contentPoolQueue.Count != 0)
         {
             tempObj = contentPoolQueue.Dequeue();
-            tempObj.transform.parent = null;
             tempObj.SetActive(true);
         }
     }
@@ -62,7 +62,7 @@ public class IngredientPool<T> : Singleton<IngredientPool<T>> where T : Ingredie
     public virtual void ResupplyObj(GameObject tempObj)
     {
         tempObj.transform.position = spawnPos;
-        tempObj.transform.parent = transform;
+        tempObj.transform.parent = parent;
         tempObj.SetActive(false);
         contentPoolQueue.Enqueue(tempObj);
     }

@@ -14,8 +14,7 @@ public class PlayerWeapon : MonoBehaviour
             }
             else
             {
-                MoveCTRLDemo.instance.Die();
-                other.gameObject.SetActive(false);
+                MoveCTRLDemo.instance.GetHit();
             }
         }
     }

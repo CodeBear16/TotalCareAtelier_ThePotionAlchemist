@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 111000010215138216}
   m_Layer: 0
   m_Name: Devil
-  m_TagString: Untagged
+  m_TagString: Devil
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
