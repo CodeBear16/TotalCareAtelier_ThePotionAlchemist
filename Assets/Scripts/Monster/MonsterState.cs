@@ -90,6 +90,8 @@ public class MonsterState : MonoBehaviour
     
     public void TakePotion(GameObject potion)
     {
+        Debug.Log("받음");
+
         if (potion.GetComponent<Potion>().symptom == monsterEffect.effect.name)
             isSuccess = true;
         else

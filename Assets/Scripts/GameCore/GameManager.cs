@@ -85,6 +85,16 @@ public class GameManager : Singleton<GameManager>
             HeroDistance--;
         }
     }
+
+    private IEnumerator TutorialTime()
+    {
+        yield return new WaitForSeconds(60);
+
+        SpawnerCaller.instance.OnSpawner();
+        DevilCaller.instance.OnDevil();
+
+        StartCoroutine(GameTimer());
+    }
     #endregion
 
 
@@ -105,7 +115,7 @@ public class GameManager : Singleton<GameManager>
         temp.GetComponent<OVRGrabbable>().GrabEnd(Vector3.zero, Vector3.zero);
         Destroy(temp);
 
-        StartCoroutine(GameTimer());
+        StartCoroutine(TutorialTime());
     }
 
     public void GoodEndEvent()

@@ -45,7 +45,7 @@ public class RayPointer : MonoBehaviour
                         if (tempLine.OutlineWidth != 5)
                             tempLine.OutlineWidth = 5;
 
-                        if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger) || OVRInput.GetDown(OVRInput.Button.One))
+                        if (OVRInput.GetDown(OVRInput.Button.One) || OVRInput.GetDown(OVRInput.Button.Three))
                         {
                             Debug.Log(currentObject.name + "¾à¹° °Ç³Û");
                             currentObject.GetComponent<MonsterState>().TakePotion(potion);
