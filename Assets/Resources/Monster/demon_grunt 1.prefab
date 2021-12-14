@@ -1613,7 +1613,7 @@ GameObject:
   - component: {fileID: 4285868939290154332}
   - component: {fileID: 3060077499299228585}
   - component: {fileID: 1485123769060151993}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: demon_grunt 1
   m_TagString: Monster
   m_Icon: {fileID: 0}

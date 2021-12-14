@@ -5,8 +5,8 @@ using System;
 
 public class BottleCorkPopper : MonoBehaviour
 {
-    public GameObject cork;
-    public GameObject pour;
+    public GameObject corkObject;
+    public GameObject pourOrigin;
 
     [Tooltip("0: 마개 뽑는 소리\n1: 마개 꽂는 소리")]
     public AudioClip[] corkClips;
@@ -22,16 +22,15 @@ public class BottleCorkPopper : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Keypad0))
-        //{
-        //    Debug.Log("누름");
-        //    cork.SetActive(false);
-        //    pour.SetActive(true);
-        //    source.PlayOneShot(popClip);
-        //}
+        if (Input.GetKeyDown(KeyCode.Keypad0))
+        {
+            Debug.Log("누름");
+            CorkWork(true);
+        }
+
         if (grabbable.isGrabbed)
         {
-            if (cork.activeSelf)
+            if (corkObject.activeSelf)
             {
                 if (OVRInput.GetDown(OVRInput.Button.One))
                 {
@@ -47,15 +46,15 @@ public class BottleCorkPopper : MonoBehaviour
         }
         else
         {
-            if (cork.activeSelf == false)
+            if (corkObject.activeSelf == false)
                 CorkWork(false);
         }
     }
 
     private void CorkWork(bool isActive)
     {
-        cork.SetActive(!isActive);
-        pour.SetActive(isActive);
+        corkObject.SetActive(!isActive);
+        pourOrigin.SetActive(isActive);
         source.PlayOneShot(corkClips[Convert.ToInt32(!isActive)]);
     }
 }

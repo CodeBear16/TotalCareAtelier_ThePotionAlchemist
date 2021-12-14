@@ -1094,7 +1094,7 @@ GameObject:
   - component: {fileID: -7332103166928153808}
   - component: {fileID: 8053729511793508628}
   - component: {fileID: -2287175846100669346}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: demon_fatty 1
   m_TagString: Monster
   m_Icon: {fileID: 0}

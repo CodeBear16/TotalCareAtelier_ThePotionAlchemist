@@ -1393,7 +1393,7 @@ GameObject:
   - component: {fileID: -6292263142560688238}
   - component: {fileID: -114562976785692557}
   - component: {fileID: -3716695120701998824}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: demon_bomb
   m_TagString: Monster
   m_Icon: {fileID: 0}

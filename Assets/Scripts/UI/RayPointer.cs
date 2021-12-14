@@ -6,55 +6,79 @@ using TMPro;
 
 public class RayPointer : MonoBehaviour
 {
-    public Transform rayOrigin;
+    public Transform pointer;
     private RaycastHit hit;
-    public float rayDistance = 50f;
+    private float distance = 50f;
+    private LayerMask layer;
 
     private OVRGrabber hand;
     public GameObject potion;
-    public GameObject currentObject;
+    public GameObject monster;
     private Outline tempLine;
 
     private void Start()
     {
-        hand = PlayerBehaviour.instance.gameObject.GetComponent<OVRGrabber>();
+        layer = 1 << LayerMask.NameToLayer("Monster");
+        hand = GetComponent<OVRGrabber>();
     }
 
     private void Update()
     {
-        Debug.DrawRay(rayOrigin.position, rayOrigin.forward, Color.yellow, 0.1f);
+        Debug.DrawRay(pointer.position, pointer.forward, Color.yellow, 0.1f);
 
+        potion = TakeGrabbed();
+
+        if (Physics.Raycast(pointer.position, pointer.forward, out hit, distance, layer))
+        {
+            monster = hit.collider.gameObject;
+            tempLine = monster.GetComponent<Outline>();
+
+            ShowOutline(tempLine);
+
+            if (OVRInput.GetDown(OVRInput.Button.One) || OVRInput.GetDown(OVRInput.Button.Three))
+            {
+                GivePotion(hand.grabbedObject, monster.GetComponent<MonsterState>());
+            }
+        }
+        else
+        {
+            HideOutline(tempLine);
+            tempLine = null;
+            monster = null;
+            potion = null;
+        }
+    }
+
+    private GameObject TakeGrabbed()
+    {
         if (hand.grabbedObject != null)
         {
             if (hand.grabbedObject.CompareTag("Potion"))
-            {
-                potion = hand.grabbedObject.gameObject;
-
-                if (Physics.Raycast(rayOrigin.position, rayOrigin.forward, out hit, rayDistance))
-                {
-                    if (currentObject != hit.collider.gameObject)
-                        if (currentObject.GetComponent<Outline>() != null)
-                            currentObject.GetComponent<Outline>().OutlineWidth = 0;
-
-                    currentObject = hit.collider.gameObject;
-
-                    if (currentObject.GetComponent<Outline>() != null)
-                    {
-                        tempLine = currentObject.GetComponent<Outline>();
-
-                        if (tempLine.OutlineWidth != 5)
-                            tempLine.OutlineWidth = 5;
-
-                        if (OVRInput.GetDown(OVRInput.Button.One) || OVRInput.GetDown(OVRInput.Button.Three))
-                        {
-                            Debug.Log(currentObject.name + "¾à¹° °Ç³Û");
-                            currentObject.GetComponent<MonsterState>().TakePotion(potion);
-                        }
-                    }
-                }
-            }
-            else
-                potion = null;
+                return hand.grabbedObject.gameObject;
+            else return null;
         }
+        else return null;
+    }
+
+    private void GivePotion(OVRGrabbable potion, MonsterState monster)
+    {
+        if (potion != null)
+        {
+            potion.GrabEnd(Vector3.zero, Vector3.zero);
+            monster.TakePotion(potion.gameObject);
+        }
+        else return;
+    }
+
+    private void ShowOutline(Outline line)
+    {
+        if (line != null)
+            line.OutlineWidth = 5;
+    }
+
+    private void HideOutline(Outline line)
+    {
+        if (line != null)
+            line.OutlineWidth = 0;
     }
 }

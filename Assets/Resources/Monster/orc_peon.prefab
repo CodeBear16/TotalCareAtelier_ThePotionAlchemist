@@ -915,7 +915,7 @@ GameObject:
   - component: {fileID: 3488780952868328484}
   - component: {fileID: 4982232845873244302}
   - component: {fileID: 7944241804974975755}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: orc_peon
   m_TagString: Monster
   m_Icon: {fileID: 0}
