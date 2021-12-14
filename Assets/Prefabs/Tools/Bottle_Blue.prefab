@@ -229,10 +229,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2c079406b149524f94ba1dd5d715efa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cork: {fileID: 3407984648446497004}
-  pour: {fileID: 6768113222747580735}
-  popClip: {fileID: 8300000, guid: ce50ed1747541604487481f3c9a9b7aa, type: 3}
-  putClip: {fileID: 8300000, guid: 3629397a5a283d14db34c83678a2883c, type: 3}
+  corkObject: {fileID: 3407984648446497004}
+  pourOrigin: {fileID: 6768113222747580735}
   corkClips:
   - {fileID: 8300000, guid: ce50ed1747541604487481f3c9a9b7aa, type: 3}
   - {fileID: 8300000, guid: 3629397a5a283d14db34c83678a2883c, type: 3}

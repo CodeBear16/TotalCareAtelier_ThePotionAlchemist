@@ -2302,7 +2302,7 @@ GameObject:
   - component: {fileID: -5772042662091760659}
   - component: {fileID: 2557253391473187789}
   - component: {fileID: -5309590097960765640}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: orc_archer
   m_TagString: Monster
   m_Icon: {fileID: 0}
