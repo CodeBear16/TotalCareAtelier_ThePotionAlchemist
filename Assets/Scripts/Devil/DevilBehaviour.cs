@@ -33,9 +33,7 @@ public class DevilBehaviour : Singleton<DevilBehaviour>
 
     private bool CheckAniClip(string clipname)
     {
-        if (this.GetComponent<Animation>().GetClip(clipname) == null)
-            return false;
-        else if (this.GetComponent<Animation>().GetClip(clipname) != null)
+        if (GetComponent<Animation>().GetClip(clipname) != null)
             return true;
 
         return false;

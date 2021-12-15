@@ -21,9 +21,4 @@ public class Recipes : MonoBehaviour
             results[i].ingredients = Pot.instance.recipes[i].ingredients;
         }
     }
-
-    void Update()
-    {
-        
-    }
 }

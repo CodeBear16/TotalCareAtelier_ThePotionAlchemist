@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerBehaviour : Singleton<PlayerBehaviour>, IAttackFunc, IGetHitFunc
 {
     public int time = 0;
-
     public void Attack()
     {
         StartCoroutine(IncreasingTime());
