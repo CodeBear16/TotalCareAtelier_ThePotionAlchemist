@@ -14,7 +14,7 @@ public class Pot : Singleton<Pot>
 {
     #region Audio Clips
     public AudioClip[] ingredientPutClips;
-    [Tooltip("0: DEBURN\n1: DEPARALYSE\n2: DETOX\n3: EXPLODE")]
+    [Tooltip("0: 화상 치료\n1: 마비 치료\n2: 중독 치료")]
     public AudioClip[] resultGoodClips;
     Dictionary<GameObject, AudioClip> clipDic = new Dictionary<GameObject, AudioClip>();
     public AudioClip[] resultFailClips;
@@ -24,7 +24,7 @@ public class Pot : Singleton<Pot>
 
     public GameObject particle;
 
-    #region Recipes
+    #region Recipe Variables
     public Transform createSpot;
     public List<Recipe> recipes;
 

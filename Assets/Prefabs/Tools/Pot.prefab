@@ -216,7 +216,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0b0c4edf71b95a84584a046026e1f6b9, type: 3}
   - {fileID: 8300000, guid: 492e316ed0bfce649b8659394f74fa29, type: 3}
   - {fileID: 8300000, guid: 7994c7ed62f75eb48b39d118b2a995f0, type: 3}
-  - {fileID: 8300000, guid: fa3690938f7f8004cbbb43586b188d41, type: 3}
   resultFailClips:
   - {fileID: 8300000, guid: 186f096c593887c489a57445e0a21734, type: 3}
   - {fileID: 8300000, guid: c318578ccc168364db5e0fa85571d024, type: 3}
@@ -232,18 +231,13 @@ MonoBehaviour:
   - result: {fileID: 1023731403772898321, guid: 8f89e9b741fefb44b9746cf1a80a0cf8,
       type: 3}
     ingredients:
+    - {fileID: 1964467015, guid: 608ca0a052833ef4db194aa266b37364, type: 3}
     - {fileID: 1408261756, guid: 465c505844950da499dcf096a6da4409, type: 3}
-    - {fileID: 2107591131, guid: 5051c9970799ada4d80b087575ba17be, type: 3}
   - result: {fileID: 2116041766695832019, guid: 6b1d446347490dc47aaebce917725ac2,
       type: 3}
     ingredients:
     - {fileID: 1348019797, guid: 07ba6c344ea56c74f82aaccec7d39ef1, type: 3}
     - {fileID: 2107591131, guid: 5051c9970799ada4d80b087575ba17be, type: 3}
-  - result: {fileID: 4885810365983384421, guid: 691604ced4a62c14b979e5245300c12f,
-      type: 3}
-    ingredients:
-    - {fileID: 1964467015, guid: 608ca0a052833ef4db194aa266b37364, type: 3}
-    - {fileID: 1408261756, guid: 465c505844950da499dcf096a6da4409, type: 3}
 --- !u!82 &1922484855
 AudioSource:
   m_ObjectHideFlags: 0
@@ -590,6 +584,10 @@ PrefabInstance:
     - target: {fileID: 170398, guid: 5467e0b0deed55546b755c04ba71180f, type: 3}
       propertyPath: m_Name
       value: EmissionGain
+      objectReference: {fileID: 0}
+    - target: {fileID: 170398, guid: 5467e0b0deed55546b755c04ba71180f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 428040, guid: 5467e0b0deed55546b755c04ba71180f, type: 3}
       propertyPath: m_RootOrder
