@@ -62,8 +62,6 @@ public class GameManager : Singleton<GameManager>
     }
     #endregion
 
-
-
     #region Methods
     private void Start()
     {
@@ -102,6 +100,8 @@ public class GameManager : Singleton<GameManager>
         Destroy(PlayerBehaviour.instance.gameObject);
         Destroy(MonsterSpawner.instance.gameObject);
         Destroy(Pot.instance.gameObject);
+        SpawnerCaller.instance.OffSpawner();
+        DevilCaller.instance.OffDevil();
     }
     #endregion
 
@@ -115,12 +115,16 @@ public class GameManager : Singleton<GameManager>
 
         startAsync.allowSceneActivation = true;
 
+        #region 조언 OVRGrabber - ForceRelease
+
         GameObject temp = GameObject.Find("Bottle_Blue");
         temp.GetComponent<OVRGrabbable>().GrabEnd(Vector3.zero, Vector3.zero);
         Destroy(temp);
         temp = GameObject.Find("Bottle_Red");
         temp.GetComponent<OVRGrabbable>().GrabEnd(Vector3.zero, Vector3.zero);
         Destroy(temp);
+
+        #endregion
 
         OVRScreenFade.instance.FadeIn();
 

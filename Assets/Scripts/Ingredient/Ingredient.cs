@@ -15,9 +15,7 @@ public class Ingredient : MonoBehaviour
 
     public virtual void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
-            StartCoroutine(ReturnToSpawner());
-        if (collision.gameObject.CompareTag("MapBoundary"))
+        if (collision.gameObject.CompareTag("Ground") | collision.gameObject.CompareTag("MapBoundary"))
             StartCoroutine(ReturnToSpawner());
     }
 

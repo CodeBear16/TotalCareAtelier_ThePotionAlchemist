@@ -9,10 +9,11 @@ public class Egg : Ingredient
         ingredientName = "Egg";
     }
 
-    public override IEnumerator ReturnToSpawner()
+    public override IEnumerator ReturnToSpawner()//(Ingredient instance)
     {
         yield return new WaitForSeconds(2);
         Debug.Log(name + " ¿Áº“»Ø");
+       // (ingredientName + "Pool").GetMethod("ResupplyObj").(instance,)
         EggPool.instance.ResupplyObj(gameObject);
     }
 
