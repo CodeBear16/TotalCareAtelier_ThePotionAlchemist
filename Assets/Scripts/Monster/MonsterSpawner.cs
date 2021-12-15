@@ -26,19 +26,14 @@ public class MonsterSpawner : Singleton<MonsterSpawner>
         monsterPrefabs = Resources.LoadAll<GameObject>("Monster/");
 
         // 몬스터들의 목적지 리스트 설정
-        ///destinationsSpotList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Destination"));
         destinationList.AddRange(GameObject.FindGameObjectsWithTag("Destination"));
-        ///for (int i = 0; i < destinationList.Count; i++)
-            ///destinationList[i].SetActive(false);
 
         // 스포너에 있는 몬스터들 (50마리 미리 넣어놓는 것)
-        ///for (int i = 0; i < spawnerMaxSize; i++)
         while (monsterPool.Count < spawnerMaxSize)
         {
             int selection = Random.Range(0, monsterPrefabs.Length);
-            // 몬스터를 스포너의 자식 오브젝트로 넣기
+            //// 몬스터를 스포너의 자식 오브젝트로 넣기
             tempObject = Instantiate(monsterPrefabs[selection], transform);
-            ///tempObject.GetComponent<MonsterState>().monsterSpawner = this;
             ReturnToSpawner(tempObject);
             monsterPool.Add(tempObject);
         }
@@ -48,14 +43,11 @@ public class MonsterSpawner : Singleton<MonsterSpawner>
 
     IEnumerator SpawnCoroutine()
     {
-        int spawnDelay;
-
         while (true)
         {
             Spawn();
             // 20~30초에 한 번씩 몬스터 활성화
-            spawnDelay = Random.Range(20, 30);
-            yield return new WaitForSeconds(spawnDelay);
+            yield return new WaitForSeconds(Random.Range(20, 30));
         }
     }
    
@@ -105,6 +97,7 @@ public class MonsterSpawner : Singleton<MonsterSpawner>
 
     public void ReturnToSpawner(GameObject tempObject)
     {
+       // tempObject.transform.SetPositionAndRotation(transform.position, transform.rotation);
         tempObject.transform.position = transform.position;
         tempObject.transform.rotation = transform.rotation;
         tempObject.SetActive(false);

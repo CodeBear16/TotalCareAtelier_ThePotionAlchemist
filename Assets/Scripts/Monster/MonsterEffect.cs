@@ -8,10 +8,6 @@ public class MonsterEffect : MonoBehaviour
     public GameObject[] particles;
     public GameObject effect = null;
 
-    ///void Start()
-    ///{
-        ///particles = GetComponentsInChildren<GameObject>();
-    ///}
 
     public void HideEffect()
     {
@@ -28,19 +24,4 @@ public class MonsterEffect : MonoBehaviour
         Debug.Log("파티클 활성화: " + name + effect.name);
     }
 
-    ////void OnTriggerEnter(Collider other)
-    ////{
-    ////    // monster가 destination에 도착하면 멈춤
-    ////    if (other.tag == "Destination")
-    ////    {
-    ////        if (other.gameObject == GetComponent<MonsterState>().returnDestination)
-    ////        {
-    ////            // 랜덤 particle(effect)
-    ////            int effectSelection = Random.Range(0, particle.Length);
-    ////            particle[effectSelection].SetActive(true);
-    ////            Debug.Log("파티클 활성화 : " + gameObject.name + particle[effectSelection].name);
-    ////            effect = particle[effectSelection];
-    ////        }
-    ////    }
-    ////}
 }
