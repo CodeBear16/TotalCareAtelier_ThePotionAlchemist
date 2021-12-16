@@ -17,19 +17,19 @@ public class Potion : MonoBehaviour
         source = GetComponent<AudioSource>();
     }
 
-    public virtual void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            source.PlayOneShot(breakSound);
-            particle.SetActive(true);
-            Destroy(gameObject, 2);
-        }
-        if (collision.gameObject.CompareTag("Monster"))
-        {
-            Debug.Log("몬스터에 포션 닿음");
-            if (GetComponent<OVRGrabbable>().isGrabbed == false)
-                collision.gameObject.GetComponent<MonsterState>().TakePotion(gameObject);
-        }
-    }
+    //public virtual void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Ground"))
+    //    {
+    //        source.PlayOneShot(breakSound);
+    //        particle.SetActive(true);
+    //        Destroy(gameObject, 2);
+    //    }
+    //    if (collision.gameObject.CompareTag("Monster"))
+    //    {
+    //        Debug.Log("몬스터에 포션 닿음");
+    //        if (GetComponent<OVRGrabbable>().isGrabbed == false)
+    //            collision.gameObject.GetComponent<MonsterState>().TakePotion(gameObject);
+    //    }
+    //}
 }
