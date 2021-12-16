@@ -43,6 +43,12 @@ public class Pot : Singleton<Pot>
         source.Play();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+            Developer();
+    }
+
     public void CreateRecipe(GameObject resultObj, List<Ingredient> ingredients, int i)
     {
         List<string> tempList = new List<string>();
@@ -122,5 +128,12 @@ public class Pot : Singleton<Pot>
         potList.Clear();
         yield return new WaitForSeconds(3);
         particle.SetActive(false);
+    }
+
+    private void Developer()
+    {
+        Instantiate(recipes[0].result, createSpot);
+        Instantiate(recipes[1].result, createSpot);
+        Instantiate(recipes[2].result, createSpot);
     }
 }

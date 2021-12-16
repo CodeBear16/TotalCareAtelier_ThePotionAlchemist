@@ -40,7 +40,7 @@ public class GameManager : Singleton<GameManager>
             distanceWatch.text = heroDistance + "km";
             distanceSlider.value = giveDistance - heroDistance;
 
-            if (heroDistance > 600) GoodEndEvent();
+            //if (heroDistance > 600) GoodEndEvent();
             if (heroDistance <= loseDistance) BadEndEvent();
         }
     }
@@ -100,6 +100,8 @@ public class GameManager : Singleton<GameManager>
         Destroy(PlayerBehaviour.instance.gameObject);
         Destroy(MonsterSpawner.instance.gameObject);
         Destroy(Pot.instance.gameObject);
+        for (int i = 0; i < IngredientPool<Ingredient>.poolList.Count; i++)
+            Destroy(IngredientPool<Ingredient>.poolList[i].gameObject);
         SpawnerCaller.instance.OffSpawner();
         DevilCaller.instance.OffDevil();
     }
@@ -133,16 +135,16 @@ public class GameManager : Singleton<GameManager>
 
     public void GoodEndEvent()
     {
-        SceneManager.LoadScene(2);
         SoundController.instance.StopMusic();
         DestroyCore();
+        SceneManager.LoadScene(2);
     }
 
     public void BadEndEvent()
     {
-        SceneManager.LoadScene(3);
         SoundController.instance.StopMusic();
         DestroyCore();
+        SceneManager.LoadScene(3);
     }
 
     public void GameQuitEvent()
