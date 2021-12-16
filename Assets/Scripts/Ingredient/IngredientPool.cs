@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class IngredientPool<T> : Singleton<IngredientPool<T>> where T : Ingredient
 {
+    public static List<IngredientPool<T>> poolList = new List<IngredientPool<T>>();
     private GameObject[] contentPrefabs;
     private string contentName;
 
@@ -18,6 +19,7 @@ public class IngredientPool<T> : Singleton<IngredientPool<T>> where T : Ingredie
 
     private void Start()
     {
+        poolList.Add(instance);
         contentName = name.Replace("Pool", string.Empty);
         contentPrefabs = Resources.LoadAll<GameObject>("Ingredient/" + contentName);
 

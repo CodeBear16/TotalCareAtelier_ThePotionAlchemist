@@ -64,8 +64,10 @@ public class RayPointer : MonoBehaviour
     {
         if (potion != null)
         {
-            potion.GrabEnd(Vector3.zero, Vector3.zero);
-            potion.grabbedRigidbody.isKinematic = true;
+            hand.ForceRelease(potion);
+            //potion.GrabEnd(Vector3.zero, Vector3.zero);
+            potion.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            potion.GetComponent<Rigidbody>().useGravity = false;
             monster.TakePotion(potion.gameObject);
         }
         else return;

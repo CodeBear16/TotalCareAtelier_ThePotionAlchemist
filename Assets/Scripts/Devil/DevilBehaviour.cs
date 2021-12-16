@@ -5,8 +5,9 @@ using UnityEngine;
 public class DevilBehaviour : Singleton<DevilBehaviour>
 {
     public int time = 0;
+    public GameObject devil;
 
-    private void Start()
+    private void OnEnable()
     {
         StartCoroutine(Appear());
     }
@@ -15,10 +16,9 @@ public class DevilBehaviour : Singleton<DevilBehaviour>
     {
         while (true)
         {
-            // 80, 90초에 한 번 등장 (수정해야 함)
             int randomAppear = Random.Range(80, 90);
             yield return new WaitForSeconds(randomAppear);
-            gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            devil.SetActive(true);
             PlayerBehaviour.instance.Attack();
 
             while(true)
@@ -26,7 +26,7 @@ public class DevilBehaviour : Singleton<DevilBehaviour>
                 yield return new WaitForSeconds(1);
                 time++;
                 
-                if(time >= 10) gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                if(time >= 10) devil.SetActive(false);
             }
         }
     }

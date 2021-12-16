@@ -32,7 +32,7 @@ public class MonsterState : MonoBehaviour
         isSuccess = false;
         player = GameObject.Find("Player");
         exit = GameObject.Find("Exit");
-        potionHand = transform.Find("PotionPos");
+        //potionHand = transform.Find("PotionPos");
 
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
@@ -55,7 +55,6 @@ public class MonsterState : MonoBehaviour
             case "SpawnerToDestination":
 
                 FindObjectOfType<DoorOpen>().Open();
-                //GameObject.FindGameObjectWithTag("Door").GetComponent<DoorOpen>().Open();
                 animator.SetBool("Walking", true);
                 nav.SetDestination(destination.transform.position);
                 Debug.Log(destination.name + "로 이동하는 " + gameObject.name);     
@@ -85,7 +84,7 @@ public class MonsterState : MonoBehaviour
         this.potion = _potion;
         potion.transform.parent = potionHand;
         potion.transform.localPosition = Vector3.zero;
-        potion.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        potion.transform.localRotation = potionHand.rotation;
 
         if (isSuccess)
         {
