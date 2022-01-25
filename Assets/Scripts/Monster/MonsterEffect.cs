@@ -8,7 +8,6 @@ public class MonsterEffect : MonoBehaviour
     public GameObject[] particles;
     public GameObject effect = null;
 
-
     public void HideEffect()
     {
         effect.SetActive(false);
@@ -23,5 +22,4 @@ public class MonsterEffect : MonoBehaviour
         effect.SetActive(true);
         Debug.Log("파티클 활성화: " + name + effect.name);
     }
-
 }

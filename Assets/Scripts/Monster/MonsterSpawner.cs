@@ -7,7 +7,7 @@ public class MonsterSpawner : Singleton<MonsterSpawner>
     // 도착지 리스트
     public static List<GameObject> destinationList = new List<GameObject>();
     // 가능한 도착지의 리스트
-    public List<int> availableNum = new List<int>();
+    public List<int> availableDestination = new List<int>();
     // 이동할 도착지
     MonsterDestination destination;
     // 복제할 몬스터들
@@ -32,7 +32,7 @@ public class MonsterSpawner : Singleton<MonsterSpawner>
         while (monsterPool.Count < spawnerMaxSize)
         {
             int selection = Random.Range(0, monsterPrefabs.Length);
-            //// 몬스터를 스포너의 자식 오브젝트로 넣기
+            // 몬스터를 스포너의 자식 오브젝트로 넣기
             tempObject = Instantiate(monsterPrefabs[selection], transform);
             ReturnToSpawner(tempObject);
             monsterPool.Add(tempObject);
@@ -54,10 +54,10 @@ public class MonsterSpawner : Singleton<MonsterSpawner>
     public void Spawn()
     {
         CheckDestination();
-        if (availableNum.Count == 0)
+        if (availableDestination.Count == 0)
             return;
-        // 매번 바뀌는 도착지 리스트기에 초기화해준다.
-        availableNum.Clear();
+        // 매번 바뀌는 도착지 리스트에 초기화해준다.
+        availableDestination.Clear();
 
         spawnCount++;
         // spawnCount 가 50보다 커지면 다시 처음으로 돌아가게 한다.
@@ -76,6 +76,7 @@ public class MonsterSpawner : Singleton<MonsterSpawner>
         // 몬스터 활성화
         tempObject.SetActive(true);
         Debug.Log(tempObject.name + "가 출현했습니다.");
+
         // 도착지 지정
         destination.Occupy();
         tempObject.GetComponent<MonsterState>().Setting(destination.gameObject);
@@ -87,19 +88,18 @@ public class MonsterSpawner : Singleton<MonsterSpawner>
         {
             destination = destinationList[i].GetComponent<MonsterDestination>();
             if (destination.isOccupied == false)
-                availableNum.Add(i);
+                availableDestination.Add(i);
         }
-        if (availableNum.Count == 0)
+        if (availableDestination.Count == 0)
             return;
-        int random = Random.Range(0, availableNum.Count);
-        destination = destinationList[availableNum[random]].GetComponent<MonsterDestination>();
+
+        int random = Random.Range(0, availableDestination.Count);
+        destination = destinationList[availableDestination[random]].GetComponent<MonsterDestination>();
     }
 
     public void ReturnToSpawner(GameObject tempObject)
     {
-       // tempObject.transform.SetPositionAndRotation(transform.position, transform.rotation);
-        tempObject.transform.position = transform.position;
-        tempObject.transform.rotation = transform.rotation;
+        tempObject.transform.SetPositionAndRotation(transform.position, transform.rotation);
         tempObject.SetActive(false);
     }
 } 
